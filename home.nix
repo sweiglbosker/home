@@ -1,11 +1,12 @@
 { config, libs, pkgs, ... }:
-
 {
   targets.genericLinux.enable = true;
 
-  home.username = "stefan";
-  home.homeDirectory = "/home/stefan";
-  home.stateVersion = "24.11"; 
+  home = {
+    username = "stefan";
+    homeDirectory = "/home/stefan";
+    stateVersion = "24.11";
+  };
 
   nixGL.packages = import <nixgl> { inherit pkgs; };
   nixGL.defaultWrapper = "mesa";
@@ -27,9 +28,6 @@
     '')
   ];
 
-  home.file = {
-  };
-
   home.sessionVariables = {
     EDITOR = "nvim";
     XDG_CACHE_HOME="$(mktemp -d)";
@@ -38,58 +36,45 @@
   # Let Home Manager install and manage itself.
   programs.home-manager.enable = true;
 
-  # TODO: https://github.com/nix-community/neovim-nightly-overlay
-  programs.neovim = {
+  programs.neovim = 
+  let
+    lua = str: "lua << EOF\n${str}\nEOF\n"; 
+    luaImport = file: "lua << EOF\n${builtins.readFile file}\nEOF\n";
+  in
+  {
     enable = true;
     defaultEditor = true;
     viAlias = true;
     vimAlias = true;
     vimdiffAlias = true;
+
+    plugins = with pkgs.vimPlugins; [
+        {
+          plugin = nvim-lspconfig;
+          config = let
+            servers = [
+              { name = "clangd"; }
+            ];
+          in lua (pkgs.lib.strings.concatStrings (pkgs.lib.lists.forEach servers (s: "require('lspconfig')['${s.name}'].setup(${s.config or "{}"})\n")));
+        }
+
+        (nvim-treesitter.withPlugins (p: with p; [
+                tree-sitter-nix
+                tree-sitter-c
+                tree-sitter-lua
+                tree-sitter-zig
+                tree-sitter-markdown
+                tree-sitter-markdown-inline
+        ]))
+
+        base16-nvim
+        telescope-nvim
+        telescope-fzf-native-nvim
+    ];
+
     extraLuaConfig = ''
-      vim.g.mapleader = ' '
-      vim.o.number = true
-      vim.o.relativenumber = true
-      vim.o.splitright = true
-      vim.o.splitbelow = true
-      vim.o.scrolloff = 15
-      vim.o.wrap = false
-      vim.o.lbr = true
-      vim.o.shortmess = vim.o.shortmess .. "I"
-      vim.o.termguicolors = true
-      vim.opt.fillchars = {eob = " "}
-      --vim.o.smd = false
-      --vim.opt.laststatus = 3
-      vim.opt.pumheight = 6
-      vim.opt.shiftwidth = 8
-      vim.opt.tabstop = 8
-      vim.opt.expandtab = true
-      vim.o.mouse=""
-      vim.o.guicursor=""
-      vim.o.swapfile=false
-
-      -- i like to have right-aligned current line nr. might not work well with all colorschemes
-      --vim.o.statuscolumn='%s%=%{v:relnum?v:relnum:v:lnum} '
-
-      -- keybinds
-      local function swap(mode, a, b)
-        local tmp=a
-        vim.keymap.set(mode, a, b)
-        vim.keymap.set(mode, b, tmp)
-      end
-
-      local function snv(a, b)
-        swap({'n', 'v'}, a, b)
-      end
-
-      snv('m', 'h')
-      snv('n', 'j')
-      snv('e', 'k')
-      snv('i', 'l')
-
-      snv('M', 'H')
-      snv('N', 'J')
-      --snv('E', 'K')
-      snv('I', 'L')
+      ${builtins.readFile ./nvim/settings.lua}
+      ${builtins.readFile ./nvim/keybinds.lua}
     '';
   };
 
@@ -100,7 +85,7 @@
   };
 
   programs.git = {
-  	enable = true;
+    enable = true;
     userName = "Stefan Weigl-Bosker";
     userEmail = "stefan@s00.xyz";
   };
