@@ -9,8 +9,8 @@ in
   };
 
   config = {
-    programs.foot = {
-      enable = cfg.enable;
+    programs.foot = lib.mkIf cfg.enable {
+      enable = true;
       server = {
         enable = true;
       };

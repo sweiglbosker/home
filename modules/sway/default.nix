@@ -13,7 +13,7 @@ in
   config = {
     wayland.windowManager.sway = lib.mkIf cfg.enable {
       enable = true;
-      package = config.lib.nixGL.wrap pkgs.sway;
+      package = cfg.package;
       config = rec {
         modifier = "Mod1";
 

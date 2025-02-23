@@ -20,7 +20,7 @@ in
       foot.enable = true;
       sway = {
         enable = true;
-        package = if cfg.noNixOS then 
+        package = if cfg.notNixOS then 
           config.lib.nixGL.wrap pkgs.sway else pkgs.sway;
       };
     };
