@@ -5,7 +5,7 @@ local function nmap(lhs, rhs, opts)
 end
 
 local function swap(mode, bind1, bind2)
-	local tmp=bind1
+  local tmp=bind1
   map(mode, bind1, bind2)
   map(mode, bind2, tmp)
 end

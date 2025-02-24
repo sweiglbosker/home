@@ -10,13 +10,14 @@
     };
 
     nixgl = {
-      url = "github:nix-community/nixGL";
+      url = "github:nix-community/nixgl";
       inputs.nixpkgs.follows = "nixpkgs";
     };
   };
 
   outputs = 
     inputs@{ 
+      self,
       nixpkgs, 
       home-manager, 
       nixgl,
@@ -31,17 +32,18 @@
         config.allowUnfree = true;
         inherit system overlays;
       };
-      custom = import "custom.nix";
+      inherit (pkgs) lib;
     in {
       packages.${system}.default = home-manager.defaultPackage.${system};
       homeConfigurations = {
-          "stefan" = home-manager.lib.homeManagerConfiguration {
-            inherit pkgs;
-            extraSpecialArgs = {
-              inherit inputs;
-            };
-            modules = [ ./home.nix ];
+        inherit inputs system pkgs;
+        "stefan" = home-manager.lib.homeManagerConfiguration {
+          inherit pkgs;
+          extraSpecialArgs = {
+            inherit system inputs pkgs;
           };
+        modules = [ ./home.nix ];
         };
+      };
     };
 }

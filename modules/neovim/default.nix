@@ -1,15 +1,16 @@
 { config, lib, pkgs, ...}:
 let
-  cfg = config.modules.nvim;
+  cfg = config.modules.neovim;
   lua = str: "lua << EOF\n${str}\nEOF\n";
   luaImport = file: "lua << EOF\n${builtins.readFile file}\nEOF\n";
 in
 {
-  options.modules.nvim = {
+  options.modules.neovim = {
+        enable = lib.mkEnableOption "neovim";
   };
 
   config = {
-    programs.neovim = {
+    programs.neovim = lib.mkIf cfg.enable {
       enable = true;
       defaultEditor = true;
       viAlias = true;
@@ -22,7 +23,7 @@ in
             servers = [
               { name = "clangd"; }
             ];
-          in lua(pkgs.lib.strings.concatStrings (pkgs.lib.lists.forEach servers (s: "require('lspconfig')['${s.name}'].setup(${s.config or "{}"})\n")));
+          in lua (pkgs.lib.strings.concatStrings (pkgs.lib.lists.forEach servers (s: "require('lspconfig')['${s.name}'].setup(${s.config or "{}"})\n")));
         }
 
         (nvim-treesitter.withPlugins (p: with p; [
@@ -34,6 +35,12 @@ in
           tree-sitter-markdown-inline
         ]))
 
+        {
+          plugin = neorg;
+          config = lua ''
+            require("neorg").setup()
+          '';
+        }
         base16-nvim
         telescope-nvim
         telescope-fzf-native-nvim
@@ -41,6 +48,7 @@ in
       extraLuaConfig = ''
           ${builtins.readFile ./settings.lua}
           ${builtins.readFile ./keybinds.lua}
+          require("neorg").setup()
       '';
     };
   };

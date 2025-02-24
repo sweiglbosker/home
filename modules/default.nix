@@ -3,6 +3,7 @@
   imports = [
     ./foot.nix
     ./sway
-    ./nvim
+    ./neovim
+    ./qutebrowser
   ];
 }

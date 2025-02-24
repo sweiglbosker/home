@@ -1,4 +1,4 @@
-{ config, lib, pkgs, ...}:
+{ config, lib, pkgs, inputs, ...}:
 let
   cfg = config.modules.global;
 in
@@ -20,9 +20,16 @@ in
       foot.enable = true;
       sway = {
         enable = true;
-        package = if cfg.notNixOS then 
-          config.lib.nixGL.wrap pkgs.sway else pkgs.sway;
+        wrapWithNixGL = true;
+#        package = if cfg.notNixOS then 
+ #         (config.lib.nixGL.wrap pkgs.sway) else pkgs.sway;
+#        package = config.lib.nixGL.wrap pkgs.sway;
       };
+    };
+
+    nixGL = lib.mkIf cfg.notNixOS {
+        packages = inputs.nixgl.packages;
+        defaultWrapper = "mesa";
     };
 
     programs = {
@@ -44,6 +51,7 @@ in
           wl-clipboard
           mako
           wmenu
+          cmatrix
         ]);
     };
 

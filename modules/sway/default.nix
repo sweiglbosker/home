@@ -1,19 +1,28 @@
-{ config, lib, pkgs, ... }:
+{ self, config, lib, pkgs, nixgl, ... }:
 let
   cfg = config.modules.sway;
 in
 {
   options.modules.sway = {
     enable = lib.mkEnableOption "sway";
-    package = lib.mkOption {
-      type = with lib.types; nullOr package;
-      default = pkgs.sway;
-    };
+    wrapWithNixGL = lib.mkEnableOption "NixGL wrapper";
   };
   config = {
+    home.packages = with pkgs; [(writeShellScriptBin "browser" ''
+      swaymsg 'set $PROP newcont:tabbed ; exec qutebrowser --target window'
+    '')];
     wayland.windowManager.sway = lib.mkIf cfg.enable {
       enable = true;
-      package = cfg.package;
+#      package = if cfg.wrapWithNixGL then config.lib.nixGL.wrap pkgs.sway else pkgs.sway;
+        package = config.lib.nixGL.wrap pkgs.sway;
+#       package = c
+#       package = pkgs.sway;
+#      package = pkgs.writeShellScriptBin "sway" ''
+#        ${pkgs.nixgl.auto.nixGLDefault}/bin/nixGL ${pkgs.sway}/bin/sway
+#      '';
+#      extraSessionCommands=''
+#        source ${pkgs.nixgl.auto.nixGLDefault}/bin/nixGL
+#      '';
       config = rec {
         modifier = "Mod1";
 
@@ -24,7 +33,7 @@ in
 
         fonts = {
           names = [ "ComicShannsMono Nerd Font Mono" ]; # material
-          size = 11.0;
+          size = 10.0;
         };
 
         terminal = "foot";
@@ -248,4 +257,3 @@ in
     };
   };
 }
-
