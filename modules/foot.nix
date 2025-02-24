@@ -1,6 +1,5 @@
 { config, lib, pkgs, ... }:
 let
-  inherit lib config;
   cfg = config.modules.foot;
 in
 {

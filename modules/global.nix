@@ -12,18 +12,21 @@ in
       description = "Whether nix is running outside of NixOS.";
     };
     wayland = mkEnableOption "Wayland";
+    extraPackages = mkOption {
+      type = with lib.types; listOf package;
+      description = "List of extra packages to install";
+      example = [ pkgs.cowsay pkgs.lolcat ];
+      default = [];
+    };
   };
 
   config = {
-    modules = {
-      global.wayland = true;
-      foot.enable = true;
+    modules = rec {
+      global = {
+        wayland = lib.mkDefault true;
+      };
       sway = {
-        enable = true;
-        wrapWithNixGL = true;
-#        package = if cfg.notNixOS then 
- #         (config.lib.nixGL.wrap pkgs.sway) else pkgs.sway;
-#        package = config.lib.nixGL.wrap pkgs.sway;
+        wrapWithNixGL = cfg.notNixOS;
       };
     };
 
@@ -49,9 +52,7 @@ in
         ++ (lib.optionals cfg.wayland 
         [
           wl-clipboard
-          mako
-          wmenu
-          cmatrix
+          #...
         ]);
     };
 

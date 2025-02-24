@@ -8,15 +8,26 @@
   config.modules = {
     global = {
       notNixOS = true;
-    };
-    foot.enable = true;
+      wayland = true;
 
+      extraPackages = with pkgs; [
+        mako
+        wmenu
+        cmatrix
+      ];
+    };
+
+    foot.enable = true;
 
     neovim = {
       enable = true;
     };
-#    sway = {
-#        enable = true;
-#    };
+
+    sway = {
+      enable = true;
+      terminal = "foot";
+    };
+
+    mako.enable = true;
   };
 }

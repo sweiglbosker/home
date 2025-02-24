@@ -35,12 +35,6 @@ in
           tree-sitter-markdown-inline
         ]))
 
-        {
-          plugin = neorg;
-          config = lua ''
-            require("neorg").setup()
-          '';
-        }
         base16-nvim
         telescope-nvim
         telescope-fzf-native-nvim
@@ -48,7 +42,6 @@ in
       extraLuaConfig = ''
           ${builtins.readFile ./settings.lua}
           ${builtins.readFile ./keybinds.lua}
-          require("neorg").setup()
       '';
     };
   };

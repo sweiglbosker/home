@@ -6,15 +6,19 @@ in
   options.modules.sway = {
     enable = lib.mkEnableOption "sway";
     wrapWithNixGL = lib.mkEnableOption "NixGL wrapper";
+    terminal = lib.mkOption {
+        type = lib.types.str;
+        description = "terminal command";
+    };
   };
+
   config = {
     home.packages = with pkgs; [(writeShellScriptBin "browser" ''
       swaymsg 'set $PROP newcont:tabbed ; exec qutebrowser --target window'
     '')];
     wayland.windowManager.sway = lib.mkIf cfg.enable {
       enable = true;
-#      package = if cfg.wrapWithNixGL then config.lib.nixGL.wrap pkgs.sway else pkgs.sway;
-        package = config.lib.nixGL.wrap pkgs.sway;
+      package = if cfg.wrapWithNixGL then config.lib.nixGL.wrap pkgs.sway else pkgs.sway;
 #       package = c
 #       package = pkgs.sway;
 #      package = pkgs.writeShellScriptBin "sway" ''
@@ -36,7 +40,7 @@ in
           size = 10.0;
         };
 
-        terminal = "foot";
+        terminal = "${cfg.terminal}";
         menu = "wmenu-run -n 4c4c4c -N 0d0d0d -s 8aac8b -S 0d0d0d -l 10";
     
         defaultWorkspace = "workspace number 1";
