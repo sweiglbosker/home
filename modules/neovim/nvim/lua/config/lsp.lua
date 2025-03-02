@@ -35,7 +35,7 @@ vim.diagnostic.config({
 vim.api.nvim_create_autocmd("LspAttach", { callback = function(args)
   local client = vim.lsp.get_client_by_id(args.data.client_id)
 
-  map('n', 'E', '<cmd>lua vim.lsp.buf.hover()<CR>', { silent = true })
+  vim.keymap.set('n', 'E', '<cmd>lua vim.lsp.buf.hover()<CR>', { silent = true })
 
   if client:supports_method(methods.textDocument_formatting) then
     vim.api.nvim_create_autocmd("BufWritePre", {
