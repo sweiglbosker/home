@@ -1,4 +1,4 @@
-{ inputs, config, lib, pkgs, nixgl, ... }:
+{ inputs, config, lib, pkgs, ... }:
 {
   imports = [
     ./modules/global.nix
@@ -11,7 +11,6 @@
       wayland = true;
 
       extraPackages = with pkgs; [
-        mako
         wmenu
         cmatrix
       ];

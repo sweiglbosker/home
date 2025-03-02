@@ -1,25 +1,3 @@
-vim.g.mapleader = ' '
-
-vim.o.number = true
-vim.o.relativenumber = true
-vim.o.splitright = true
-vim.o.splitbelow = true
-vim.o.scrolloff = 15
-vim.o.wrap = false
-vim.o.lbr = true
-vim.o.shortmess = vim.o.shortmess .. "I"
-vim.o.termguicolors = true
-vim.opt.fillchars = {eob = " "}
---vim.o.smd = false
---vim.opt.laststatus = 3
-vim.opt.pumheight = 6
-vim.opt.shiftwidth = 8
-vim.opt.tabstop = 8
-vim.opt.expandtab = true
-vim.o.mouse=""
-vim.o.guicursor=""
-vim.o.swapfile=false
-
 vim.cmd[[
   colorscheme base16-mountain
   hi LineNr guifg=#ceb188
@@ -28,6 +6,7 @@ vim.cmd[[
   hi CursorLineNr guifg=#ceb188 guibg=#191919 gui=bold
   hi FloatBorder guifg=#4c4c4c
   hi Pmenu guibg=#0d0d0d
+  hi BlinkCmpMenuBorder guifg=#4c4c4c 
   hi PmenuSel guibg=#191919 guifg=#cacaca
   hi WinBar guifg=#4c4c4c
   hi WinSeparator guifg=#191919

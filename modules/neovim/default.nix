@@ -1,50 +1,48 @@
 { config, lib, pkgs, ...}:
 let
   cfg = config.modules.neovim;
-  lua = str: "lua << EOF\n${str}\nEOF\n";
-  luaImport = file: "lua << EOF\n${builtins.readFile file}\nEOF\n";
 in
 {
   options.modules.neovim = {
-        enable = lib.mkEnableOption "neovim";
+    enable = lib.mkEnableOption "neovim";
   };
 
-  config = {
-    programs.neovim = lib.mkIf cfg.enable {
+  config = lib.mkIf cfg.enable {
+    xdg.configFile."nvim/lua" = {
+      source = ./nvim/lua;
+      recursive = true;
+    };
+
+    xdg.configFile."nvim/after" = {
+      source = ./nvim/after;
+      recursive = true;
+    };
+
+    programs.neovim = {
       enable = true;
       defaultEditor = true;
       viAlias = true;
       vimAlias = true;
       vimdiffAlias = true;
       plugins = with pkgs.vimPlugins; [
-        {
-          plugin = nvim-lspconfig;
-          config = let
-            servers = [
-              { name = "clangd"; }
-              { name = "zls"; }
-            ];
-          in lua (pkgs.lib.strings.concatStrings (pkgs.lib.lists.forEach servers (s: "require('lspconfig')['${s.name}'].setup(${s.config or "{}"})\n")));
-        }
-
         (nvim-treesitter.withPlugins (p: with p; [
           tree-sitter-nix
           tree-sitter-c
+          tree-sitter-cpp
           tree-sitter-lua
           tree-sitter-zig
           tree-sitter-markdown
           tree-sitter-markdown-inline
         ]))
 
+        blink-cmp
+        nvim-lspconfig
         base16-nvim
         telescope-nvim
         telescope-fzf-native-nvim
       ];
       extraLuaConfig = ''
-          ${builtins.readFile ./settings.lua}
-          ${builtins.readFile ./keybinds.lua}
-          ${builtins.readFile ./lsp.lua}
-          ${builtins.readFile ./terminal.lua}
+        ${builtins.readFile ./nvim/init.lua}
       '';
     };
   };

@@ -5,7 +5,7 @@ local function nmap(lhs, rhs, opts)
 end
 
 local function swap(mode, bind1, bind2)
-  local tmp=bind1
+	local tmp=bind1
   map(mode, bind1, bind2)
   map(mode, bind2, tmp)
 end
@@ -29,8 +29,8 @@ nmap('<leader>tc', ':tabc<CR>', { desc = "Close the current tab" })
 nmap('<leader>tm', ':tabp<CR>', { desc = "Go to previous tab" })
 nmap('<leader>ti', ':tabn<CR>', { desc = "Go to next tab" })
 
-nmap('<leader>wv', ':vne<CR>', { desc = "Create vertical split" })
-nmap('<leader>wh', ':new<CR>', { desc = "Create horizontal split" })
+nmap('<leader>wh', ':vne<CR>', { desc = "Create vertical split" })
+nmap('<leader>wv', ':new<CR>', { desc = "Create horizontal split" })
 nmap('<leader>wc', ':clo<CR>', { desc = "Close current window" })
 
 nmap('<leader>wm', '<C-w><C-h>', { desc = "Focus window left of the current one" })
@@ -42,12 +42,3 @@ nmap('<leader>fo', '<cmd>Telescope find_files<CR>', { silent = true })
 nmap('<leader>?', '<cmd>Telescope live_grep<CR>', { silent = true })
 
 nmap('<leader>to', '<cmd>te<CR>', { silent = true; desc = "Open a terminal buffer in the current window." })
-
-map('n', 'grr', function()
-  vim.lsp.buf.references() 
-end, { desc = "Code references (LSP)" }) 
-
-map('n', 'gd', function()
-  vim.lsp.buf.definition() 
-end, { desc = "Goto definition (LSP)" }) 
-
