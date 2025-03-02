@@ -53,7 +53,8 @@ in
         [
           wl-clipboard
           #...
-        ]);
+        ])
+        ++ cfg.extraPackages;
     };
 
   };

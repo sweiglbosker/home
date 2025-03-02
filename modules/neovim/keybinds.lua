@@ -39,3 +39,15 @@ nmap('<leader>we', '<C-w><C-k>', { desc = "Focus window above the current one" }
 nmap('<leader>wi', '<C-w><C-l>', { desc = "Focus window right of the current one" })
 
 nmap('<leader>fo', '<cmd>Telescope find_files<CR>', { silent = true })
+nmap('<leader>?', '<cmd>Telescope live_grep<CR>', { silent = true })
+
+nmap('<leader>to', '<cmd>te<CR>', { silent = true; desc = "Open a terminal buffer in the current window." })
+
+map('n', 'grr', function()
+  vim.lsp.buf.references() 
+end, { desc = "Code references (LSP)" }) 
+
+map('n', 'gd', function()
+  vim.lsp.buf.definition() 
+end, { desc = "Goto definition (LSP)" }) 
+

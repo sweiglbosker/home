@@ -22,6 +22,7 @@ in
           config = let
             servers = [
               { name = "clangd"; }
+              { name = "zls"; }
             ];
           in lua (pkgs.lib.strings.concatStrings (pkgs.lib.lists.forEach servers (s: "require('lspconfig')['${s.name}'].setup(${s.config or "{}"})\n")));
         }
@@ -42,6 +43,8 @@ in
       extraLuaConfig = ''
           ${builtins.readFile ./settings.lua}
           ${builtins.readFile ./keybinds.lua}
+          ${builtins.readFile ./lsp.lua}
+          ${builtins.readFile ./terminal.lua}
       '';
     };
   };

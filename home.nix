@@ -29,5 +29,6 @@
     };
 
     mako.enable = true;
+    neovide.enable = true;
   };
 }

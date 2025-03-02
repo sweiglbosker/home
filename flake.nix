@@ -8,10 +8,13 @@
       url = "github:nix-community/home-manager";
       inputs.nixpkgs.follows = "nixpkgs";
     };
-
     nixgl = {
       url = "github:nix-community/nixgl";
       inputs.nixpkgs.follows = "nixpkgs";
+    };
+    neovim-nightly = {
+        url = "github:nix-community/neovim-nightly-overlay";
+        inputs.nixpkgs.follows = "nixpkgs";
     };
   };
 
@@ -21,12 +24,14 @@
       nixpkgs, 
       home-manager, 
       nixgl,
+      neovim-nightly,
       ... 
     }:
     let
       system = "x86_64-linux";
       overlays = [
         inputs.nixgl.overlays.default
+        inputs.neovim-nightly.overlays.default
       ];
       pkgs = import nixpkgs {
         config.allowUnfree = true;
