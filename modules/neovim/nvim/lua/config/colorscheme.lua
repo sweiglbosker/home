@@ -7,7 +7,6 @@ vim.cmd[[
   hi FloatBorder guifg=#4c4c4c
   hi Pmenu guibg=#0d0d0d
   hi BlinkCmpMenuBorder guifg=#4c4c4c 
-  hi BlinkCmpDocBorder guifg=#4c4c4c 
   hi PmenuSel guibg=#191919 guifg=#cacaca
   hi WinBar guifg=#4c4c4c
   hi WinSeparator guifg=#191919

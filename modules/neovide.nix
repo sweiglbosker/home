@@ -5,12 +5,13 @@ in
 {
   options.modules.neovide = {
     enable = lib.mkEnableOption "neovide";
+    wrapWithNixGL = lib.mkEnableOption "NixGL wrapper";
   };
 
   config = {
     programs.neovide = lib.mkIf cfg.enable {
       enable = true;
-      package = config.lib.nixGL.wrap pkgs.neovide;
+      package = if cfg.wrapWithNixGL then config.lib.nixGL.wrap pkgs.neovide else pkgs.neovide;
       settings = {
         title-hidden = true;
         font = {

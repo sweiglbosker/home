@@ -39,15 +39,26 @@
       };
       inherit (pkgs) lib;
     in {
-      packages.${system}.default = home-manager.defaultPackage.${system};
-      homeConfigurations = {
-        inherit inputs system pkgs;
-        "stefan" = home-manager.lib.homeManagerConfiguration {
-          inherit pkgs;
-          extraSpecialArgs = {
-            inherit system inputs pkgs;
+      nixosConfigurations = {
+        form = nixpkgs.lib.nixosSystem {
+          inherit system;
+          specialArgs = {
+            inherit inputs;
           };
-        modules = [ ./home.nix ];
+          modules = [ 
+            ./form/configuration.nix
+            home-manager.nixosModules.home-manager
+            {
+              home-manager = {
+                users.stefan = import ./form/home.nix;
+                useGlobalPkgs = true;
+                useUserPackages = true;
+                extraSpecialArgs = {
+                  inherit system inputs pkgs;
+                };
+              };
+            }
+          ];
         };
       };
     };

@@ -65,6 +65,9 @@ in
             mode = "2880x1920@120.00Hz";
             scale = "2.0";
           };
+          "DP-2" = {
+            mode = "1920x1080@239.761Hz";
+          };
         };
 
         colors = {
@@ -236,10 +239,10 @@ in
         startup = [
           { command = "foot -s"; }
           { command = "wayneko --layer bottom --follow-pointer true --background-colour 0xcacaca --outline-colour 0x0f0f0f"; }
-          { command = "pipewire"; always = true; } # TODO need to fix this instead of running a new session every time
-          { command = "mpd"; }
-          { command = "mpdscribble"; }
-          { command = "avizo-service"; } # disable if on nixos or systemd
+#          { command = "pipewire"; always = true; } # TODO need to fix this instead of running a new session every time
+#          { command = "mpd"; }
+#          { command = "mpdscribble"; }
+#          { command = "avizo-service"; } # disable if on nixos or systemd
         ];
 
         seat = {

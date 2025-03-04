@@ -28,6 +28,9 @@ in
       sway = {
         wrapWithNixGL = cfg.notNixOS;
       };
+ #     qutebrowser = {
+ #     	wrapWithNixGL = cfg.notNixOS;
+ #     };
     };
 
     nixGL = lib.mkIf cfg.notNixOS {
@@ -35,9 +38,9 @@ in
         defaultWrapper = "mesa";
     };
 
-    programs = {
-      home-manager.enable = true;
-    };
+ #   programs = {
+ #     home-manager.enable = true;
+ #   };
 
     targets.genericLinux.enable = cfg.notNixOS;
 
