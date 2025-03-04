@@ -12,7 +12,7 @@ nixos and home-manager configurations for various systems
     * os: NixOS
     * case: FormD T1
     * gpu: NVIDIA GeForce RTX 4080 SUPER (proprietary drivers, open-source kernel module)
-    * cpu: AMD Ryzen 7800X3D Super
+    * cpu: AMD Ryzen 7800X3D
     * setup for wifi bc there is no ethernet port
     * `nixos-rebuild switch ~/home#form`
 
