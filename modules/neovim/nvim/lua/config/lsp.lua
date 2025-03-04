@@ -1,3 +1,5 @@
+local methods = vim.lsp.protocol.Methods
+
 local servers = {
   clangd = {},
   zls = {}
@@ -11,7 +13,7 @@ require('blink.cmp').setup({
   },
   completion = {
     list = {
-      selection = { preselect = true, auto_insert = false },
+      selection = { preselect = true, auto_insert = true },
     },
     menu = {
       border = "rounded",
@@ -20,7 +22,6 @@ require('blink.cmp').setup({
     documentation = { window = { border = 'rounded' } },
   },
   signature = { window = { border = 'rounded' } },
-  fuzzy = { implementation = "prefer_rust" }
 })
 
 vim.diagnostic.config({

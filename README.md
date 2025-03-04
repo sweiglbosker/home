@@ -1,6 +1,8 @@
 nixos and home-manager configurations for various systems
 ---------------------------------------------------------
 
+![deskop](desktop.png)
+
 ### Notes
 
 - secret management done outside of nix, i use [pass](https://www.passwordstore.org/) 
