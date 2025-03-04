@@ -61,5 +61,16 @@
           ];
         };
       };
+      homeConfigurations = {
+        inherit inputs system pkgs;
+        "void" = home-manager.lib.homeManagerConfiguration {
+#          inherit pkgs;
+          pkgs = nixpkgs.legacyPackages.${system};
+          modules = [ ./void/home.nix ];
+          extraSpecialArgs = {
+            inherit system inputs pkgs;
+          };
+        };
+      };
     };
 }
