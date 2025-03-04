@@ -1,11 +1,14 @@
 nixos and home-manager configurations for various systems
 ---------------------------------------------------------
 
-setup notes:
-    - secret management done outside of nix, i use [pass](https://www.passwordstore.org/) 
-    - i use the [colemak dh](https://colemakmods.github.io/mod-dh/#qwerty-changes) keyboard layout, this is not easy to change with current modules
+### Notes
 
-- [form](/form) mini itx desktop in my dorm
+- secret management done outside of nix, i use [pass](https://www.passwordstore.org/) 
+- i use the [colemak dh](https://colemakmods.github.io/mod-dh/#qwerty-changes) keyboard layout, this is not easy to change with current modules
+
+### Systems
+
+- [form](/form): Mini itx desktop in my dorm.
     * os: NixOS
     * case: FormD T1
     * gpu: NVIDIA GeForce RTX 4080 SUPER (proprietary drivers, open-source kernel module)
@@ -13,7 +16,7 @@ setup notes:
     * setup for wifi bc there is no ethernet port
     * `nixos-rebuild switch ~/home#form`
 
-- [void](/void) used on two laptops
+- [void](/void): Standalone home-manager setup used on two laptops.
     * os: Void Linux
     * hosts: Framework Laptop 13 (AMD), 51nb x2100
     * kernel: [linux-zen](https://github.com/zen-kernel/zen-kernel/releases)
