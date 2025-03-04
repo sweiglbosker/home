@@ -12,6 +12,8 @@
       extraPackages = with pkgs; [
         wmenu
         cmatrix
+        wayneko
+        pfetch
       ];
     };
 
@@ -24,6 +26,10 @@
     sway = {
       enable = true;
       terminal = "foot";
+    };
+
+    qutebrowser = {
+      enable = true;
     };
 
     mako.enable = true;

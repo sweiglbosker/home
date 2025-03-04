@@ -7,5 +7,6 @@
     ./zsh.nix
     ./sway
     ./neovim
+    ./qutebrowser
   ];
 }
