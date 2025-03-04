@@ -22,5 +22,5 @@ nixos and home-manager configurations for various systems
     * os: Void Linux
     * hosts: Framework Laptop 13 (AMD), 51nb x2100
     * kernel: [linux-zen](https://github.com/zen-kernel/zen-kernel/releases)
-    * prerequisites: pipewire, session manager, drivers
+    * prerequisites: pipewire, session manager, drivers, [turnstile](https://github.com/chimera-linux/turnstile)
     * `home-manager switch --impure --flake ~/home#void` (impure to pass env to [nixGL](https://github.com/nix-community/nixGL)

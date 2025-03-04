@@ -29,5 +29,17 @@
 
     mako.enable = true;
     neovide.enable = true;
+
+    services = {
+      enable = true;
+      services = {
+        "pipewire" = {
+          run = "${builtins.readFile ./services/pipewire/run}";
+        };
+        "mpd" = {
+          run = "${builtins.readFile ./services/mpd/run}";
+        };
+      };
+    };
   };
 }

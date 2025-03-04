@@ -8,5 +8,6 @@
     ./sway
     ./neovim
     ./qutebrowser
+    ./services
   ];
 }

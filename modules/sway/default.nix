@@ -5,10 +5,25 @@ in
 {
   options.modules.sway = {
     enable = lib.mkEnableOption "sway";
-    wrapWithNixGL = lib.mkEnableOption "NixGL wrapper";
+    wrapWithNixGL = lib.mkEnableOption "NixGL wrapper.";
     terminal = lib.mkOption {
         type = lib.types.str;
-        description = "terminal command";
+        description = "Terminal command.";
+    };
+    startup = lib.mkOption {
+      type = lib.types.listOf (lib.types.submodule {
+        command = lib.mkOption {
+          type = lib.types.string;
+          description = "Command to be executed on startup.";
+        };
+        always = lib.mkOption {
+          type = lib.types.bool;
+          default = false;
+          description = "Whether to run command on each restart";
+        };
+      });
+      default = [ ];
+      description = "List of commands that sway will run on startup. This should be used only for sway specific applications";
     };
   };
 
@@ -19,14 +34,6 @@ in
     wayland.windowManager.sway = lib.mkIf cfg.enable {
       enable = true;
       package = if cfg.wrapWithNixGL then config.lib.nixGL.wrap pkgs.sway else pkgs.sway;
-#       package = c
-#       package = pkgs.sway;
-#      package = pkgs.writeShellScriptBin "sway" ''
-#        ${pkgs.nixgl.auto.nixGLDefault}/bin/nixGL ${pkgs.sway}/bin/sway
-#      '';
-#      extraSessionCommands=''
-#        source ${pkgs.nixgl.auto.nixGLDefault}/bin/nixGL
-#      '';
       config = rec {
         modifier = "Mod1";
 
@@ -236,14 +243,7 @@ in
           "--locked XF86MonBrightnessUp" = "exec lightctl -d up";
         };
 
-        startup = [
-          { command = "foot -s"; }
-          { command = "wayneko --layer bottom --follow-pointer true --background-colour 0xcacaca --outline-colour 0x0f0f0f"; }
-#          { command = "pipewire"; always = true; } # TODO need to fix this instead of running a new session every time
-#          { command = "mpd"; }
-#          { command = "mpdscribble"; }
-#          { command = "avizo-service"; } # disable if on nixos or systemd
-        ];
+        startup = cfg.startup;
 
         seat = {
           "*" = {
