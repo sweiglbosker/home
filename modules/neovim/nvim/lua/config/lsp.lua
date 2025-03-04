@@ -1,3 +1,5 @@
+local methods = vim.lsp.protocol.Methods
+
 local servers = {
   clangd = {},
   zls = {}
@@ -11,7 +13,7 @@ require('blink.cmp').setup({
   },
   completion = {
     list = {
-      selection = { preselect = true, auto_insert = false },
+      selection = { preselect = true, auto_insert = true },
     },
     menu = {
       border = "rounded",
