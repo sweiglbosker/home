@@ -63,7 +63,7 @@ in
     xdg.configFile = (lib.concatMapAttrs mkService cfg.services) 
       // { 
         "service/turnstile-ready/conf" = {
-          text = ''core_services="${lib.strings.concatStringsSep " " cfg.coreServices}''; 
+          text = ''core_services="${lib.strings.concatStringsSep " " cfg.coreServices}"''; 
         };
       };
   };
