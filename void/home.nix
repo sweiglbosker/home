@@ -32,12 +32,18 @@
 
     services = {
       enable = true;
+      coreServices = ["dbus"];
       services = {
         "pipewire" = {
           run = "${builtins.readFile ./services/pipewire/run}";
+          log = "${builtins.readFile ./services/pipewire/log/run}";
         };
         "mpd" = {
           run = "${builtins.readFile ./services/mpd/run}";
+        };
+        "dbus" = {
+          run = "${builtins.readFile ./services/dbus/run}";
+          log = "${builtins.readFile ./services/dbus/log/run}";
         };
       };
     };

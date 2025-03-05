@@ -31,6 +31,7 @@ in
       qutebrowser = {
       	wrapWithNixGL = cfg.notNixOS;
       };
+      zsh.enable = true;
     };
 
     nixGL = lib.mkIf cfg.notNixOS {

@@ -4,7 +4,7 @@
     ./foot.nix
     ./mako.nix
     ./neovide.nix
-    ./zsh.nix
+    ./zsh
     ./sway
     ./neovim
     ./qutebrowser
