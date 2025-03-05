@@ -18,6 +18,8 @@
 
     foot.enable = true;
 
+    gpg.enable = true;
+
     neovim = {
       enable = true;
     };

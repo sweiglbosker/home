@@ -183,7 +183,7 @@ in
           "${modifier}+Shift+c" = "kill";
 
           "${modifier}+Shift+r" = "reload";
-          "${modifier}+Shift+q" = "exec swaynag -t warning -m 'do you really want to exit?' -B 'yes, exit' 'exit-sway'";
+          "${modifier}+Shift+q" = "exec swaynag -t warning -m 'do you really want to exit?' -B 'yes, exit' 'swaymsg exit'";
 
           "${modifier}+${left}" = "focus left";
           "${modifier}+${down}" = "focus down";

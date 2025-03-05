@@ -9,5 +9,6 @@
     ./neovim
     ./qutebrowser
     ./services
+    ./gpg
   ];
 }
