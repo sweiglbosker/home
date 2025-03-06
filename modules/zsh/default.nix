@@ -31,6 +31,7 @@ in
     	enable = true;
       autocd = true;
       enableCompletion = true;
+      defaultKeymap = "viins";
       dirHashes = {
         home = "~/home";
         dl = "~/dl";
@@ -39,6 +40,25 @@ in
       autosuggestion.enable = true;
       initExtra = ''
         source ~/.oh-my-zsh/themes/${cfg.theme}.zsh-theme 
+        setopt nobeep
+        export KEYTIMEOUT=1 # note, set higher if you want to use surround mode
+
+        bindkey -M vicmd m vi-backward-char 
+        bindkey -M vicmd n vi-down-line-or-history
+        bindkey -M vicmd e vi-up-line-or-history
+        bindkey -M vicmd i vi-forward-char
+
+        bindkey -M vicmd N vi-join
+
+        bindkey -M vicmd h vi-set-mark
+        bindkey -M vicmd j vi-repeat-search
+        bindkey -M vicmd k vi-forward-word-end
+        bindkey -M vicmd l vi-insert
+
+        bindkey -M vicmd J vi-rev-repeat-search
+
+        # vim style backspace (im a young soul)
+        bindkey -v '^?' backward-delete-char
       '';
     };
   };
