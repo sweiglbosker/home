@@ -10,6 +10,11 @@ in
   };
 
   config = mkIf cfg.enable {
+#    home.packages = with pkgs; [
+#    pinentry-bemenu
+#    (writeShellScriptBin "pinentry-menu" ''
+#      exec ${pkgs.pinentry-bemenu}/bin/pinentry-bemenu -l 10 --nf "#4c4c4c" --nb "#0f0f0f" --af "#4c4c4c" --ab "#0f0f0f" --tb "#0f0f0f" --tf "#8aac8b" --sb "#0f0f0f" --sf "#8aac8b"--hb "#0f0f0f" --hf "#8aac8b" --fn "ComicShannsMono Nerd Font Mono 12" 
+#    '')];
     services.gpg-agent = {
       enable = true;
       # TODO: look into forwarding and extra socket, seems useful
@@ -19,7 +24,7 @@ in
       enableSshSupport = true;
       noAllowExternalCache = true;
       pinentryPackage = pkgs.pinentry-qt;
-#      sshKeys = [ "36663E191B00E51513F90FA5CF2BCE8461C297CD" ];
+      #sshKeys = [ "36663E191B00E51513F90FA5CF2BCE8461C297CD" ];
     };
 
     home.file.".gnupg/pinentry-dmenu.conf" = {

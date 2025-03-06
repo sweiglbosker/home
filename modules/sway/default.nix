@@ -48,7 +48,7 @@ in
         };
 
         terminal = "${cfg.terminal}";
-        menu = "wmenu-run -n 4c4c4c -N 0d0d0d -s 8aac8b -S 0d0d0d -l 10";
+        menu = ''wmenu-run -n 4c4c4c -N 0d0d0d -s 8aac8b -S 0d0d0d -l 10 -f "ComicShannsMono Nerd Font Mono 10"'';
     
         defaultWorkspace = "workspace number 1";
 
