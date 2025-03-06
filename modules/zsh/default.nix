@@ -17,10 +17,11 @@ in
   config = mkIf cfg.enable {
     home.packages = with pkgs; [
       zsh
-      oh-my-zsh
       zsh-autosuggestions
+      gitstatus
     ];
 
+    # omz isn't actually used, directory is arbitrary
     home.file.".oh-my-zsh/themes" = {
       source = ./themes;
       recursive = true;
@@ -28,11 +29,14 @@ in
 
     programs.zsh = {
     	enable = true;
+      autocd = true;
       enableCompletion = true;
-      autosuggestion.enable = true;
-      oh-my-zsh = {
-        enable = true;
+      dirHashes = {
+        home = "~/home";
+        dl = "~/dl";
+        src = "~/src";
       };
+      autosuggestion.enable = true;
       initExtra = ''
         source ~/.oh-my-zsh/themes/${cfg.theme}.zsh-theme 
       '';
