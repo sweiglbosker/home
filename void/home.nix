@@ -20,6 +20,10 @@
 
     gpg.enable = true;
 
+    pass = {
+      enable = true;
+    };
+
     neovim = {
       enable = true;
     };

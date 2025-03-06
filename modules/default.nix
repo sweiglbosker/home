@@ -10,5 +10,6 @@
     ./qutebrowser
     ./services
     ./gpg
+    ./pass
   ];
 }

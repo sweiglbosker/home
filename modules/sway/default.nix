@@ -177,6 +177,7 @@ in
 
         keybindings = {
           "${modifier}+Return" = "exec ${terminal}";
+          "${modifier}+p" = "exec passmenu";
           "${modifier}+Shift+w" = "exec browser";
           "${modifier}+d" = "exec ${menu}";
 

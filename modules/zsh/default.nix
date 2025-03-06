@@ -28,7 +28,7 @@ in
     };
 
     programs.zsh = {
-    	enable = true;
+      enable = true;
       autocd = true;
       enableCompletion = true;
       defaultKeymap = "viins";
@@ -36,6 +36,11 @@ in
         home = "~/home";
         dl = "~/dl";
         src = "~/src";
+      };
+      shellAliases = {
+        ls = "eza";
+        ll = "eza -l";
+        hide = "swayhide";
       };
       autosuggestion.enable = true;
       initExtra = ''
