@@ -2,7 +2,8 @@ local methods = vim.lsp.protocol.Methods
 
 local servers = {
   clangd = {},
-  zls = {}
+  zls = {},
+  rust_analyzer = {}
 }
 
 require('blink.cmp').setup({

@@ -72,6 +72,7 @@
     wl-clipboard
     wmenu
     gnupg
+    pinentry-qt
   ];
 
   environment.pathsToLink = [ "/share/zsh" ];

@@ -11,7 +11,7 @@ in
 
   config = mkIf cfg.enable {
     home.packages = with pkgs; [
-      pinentry-qt
+#      pinentry-qt
     ];
 #    home.packages = with pkgs; [
 #    pinentry-bemenu

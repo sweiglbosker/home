@@ -38,7 +38,7 @@
     neovide.enable = true;
 
     services = {
-      enable = true;
+      enable = false;
       coreServices = ["dbus"];
       services = {
         "pipewire" = {
