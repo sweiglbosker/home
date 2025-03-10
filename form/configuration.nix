@@ -71,6 +71,7 @@
     neovim
     wl-clipboard
     wmenu
+    gnupg
   ];
 
   environment.pathsToLink = [ "/share/zsh" ];

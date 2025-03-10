@@ -8,7 +8,7 @@
   config.modules = {
     global = {
       wayland = true;
-
+  
       extraPackages = with pkgs; [
         wmenu
         cmatrix
@@ -16,6 +16,8 @@
         pfetch
       ];
     };
+
+    gpg.enable = true;
 
     foot.enable = true;
 

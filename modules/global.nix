@@ -52,6 +52,7 @@ in
 
       packages = with pkgs; [
         nerd-fonts.comic-shanns-mono
+        eza
       ] ++ (lib.optional cfg.notNixOS nixgl.auto.nixGLDefault)
         ++ (lib.optionals cfg.wayland 
         [
