@@ -43,6 +43,20 @@ in
       home-manager.enable = true;
     };
 
+    dconf = {
+      enable = true;
+      settings = {
+        "org/gnome/desktop/interface" = {
+          color-scheme = "prefer-dark";
+        };
+      };
+    };
+
+    gtk = {
+      enable = true;
+      gtk3.extraConfig.gtk-application-prefer-dark-theme = 1;
+    };
+
     targets.genericLinux.enable = cfg.notNixOS;
 
     home = {
@@ -50,9 +64,12 @@ in
       homeDirectory = "/home/stefan";
       stateVersion = "24.11";
 
+
       packages = with pkgs; [
         nerd-fonts.comic-shanns-mono
         eza
+        ripgrep
+        lean4
       ] ++ (lib.optional cfg.notNixOS nixgl.auto.nixGLDefault)
         ++ (lib.optionals cfg.wayland 
         [

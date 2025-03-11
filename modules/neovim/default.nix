@@ -37,6 +37,14 @@ in
           tree-sitter-markdown-inline
         ]))
 
+        {
+          plugin = lean-nvim;
+          config = ''
+            require('lean').setup{ mappings = true }
+          '';
+          type = "lua";
+        }
+        plenary-nvim
         blink-cmp
         nvim-lspconfig
         base16-nvim

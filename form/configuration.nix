@@ -46,6 +46,8 @@
     extraGroups = [ "wheel" "networkmanager" ]; # Enable ‘sudo’ for the user.
     packages = with pkgs; [
       tree
+      discord-ptb
+      ungoogled-chromium
     ];
     shell = pkgs.zsh;
   };
@@ -84,6 +86,7 @@
     wmenu
     gnupg
     pinentry-qt
+    btop
   ];
 
   environment.pathsToLink = [ "/share/zsh" ];
