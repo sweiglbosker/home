@@ -25,7 +25,6 @@
   services.xserver.xkb.layout = "us";
   services.xserver.xkb.variant = "colemak_dh";
 
-  security.rtkit.enable = true;
   services.pipewire = {
     enable = true;
     alsa.enable = true;
@@ -54,7 +53,19 @@
   #programs.firefox.enable = true;
   programs.foot.enable = true;
   programs.sway.enable = true;
-  security.polkit.enable = true;
+
+  security = {
+    polkit.enable = true;
+    rtkit.enable = true;
+    doas = {
+      enable = true;
+      extraRules = [{
+        users = ["stefan"];
+  #      keepEnv = true;
+        persist = true;
+      }];
+    };
+  };
 
   services.greetd = {
     enable = true;
@@ -92,6 +103,7 @@
   # (/run/current-system/configuration.nix). This is useful in case you
   # accidentally delete configuration.nix.
   # system.copySystemConfiguration = true;
+
 
   hardware.graphics.enable = true;
   services.xserver.videoDrivers = ["nvidia"];
