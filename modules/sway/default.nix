@@ -63,6 +63,9 @@ in
             tap = "enabled";
             middle_emulation = "enabled";
           };
+          "type:pointer" = {
+            accel_profile = "flat";
+          };
         };
 
         output = {
