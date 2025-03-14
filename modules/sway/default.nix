@@ -33,8 +33,8 @@ in
     '')];
     wayland.windowManager.sway = lib.mkIf cfg.enable {
       enable = true;
-#      package = if cfg.wrapWithNixGL then config.lib.nixGL.wrap pkgs.sway else pkgs.sway;
-      package = null;
+      package = if cfg.wrapWithNixGL then config.lib.nixGL.wrap pkgs.sway else pkgs.sway;
+#      package = null;
       config = rec {
         modifier = "Mod1";
 
