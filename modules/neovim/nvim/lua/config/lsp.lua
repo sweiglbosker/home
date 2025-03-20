@@ -38,7 +38,18 @@ vim.diagnostic.config({
 vim.api.nvim_create_autocmd("LspAttach", { callback = function(args)
   local client = vim.lsp.get_client_by_id(args.data.client_id)
 
+  vim.keymap.set('n', 'grr', function()
+    vim.lsp.buf.references() 
+  end, { desc = "Code references (LSP)" }) 
+
+  vim.keymap.set('n', 'gd', function()
+    vim.lsp.buf.definition() 
+  end, { desc = "Goto definition (LSP)" }) 
+
   vim.keymap.set('n', 'E', '<cmd>lua vim.lsp.buf.hover()<CR>', { silent = true })
+  if client:supports_method(methods.textDocument_inlayHint) then
+    vim.lsp.inlay_hint.enable()
+  end
 
   if client:supports_method(methods.textDocument_formatting) then
     vim.api.nvim_create_autocmd("BufWritePre", {

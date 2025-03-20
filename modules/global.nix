@@ -32,6 +32,7 @@ in
       	wrapWithNixGL = cfg.notNixOS;
       };
       zsh.enable = true;
+      tmux.enable = true;
     };
 
     nixGL = lib.mkIf cfg.notNixOS {
