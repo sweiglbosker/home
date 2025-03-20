@@ -18,7 +18,7 @@ require('blink.cmp').setup({
     },
     menu = {
       border = "rounded",
-      auto_show = false,
+      auto_show = true,
     },
     documentation = { window = { border = 'rounded' } },
   },

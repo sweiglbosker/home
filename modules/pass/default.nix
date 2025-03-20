@@ -56,7 +56,7 @@ in
       enable = true;
       settings = {
         PASSWORD_STORE_DIR = "${config.home.homeDirectory}/.password-store";
-        PASSWORD_STORE_CHARACTER_SET="[:alnum:]*!@^&_\-=[]|;~,./?";
+        PASSWORD_STORE_CHARACTER_SET=''[:alnum:]*!@^&_\-=[]|;~,./?'';
         PASSWORD_STORE_CLIP_TIME="25";
         PASSWORD_STORE_KEY=cfg.key;
         PASSWORD_STORE_ENABLE_EXTENSIONS = if cfg.enableExtensions then "1" else "0";

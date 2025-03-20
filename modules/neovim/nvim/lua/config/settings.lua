@@ -13,9 +13,11 @@ vim.opt.fillchars = {eob = " "}
 --vim.o.smd = false
 --vim.opt.laststatus = 3
 vim.opt.pumheight = 6
-vim.opt.shiftwidth = 8
-vim.opt.tabstop = 8
 vim.opt.expandtab = true
 vim.o.mouse=""
 vim.o.guicursor=""
 vim.o.swapfile=false
+vim.opt.foldmethod = "expr"
+vim.opt.foldexpr = "v:lua.vim.treesitter.foldexpr()"
+--vim.opt.foldcolumn = "0"
+vim.opt.foldlevel = 99
