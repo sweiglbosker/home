@@ -4,7 +4,8 @@
     ./foot.nix
     ./mako.nix
     ./neovide.nix
-    ./tmux.nix
+    ./fzf.nix
+    ./tmux
     ./zsh
     ./sway
     ./neovim

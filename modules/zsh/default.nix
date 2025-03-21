@@ -46,7 +46,8 @@ in
       initExtra = ''
         source ~/.oh-my-zsh/themes/${cfg.theme}.zsh-theme 
         setopt nobeep
-        export KEYTIMEOUT=1 # note, set higher if you want to use surround mode
+        export KEYTIMEOUT=1
+#       export KEYTIMEOUT=20 # note, set higher if you want to use surround mode or any chording
 
         bindkey -M vicmd m vi-backward-char 
         bindkey -M vicmd n vi-down-line-or-history
@@ -64,7 +65,13 @@ in
 
         # vim style backspace (im a young soul)
         bindkey -v '^?' backward-delete-char
+
+        bindkey '^F' fzf-cd-widget
+        bindkey -M vicmd / fzf-history-widget
+#        bindkey -M vicmd " f" fzf-cd-widget
+#        bindkey -M vicmd . fzf
       '';
     };
   };
 }
+

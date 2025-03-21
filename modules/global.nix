@@ -33,6 +33,7 @@ in
       };
       zsh.enable = true;
       tmux.enable = true;
+      fzf.enable = true;
     };
 
     nixGL = lib.mkIf cfg.notNixOS {
@@ -64,7 +65,7 @@ in
       username = "stefan";
       homeDirectory = "/home/stefan";
       stateVersion = "24.11";
-
+      shell.enableZshIntegration = true;
 
       packages = with pkgs; [
         nerd-fonts.comic-shanns-mono
