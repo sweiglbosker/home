@@ -34,6 +34,12 @@
       terminal = "foot";
     };
 
+    i3status = {
+      enable = true;
+      battery = true;
+      wireless = true;
+    };
+
     mako.enable = true;
     neovide.enable = true;
 

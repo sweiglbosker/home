@@ -5,6 +5,7 @@
     ./mako.nix
     ./neovide.nix
     ./fzf.nix
+    ./i3status.nix
     ./tmux
     ./zsh
     ./sway

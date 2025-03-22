@@ -116,6 +116,7 @@ in
           };
           extraConfig = ''
             modifier ${modifier}
+            separator_symbol " "
           '';
           colors = {
             background = "#0d0d0d";
