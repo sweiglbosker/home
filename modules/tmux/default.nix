@@ -12,7 +12,7 @@ in
       enable = true;
       customPaneNavigationAndResize = true;
       prefix = "C-Space";
-      mouse = true;
+      mouse = false;
       keyMode = "vi";
       baseIndex = 1;
       escapeTime = 0;
@@ -26,7 +26,8 @@ in
         }
       ];
       extraConfig = ''
-#        set -g default-terminal "screen-256color"
+        set -g default-terminal "screen-256color"
+        set -g default-command zsh
 # screen-256 ls colors broken, zsh fixed
 # screen ls colors fixed, zsh autosuggestions broken
         set -g renumber-windows on
