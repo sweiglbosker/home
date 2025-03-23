@@ -31,10 +31,19 @@
 
     sway = {
       enable = true;
-      terminal = "foot";
+      terminal = "footclient";
       startup = [
         {
+          command = "foot -s";
+          always = false;
+        }
+        {
           command = "avizo-service";
+          always = false;
+        }
+        {
+          # TODO: move to turnstile
+          command = "tmux start-server";
           always = false;
         }
       ];

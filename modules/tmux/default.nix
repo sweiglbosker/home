@@ -22,14 +22,19 @@ in
           plugin = resurrect;
           extraConfig = ''
             set -g @resurrect-strategy-nvim 'session'
+            set -g @resurrect-processes '"~ssh" lazygit'
+          '';
+        }
+        {
+          plugin = continuum;
+          extraConfig = ''
+            set -g @continuum-restore 'on'
           '';
         }
       ];
       extraConfig = ''
         set -g default-terminal "screen-256color"
-        set -g default-command zsh
-# screen-256 ls colors broken, zsh fixed
-# screen ls colors fixed, zsh autosuggestions broken
+        set -g default-command zsh # this fixes colors for some reason
         set -g renumber-windows on
 
         bind R source-file ~/.config/tmux/tmux.conf
@@ -91,7 +96,7 @@ in
         bind \[ swap-pane -U
         bind \] swap-pane -D
 
-        bind v copy-mode-vi
+        bind v copy-mode
         bind F resize-pane -Z
 
         bind h select-pane -m

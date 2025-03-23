@@ -18,7 +18,7 @@ require('blink.cmp').setup({
     },
     menu = {
       border = "rounded",
-      auto_show = true,
+      auto_show = false,
     },
     documentation = { window = { border = 'rounded' } },
   },
@@ -47,9 +47,9 @@ vim.api.nvim_create_autocmd("LspAttach", { callback = function(args)
   end, { desc = "Goto definition (LSP)" }) 
 
   vim.keymap.set('n', 'E', '<cmd>lua vim.lsp.buf.hover()<CR>', { silent = true })
-  if client:supports_method(methods.textDocument_inlayHint) then
-    vim.lsp.inlay_hint.enable()
-  end
+  -- if client:supports_method(methods.textDocument_inlayHint) then
+  --   vim.lsp.inlay_hint.enable()
+  -- end
 
   if client:supports_method(methods.textDocument_formatting) then
     vim.api.nvim_create_autocmd("BufWritePre", {
