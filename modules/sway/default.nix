@@ -12,14 +12,16 @@ in
     };
     startup = lib.mkOption {
       type = lib.types.listOf (lib.types.submodule {
-        command = lib.mkOption {
-          type = lib.types.string;
-          description = "Command to be executed on startup.";
-        };
-        always = lib.mkOption {
-          type = lib.types.bool;
-          default = false;
-          description = "Whether to run command on each restart";
+        options = {
+          command = lib.mkOption {
+            type = lib.types.string;
+            description = "Command to be executed on startup.";
+          };
+          always = lib.mkOption {
+            type = lib.types.bool;
+            default = false;
+            description = "Whether to run command on each restart";
+          };
         };
       });
       default = [ ];
@@ -28,9 +30,11 @@ in
   };
 
   config = {
-    home.packages = with pkgs; [(writeShellScriptBin "browser" ''
-      swaymsg 'set $PROP newcont:tabbed ; exec qutebrowser --target window'
-    '')];
+    home.packages = with pkgs; [
+      (writeShellScriptBin "browser" ''
+        swaymsg 'set $PROP newcont:tabbed ; exec qutebrowser --target window'
+      '')
+    ];
     wayland.windowManager.sway = lib.mkIf cfg.enable {
       enable = true;
       package = if cfg.wrapWithNixGL then config.lib.nixGL.wrap pkgs.sway else pkgs.sway;
@@ -49,7 +53,8 @@ in
         };
 
         terminal = "${cfg.terminal}";
-        menu = ''wmenu-run -n 4c4c4c -N 0d0d0d -s 8aac8b -S 0d0d0d -l 10 -f "ComicShannsMono Nerd Font Mono 10"'';
+     #   menu = ''wmenu-run -n 4c4c4c -N 0d0d0d -s 8aac8b -S 0d0d0d -l 10 -f "ComicShannsMono Nerd Font Mono 10"'';
+        menu = "tofi-run | xargs swaymsg exec";
     
         defaultWorkspace = "workspace number 1";
 

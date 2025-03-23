@@ -18,6 +18,17 @@ in
       example = [ pkgs.cowsay pkgs.lolcat ];
       default = [];
     };
+    menu = mkOption {
+      type = lib.types.submodule {
+        package = lib.types.package;
+        dmenu = lib.mkOption {
+          type = lib.types.pathInStore;
+          description = "derivation that will behave like dmenu";
+          example = pkgs.dmenu;
+          default = pkgs.tofi;
+        };
+      };
+    };
   };
 
   config = {
@@ -68,11 +79,17 @@ in
       stateVersion = "24.11";
       shell.enableZshIntegration = true;
 
+      sessionPath = [
+        "$HOME/.local/opt/binaryninja/bin"
+        "$HOME/scripts"
+      ];
+
       packages = with pkgs; [
         nerd-fonts.comic-shanns-mono
         eza
         ripgrep
         lean4
+        dmenu
       ] ++ (lib.optional cfg.notNixOS nixgl.auto.nixGLDefault)
         ++ (lib.optionals cfg.wayland 
         [

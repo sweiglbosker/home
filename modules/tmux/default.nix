@@ -32,7 +32,7 @@ in
 # screen ls colors fixed, zsh autosuggestions broken
         set -g renumber-windows on
 
-        bind r source-file ~/.config/tmux/tmux.conf
+        bind R source-file ~/.config/tmux/tmux.conf
 
         bind w switch-client -T split
         bind t switch-client -T tab
@@ -47,10 +47,10 @@ in
         bind -T tab i next-window
         bind -T tab n new-window
 
-        bind -T dir o run-shell -b 'fd . $(pwd) -td | fzf --tmux | xargs --no-run-if-empty tmux split-window -h -c'
-        bind -T dir O run-shell -b 'fd . $(pwd) -td | fzf --tmux | xargs --no-run-if-empty tmux new-window -c'
-        bind -T file o run-shell -b 'fd . $(pwd) -tf | fzf --tmux | xargs --no-run-if-empty tmux split-window -h -c $(pwd) $EDITOR'
-        bind -T file O run-shell -b 'fd . $(pwd) -tf | fzf --tmux | xargs --no-run-if-empty tmux new-window -c $(pwd) $EDITOR'
+        bind -T dir o run-shell -b 'fd . -td | fzf --tmux --scheme=path | xargs --no-run-if-empty tmux split-window -h -c'
+        bind -T dir O run-shell -b 'fd . -td | fzf --tmux --scheme=path | xargs --no-run-if-empty tmux new-window -c'
+        bind -T file o run-shell -b 'fd . -tf | fzf --tmux --scheme=path | xargs --no-run-if-empty tmux split-window -h -c $(pwd) $EDITOR'
+        bind -T file O run-shell -b 'fd . -tf | fzf --tmux --scheme=path | xargs --no-run-if-empty tmux new-window -c $(pwd) $EDITOR'
 
         bind -T split i split-window -h 
         bind -T split n split-window
@@ -87,6 +87,12 @@ in
         bind -r N resize-pane -D 10
         bind -r E resize-pane -U 10
         bind -r I resize-pane -R 10
+
+        bind \[ swap-pane -U
+        bind \] swap-pane -D
+
+        bind v copy-mode-vi
+        bind F resize-pane -Z
 
         bind h select-pane -m
         bind j next-window

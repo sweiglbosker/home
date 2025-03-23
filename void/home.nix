@@ -32,6 +32,12 @@
     sway = {
       enable = true;
       terminal = "foot";
+      startup = [
+        {
+          command = "avizo-service";
+          always = false;
+        }
+      ];
     };
 
     i3status = {
@@ -53,6 +59,9 @@
         };
         "mpd" = {
           run = "${builtins.readFile ./services/mpd/run}";
+        };
+        "mpdscribble" = {
+          run = "${builtins.readFile ./services/mpdscribble/run}";
         };
         "dbus" = {
           run = "${builtins.readFile ./services/dbus/run}";

@@ -42,5 +42,6 @@
     mako.enable = true;
     neovide.enable = true;
     zsh.enable = true;
+    tofi.enable = true;
   };
 }
