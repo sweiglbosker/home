@@ -3,7 +3,8 @@
 # usage: to create a project/session, create a symlink in .projects to the working directory 
 # the name of the symlink is the name of the project
 
-# if there is no path specific, prompt via fzf
+# if there is no path specified, prompt via fzf
+#
 if [[ $# -eq 1 ]]; then
   input=$1
 else
@@ -16,6 +17,11 @@ fi
 
 project_name=$input
 project_path=$(readlink "$HOME/.projects/$project_name")
+
+if [[ -d $project_path ]] 
+  echo "Error: directory '$project_path' does not exist." >&2
+  exit 1
+fi
 
 if [[ -z $(pgrep tmux) ]]; then
   tmux start-sever # blocking
