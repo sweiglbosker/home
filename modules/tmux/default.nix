@@ -7,8 +7,14 @@ in
     enable = lib.mkEnableOption "tmux";
   };
 
-  config = {
-    programs.tmux = lib.mkIf cfg.enable {
+  config = lib.mkIf cfg.enable {
+    home.packages = with pkgs; [
+      fd
+      fzf
+      (writeShellScriptBin "session-load" "${builtins.readFile ./session-load.sh}")
+    ];
+
+    programs.tmux = {
       enable = true;
       customPaneNavigationAndResize = true;
       prefix = "C-Space";

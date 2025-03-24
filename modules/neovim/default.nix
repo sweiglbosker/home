@@ -50,6 +50,7 @@ in
         base16-nvim
         telescope-nvim
         telescope-fzf-native-nvim
+        vim-obsession
       ];
       extraLuaConfig = ''
         ${builtins.readFile ./nvim/init.lua}
