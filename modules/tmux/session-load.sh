@@ -4,7 +4,11 @@
 # the name of the symlink is the name of the project
 
 # if there is no path specified, prompt via fzf
-#
+if ! [[ -d $HOME/.projects ]]; then
+  echo "Error: Couldn't find '~/.projects' directory." >&2
+  exit 1
+fi
+
 if [[ $# -eq 1 ]]; then
   input=$1
 else
@@ -18,8 +22,8 @@ fi
 project_name=$input
 project_path=$(readlink "$HOME/.projects/$project_name")
 
-if [[ -d $project_path ]] 
-  echo "Error: directory '$project_path' does not exist." >&2
+if ! [[ -d $project_path ]]; then
+  echo "Error: Directory '$project_path' does not exist." >&2
   exit 1
 fi
 
@@ -31,7 +35,7 @@ if ! tmux has-session -t $project_name 2> /dev/null; then
   tmux new -ds $project_name -c $project_dir
 fi
 
-if ! [[ -f ${project_path}/Session.vim ]] then
+if ! [[ -f ${project_path}/Session.vim ]]; then
   $(cd $project_path; nvim --headless +Obsession +q >/dev/null 2>&1) 
 fi
 
