@@ -45,7 +45,7 @@ in
           type = "lua";
         }
         plenary-nvim
-        blink-cmp
+#       blink-cmp
         nvim-lspconfig
         base16-nvim
         telescope-nvim

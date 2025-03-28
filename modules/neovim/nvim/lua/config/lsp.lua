@@ -1,4 +1,8 @@
+vim.opt.cot = "menu,menuone,noinsert"
+vim.opt.pumblend=5
+
 local methods = vim.lsp.protocol.Methods
+local map = vim.keymap.set
 
 local servers = {
   clangd = {},
@@ -6,27 +10,16 @@ local servers = {
   rust_analyzer = {}
 }
 
-require('blink.cmp').setup({
-  keymap = {
-    preset = 'default',
-    ['<C-n>'] = { function(cmp) cmp.show() end, 'select_next' },
-    ['<Enter>'] = { 'accept', 'fallback' },
-  },
-  completion = {
-    list = {
-      selection = { preselect = true, auto_insert = true },
-    },
-    menu = {
-      border = "rounded",
-      auto_show = false,
-    },
-    documentation = { window = { border = 'rounded' } },
-  },
-  signature = { window = { border = 'rounded' } },
-})
+local orig_util_open_floating_preview = vim.lsp.util.open_floating_preview 
+function vim.lsp.util.open_floating_preview(contents, syntax, opts, ...)
+  opts = opts or {}
+  opts.border = opts.border or "rounded"
+  return orig_util_open_floating_preview(contents, syntax, opts, ...)
+end
 
 vim.diagnostic.config({
-  virtual_text = false,
+--  virtual_text = { prefix = "", virt_text_pos = "eol_right_align",  },
+--  virtual_text = true,
   float = { border = "rounded" },
   signs = false,
   underline = true,
@@ -34,6 +27,11 @@ vim.diagnostic.config({
   float = true,
   jump = { float = true },
 })
+
+-- is completion visible
+local function pumvisible()
+  return tonumber(vim.fn.pumvisible()) ~= 0
+end
 
 vim.api.nvim_create_autocmd("LspAttach", { callback = function(args)
   local client = vim.lsp.get_client_by_id(args.data.client_id)
@@ -45,6 +43,24 @@ vim.api.nvim_create_autocmd("LspAttach", { callback = function(args)
   vim.keymap.set('n', 'gd', function()
     vim.lsp.buf.definition() 
   end, { desc = "Goto definition (LSP)" }) 
+
+  if client:supports_method(methods.textDocument_completion) then
+    vim.lsp.completion.enable(true, client.id, args.buf, { autotrigger = false })
+
+    map('i', "<CR>", function()
+      return pumvisible() and '<C-y>' or '<CR>'
+    end, { expr = true })
+
+
+    -- TODO: this ignores/overwrites default omnifunc rn
+    map('i', "<C-n>", function()
+      return pumvisible() and '<C-n>' or vim.lsp.completion.trigger()
+    end, { expr = true })
+
+    map('i', '<Esc>', function()
+      return pumvisible() and '<C-E>' or '<Esc>'
+    end, { expr = true })
+  end
 
   vim.keymap.set('n', 'E', '<cmd>lua vim.lsp.buf.hover()<CR>', { silent = true })
   -- if client:supports_method(methods.textDocument_inlayHint) then
@@ -64,6 +80,6 @@ end})
 local lspconfig = require('lspconfig')
 
 for server, config in pairs(servers) do
-  config.capabilities = require('blink.cmp').get_lsp_capabilities(config.capabilities)
-  lspconfig[server].setup(config)
+--  config.capabilities = require('blink.cmp').get_lsp_capabilities(config.capabilities)
+  lspconfig[server].setup({})
 end
