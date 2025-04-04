@@ -45,6 +45,8 @@ in
       zsh.enable = true;
       tmux.enable = true;
       fzf.enable = true;
+      git.enable = true;
+      lazygit.enable = true;
     };
 
     nixGL = lib.mkIf cfg.notNixOS {

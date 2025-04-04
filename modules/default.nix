@@ -7,6 +7,8 @@
     ./fzf.nix
     ./i3status.nix
     ./tofi.nix
+    ./lazygit.nix
+    ./git
     ./tmux
     ./zsh
     ./sway
