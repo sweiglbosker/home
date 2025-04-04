@@ -4,10 +4,15 @@ vim.opt.pumblend=5
 local methods = vim.lsp.protocol.Methods
 local map = vim.keymap.set
 
+vim.lsp.config = {
+  ['clangd'] = require("config.lsp.clangd"),
+  ['zls'] = require("config.lsp.zls")
+}
+
 local servers = {
   clangd = {},
   zls = {},
-  rust_analyzer = {}
+-- rust_analyzer = {}
 }
 
 local orig_util_open_floating_preview = vim.lsp.util.open_floating_preview 
@@ -81,5 +86,10 @@ local lspconfig = require('lspconfig')
 
 for server, config in pairs(servers) do
 --  config.capabilities = require('blink.cmp').get_lsp_capabilities(config.capabilities)
-  lspconfig[server].setup({})
+  vim.lsp.config[server].settings = config
+  vim.lsp.enable(server)
+--  lspconfig[server].setup({})
 end
+
+-- vim.lsp.config['clangd'] = require('config.lsp.clangd')
+-- vim.lsp.enable('clangd')

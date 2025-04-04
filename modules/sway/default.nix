@@ -258,7 +258,7 @@ in
 
         seat = {
           "*" = {
-            hide_cursor = "1500";
+            # hide_cursor = "1500";
             xcursor_theme = "Adwaita 18";
           };
         };

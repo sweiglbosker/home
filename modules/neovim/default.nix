@@ -45,13 +45,14 @@ in
           type = "lua";
         }
         plenary-nvim
-#       blink-cmp
         nvim-lspconfig
         base16-nvim
         telescope-nvim
         telescope-fzf-native-nvim
         vim-obsession
       ];
+      # extraLuaPackages = ps: with ps; [
+      # ];
       extraLuaConfig = ''
         ${builtins.readFile ./nvim/init.lua}
       '';
