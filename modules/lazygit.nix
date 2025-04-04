@@ -39,7 +39,7 @@ in
           notARepository = "skip";
           mouseEvents = false;
           showRandomTip = false;
-          border = "hidden";
+          border = "single";
           theme = {
             # activeBorderColor = [ "#8f8aac"  "bold" ];
             activeBorderColor = [ "#8f8aac"  "bold" ];

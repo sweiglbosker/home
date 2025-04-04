@@ -41,6 +41,7 @@ in
         ls = "eza";
         ll = "eza -l";
         hide = "swayhide";
+        lg = "lazygit";
       };
       autosuggestion.enable = true;
       initExtra = ''
