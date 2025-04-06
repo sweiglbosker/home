@@ -116,7 +116,7 @@ in
           mode = "hide";
           hiddenState = "hide";
           fonts = {
-            names = [ "ComicShannsMono Nerd Font Mono" ];
+            names = [ "BerkeleyMonoPatched Nerd Font" ];
             size = "10.0";
           };
           extraConfig = ''

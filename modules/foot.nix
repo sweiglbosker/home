@@ -15,7 +15,8 @@ in
       };
       settings = {
         main = {
-          font="ComicShannsMono Nerd Font Mono:size=12";
+          # font="ComicShannsMono Nerd Font Mono:size=12";
+          font="BerkeleyMonoPatched Nerd Font:size=12";
           title="term";
           resize-by-cells="no";
           pad="0x0 center";

@@ -14,10 +14,11 @@ in
       package = if cfg.wrapWithNixGL then config.lib.nixGL.wrap pkgs.neovide else pkgs.neovide;
       settings = {
         title-hidden = true;
+        box-drawing.mode = "native";
         font = {
-          normal = ["ComicShannsMono Nerd Font"];
+          normal = ["BerkeleyMonoPatched Nerd Font"];
           features = {
-            "ComicShannsMono Nerd Font" = ["+ss01" "+ss07" "+ss11" "-calt" "+ss09" "+ss02" "+ss14"];
+            "BerkeleyMonoPatched Nerd Font" = ["+ss01" "+ss07" "+ss11" "-calt" "+ss09" "+ss02" "+ss14"];
           };
           size = 11.0;
         };

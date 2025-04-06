@@ -13,7 +13,8 @@ in
     programs.tofi = {
       enable = true;
       settings = {
-        font = "ComicShannsMono Nerd Font Mono 10";
+        # font = "ComicShannsMono Nerd Font Mono 10";
+        font = "BerkeleyMonoPatched Nerd Font 10";
         "font-size" = 15;
 
         width = "60%";

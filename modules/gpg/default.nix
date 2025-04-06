@@ -12,6 +12,7 @@ in
   config = mkIf cfg.enable {
     home.packages = with pkgs; [
 #      pinentry-qt
+       pinentry-dmenu
     ];
 #    home.packages = with pkgs; [
 #    pinentry-bemenu
@@ -26,7 +27,8 @@ in
       # enableNushellIntegration = true;
       enableSshSupport = true;
       noAllowExternalCache = true;
-      pinentryPackage = pkgs.pinentry-qt;
+      # pinentryPackage = pkgs.pinentry-qt;
+      pinentryPackage = pkgs.pinentry-dmenu;
       #sshKeys = [ "36663E191B00E51513F90FA5CF2BCE8461C297CD" ];
     };
 
@@ -34,7 +36,7 @@ in
       text = ''
         asterisk= "";
         prompt = "";
-        font = "ComicShannsMono Nerd Font Mono:size=13";
+        font = "BerkeleyMonoPatched Nerd Font:size=13";
         prompt_fg = "#cacaca";
         prompt_bg = "#0d0d0d";
         normal_fg = "#4c4c4c";

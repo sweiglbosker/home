@@ -31,7 +31,7 @@ in
         "volume master" = {
           position = 1;
           settings = {
-            format = " %volume";
+            format = "  %volume";
             format_muted = "";
             device = "default";
 #            mixer = "Master";
@@ -42,7 +42,7 @@ in
           enable = cfg.wireless;
           position = 3;
           settings = {
-            format_up = "%quality";
+            format_up = " %quality";
             format_down = "󰖪";
           };
         };

@@ -15,7 +15,7 @@ in
       borderColor = "#a39ec4ff";
       borderSize = 1;
       defaultTimeout = 20000;
-      font = "ComicShannsMono Nerd Font Mono 10";
+      font = "BerkeleyMonoPatched Nerd Font 10";
     };
   };
 }
