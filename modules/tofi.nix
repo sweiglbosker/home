@@ -30,7 +30,7 @@ in
         "text-cursor-style"="bar";
         "text-cursor-color"="#cacaca";
 
-        "prompt-text"="";
+        "prompt-text"="\"\"";
 
         "background-color"="#0f0f0f";
 
