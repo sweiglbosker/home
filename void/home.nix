@@ -17,7 +17,7 @@
     };
 
     foot.enable = true;
-
+    mountain.enable = true;
     gpg.enable = true;
 
     pass = {
@@ -57,6 +57,7 @@
 
     mako.enable = true;
     neovide.enable = true;
+
 
     services = {
       enable = true;

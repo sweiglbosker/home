@@ -12,7 +12,13 @@ vim.o.termguicolors = true
 vim.opt.fillchars = {eob = " "}
 --vim.o.smd = false
 --vim.opt.laststatus = 3
-vim.opt.laststatus=0
+vim.opt.laststatus=2
+--%-0{minwid}.{maxwid}{item
+vim.opt.statusline="%=%f%=%r %y"
+vim.cmd[[
+hi StatusLineNC guibg=none
+hi StatusLine guibg=none
+]]
 vim.opt.pumheight = 6
 vim.opt.expandtab = true
 vim.o.mouse=""

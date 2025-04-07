@@ -1,6 +1,7 @@
 { ... }:
 {
   imports = [
+    ./scheme
     ./foot.nix
     ./mako.nix
     ./neovide.nix
@@ -17,5 +18,6 @@
     ./services
     ./gpg
     ./pass
+    ./mountain.nix
   ];
 }

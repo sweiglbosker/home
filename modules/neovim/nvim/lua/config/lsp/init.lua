@@ -59,7 +59,7 @@ vim.api.nvim_create_autocmd("LspAttach", { callback = function(args)
 
     -- TODO: this ignores/overwrites default omnifunc rn
     map('i', "<C-n>", function()
-      return pumvisible() and '<C-n>' or vim.lsp.completion.trigger()
+      return pumvisible() and '<C-n>' or vim.lsp.completion.get()
     end, { expr = true })
 
     map('i', '<Esc>', function()
@@ -88,6 +88,7 @@ for server, config in pairs(servers) do
 --  config.capabilities = require('blink.cmp').get_lsp_capabilities(config.capabilities)
   vim.lsp.config[server].settings = config
   vim.lsp.enable(server)
+  lspconfig.rust_analyzer.setup({})
 --  lspconfig[server].setup({})
 end
 
