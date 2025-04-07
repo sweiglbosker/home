@@ -1,6 +1,7 @@
 { config, lib, pkgs, ...}:
 let
   cfg = config.modules.neovim;
+  scheme = config.modules.scheme;
 in
 {
   options.modules.neovim = {
@@ -54,7 +55,13 @@ in
       # extraLuaPackages = ps: with ps; [
       # ];
       extraLuaConfig = ''
+        vim.cmd[[colorscheme ${scheme.name}]]
         ${builtins.readFile ./nvim/init.lua}
+        vim.cmd[[${scheme.extraVimConfig}]]
+        vim.cmd[[
+          hi StatusLineNC guibg=none guifg=#4c4c4c
+          hi StatusLine guibg=none guifg=#8f8aac
+        ]]
       '';
     };
   };

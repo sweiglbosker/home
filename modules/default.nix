@@ -18,6 +18,7 @@
     ./services
     ./gpg
     ./pass
-    ./mountain.nix
+    ./colors
+    # ./mountain.nix
   ];
 }

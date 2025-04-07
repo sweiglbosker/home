@@ -17,7 +17,7 @@
     };
 
     foot.enable = true;
-    mountain.enable = true;
+    colors.mountain.enable = true;
     gpg.enable = true;
 
     pass = {

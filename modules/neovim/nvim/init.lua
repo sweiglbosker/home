@@ -1,5 +1,5 @@
 require("config.settings")
 require("config.keybinds")
-require("config.colorscheme")
+-- require("config.colorscheme")
 require("config.lsp")
 require("config.treesitter")
