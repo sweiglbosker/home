@@ -48,6 +48,7 @@ in
       git.enable = true;
       lazygit.enable = true;
       tofi.enable = true;
+      zathura.enable = true;
     };
 
     nixGL = lib.mkIf cfg.notNixOS {

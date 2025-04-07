@@ -19,6 +19,6 @@
     ./gpg
     ./pass
     ./colors
-    # ./mountain.nix
+    ./zathura.nix
   ];
 }

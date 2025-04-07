@@ -76,7 +76,7 @@ in
 
         output = {
           "*" = {
-            bg = "#0d0d0d solid_color";
+            bg = "${scheme.base00} solid_color";
           };
           "eDP-1" = {
             mode = "2880x1920@120.00Hz";

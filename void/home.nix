@@ -19,6 +19,8 @@
     foot.enable = true;
     # colors.mountain.enable = true;
     colors.default-dark.enable = true;
+    # colors.tomorrow.enable = true;
+    # colors.google-dark.enable = true;
     gpg.enable = true;
 
     pass = {
