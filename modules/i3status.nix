@@ -20,7 +20,7 @@ in
       enable = true;
       enableDefault = false;
       general = {
-        colors = true;
+        colors = false;
         color_good = "#cacaca";
         color_degraded = "#aca98a";
         color_bad = "#ac8a8c";
@@ -31,7 +31,7 @@ in
         "volume master" = {
           position = 1;
           settings = {
-            format = "  %volume";
+            format = " %volume";
             format_muted = "";
             device = "default";
 #            mixer = "Master";
@@ -42,7 +42,7 @@ in
           enable = cfg.wireless;
           position = 3;
           settings = {
-            format_up = " %quality";
+            format_up = "";
             format_down = "󰖪";
           };
         };
@@ -58,14 +58,15 @@ in
             format = "%status %percentage";
             format_percentage = "%.00f%s";
             status_chr = "󱐋";
-            status_bat = "";
+            status_bat = "󰁹";
             status_idle = "󱐋";
           };
         };
         "tztime local" = {
           position = 10;
           settings = {
-            format = " %-I:%M %P";
+            format = "󰥔 %-I:%M %P";
+            
           };
         };
       };

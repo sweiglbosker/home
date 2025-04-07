@@ -48,7 +48,7 @@ in
         right = "i";
 
         fonts = {
-          names = [ "ComicShannsMono Nerd Font Mono" ]; # material
+          names = [ "BerkeleyMonoPatched Nerd Font" ];
           size = 10.0;
         };
 
@@ -116,7 +116,7 @@ in
           mode = "hide";
           hiddenState = "hide";
           fonts = {
-            names = [ "BerkeleyMonoPatched Nerd Font" ];
+            names = [ "BerkeleyMonoPatched Nerd Font Propo" ];
             size = "10.0";
           };
           extraConfig = ''
