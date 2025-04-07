@@ -1,6 +1,7 @@
 { config, lib, pkgs, ... }:
 let
   cfg = config.modules.tmux;
+  scheme = config.modules.scheme;
 in
 {
   options.modules.tmux = {
@@ -110,12 +111,12 @@ in
         bind l display-message
         bind K select-layout -E
 
-        set -g status-style bg='#191919',fg='#4c4c4c'
-        set-window-option -g window-status-style fg='#4c4c4c',bg='#191919'
-        set-window-option -g window-status-current-style fg='#ac8aac',bg='#191919'
+        set -g status-style bg='${scheme.base01}',fg='${scheme.base03}'
+        set-window-option -g window-status-style fg='${scheme.base03}',bg='${scheme.base01}'
+        set-window-option -g window-status-current-style fg='${scheme.base0E}',bg='${scheme.base01}'
 
-        set -g pane-border-style fg='#191919'
-        set -g pane-active-border-style fg='#191919'
+        set -g pane-border-style fg='${scheme.base01}'
+        set -g pane-active-border-style fg='${scheme.base01}'
 
       '';
     };

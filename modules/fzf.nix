@@ -1,6 +1,7 @@
 { config, lib, pkgs, ... }:
 let
   cfg = config.modules.fzf;
+  scheme = config.modules.scheme;
 in
 {
   options.modules.fzf = {
@@ -16,17 +17,17 @@ in
       enable = true;
       enableZshIntegration = true;
       colors = {
-        bg = "#0f0f0f";
-        # "bg+" = "#0f0f0f";
-        "bg+" = "#151515";
-        spinner = "#8aabac";
-        hl = "#8f8aac";
-        header = "#8f8aac";
-        info = "#aca98a";
-        pointer = "#8aabac";
+        bg = scheme.base00;
+        # "bg+" = scheme.base00;
+        "bg+" = scheme.base01; # "#151515";
+        spinner = scheme.base0C;
+        hl = scheme.base0D;
+        header = scheme.base0D;
+        info = scheme.base0A;
+        pointer = scheme.base0C;
         marker = "red";
-        fg = "#cacaca";
-        "fg+" = "#8aac8b";
+        fg = scheme.base05;
+        "fg+" = scheme.base0B;
       };
       tmux = {
         enableShellIntegration = true;

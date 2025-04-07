@@ -1,6 +1,7 @@
 { config, lib, pkgs, ... }:
 let
   cfg = config.modules.tofi;
+  scheme = config.modules.scheme;
 in
 {
   options.modules.tofi = {
@@ -20,22 +21,22 @@ in
         width = "60%";
         height = "50%";
 
-        "text-color" = "#cacaca";
-        "placeholder-color" = "#0f0f0f";
+        "text-color" = scheme.base05;
+        "placeholder-color" = scheme.base00;
 
-        "selection-background" = "#151515FF";
-        "selection-color" = "#8aac8b";
+        "selection-background" = scheme.base01; #151515
+        "selection-color" = scheme.base0B;
         "selection-background-padding"= "0, -1";
 
         "text-cursor-style"="bar";
-        "text-cursor-color"="#cacaca";
+        "text-cursor-color"=scheme.base05;
 
         "prompt-text"="\"\"";
 
-        "background-color"="#0f0f0f";
+        "background-color"=scheme.base00;
 
         "outline-width" = 2;
-        "outline-color" = "#191919";
+        "outline-color" = scheme.base01;
 
         "border-width"=0;
         "border-color"="#00000000";

@@ -1,6 +1,7 @@
 { self, config, lib, pkgs, nixgl, ... }:
 let
   cfg = config.modules.sway;
+  scheme = config.modules.scheme;
 in
 {
   options.modules.sway = {
@@ -87,27 +88,27 @@ in
         };
 
         colors = {
-          background = "#0f0f0f";
+          background = scheme.base00;
           focused = {
-            border = "#191919" ;
-            background = "#191919";
-            text = "#ac8aac";
-            indicator = "#282a2e";
-            childBorder = "#8aac8b";
+            border = scheme.base01;
+            background = scheme.base01;
+            text = scheme.base0E;
+            indicator = scheme.base02;
+            childBorder = scheme.base0B;
           };
           focusedInactive = {
-            border = "#191919";
-            background = "#191919";
-            text = "#ac8aac";
+            border = scheme.base01;
+            background = scheme.base01;
+            text = scheme.base0E;
             indicator = "#282a2e";
-            childBorder = "#191919";
+            childBorder = scheme.base01;
           };
           unfocused = {
-            border = "#191919";
-            background = "#191919";
-            text = "#4c4c4c";
+            border = scheme.base01;
+            background = scheme.base01;
+            text = scheme.base03;
             indicator = "#0f0f0f";
-            childBorder = "#191919";
+            childBorder = scheme.base01;
           };
         };
 
@@ -124,27 +125,27 @@ in
             separator_symbol " "
           '';
           colors = {
-            background = "#0d0d0d";
-            statusline = "#cacaca";
+            background = scheme.base00; # "#0d0d0d";
+            statusline = scheme.base05;
             focusedWorkspace = {
-              border = "#0d0d0d";
-              background = "#0d0d0d";
-              text = "#ac8aac";
+              border = scheme.base00; # "#0d0d0d";
+              background = scheme.base00; # "#0d0d0d";
+              text = scheme.base0E;
             };
             activeWorkspace = {
-              border = "#0d0d0d";
-              background = "#0d0d0d";
-              text = "#4c4c4c";
+              border = scheme.base00; # "#0d0d0d";
+              background = scheme.base00; # "#0d0d0d";
+              text = scheme.base03;
             };
             inactiveWorkspace = {
-              border = "#0d0d0d";
-              background = "#0d0d0d";
-              text = "#4c4c4c";
+              border = scheme.base00; # "#0d0d0d";
+              background = scheme.base00; # "#0d0d0d";
+              text = scheme.base03;
             };
             bindingMode = {
-              border = "#0d0d0d";
-              background = "#0d0d0d";
-              text = "#ac8aac";
+              border = scheme.base00; # "#0d0d0d";
+              background = scheme.base00; # "#0d0d0d";
+              text = scheme.base0E;
             };
           };
         }];

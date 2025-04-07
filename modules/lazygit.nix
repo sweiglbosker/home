@@ -1,6 +1,7 @@
 { config, lib, pkgs, ... }:
 let
   cfg = config.modules.lazygit;
+  scheme = config.modules.scheme;
 in
 {
   options.modules.lazygit = {
@@ -41,17 +42,16 @@ in
           showRandomTip = false;
           border = "single";
           theme = {
-            # activeBorderColor = [ "#8f8aac"  "bold" ];
-            activeBorderColor = [ "#8f8aac"  "bold" ];
-            inactiveBorderColor = [ "#4c4c4c" ];
-            searchingActiveBorderColor = [ "#ceb188" ];
-            optionsTextColor = [ "#8f8aac" ];
-            selectedLineBgColor = [ "#262626" ];
-            cherryPickedCommitBgColor = [ "#4c4c4c" ];
-            cherryPickedCommitFgColor = [ "#8f8aac" ];
-            markedBaseCommitFgColor = [ "#8f8aac" ];
-            unstagedChangesColor = [ "#ac8a8c" ];
-            defaultFgColor = [ "#cacaca" ];
+            activeBorderColor = [ scheme.base0D  "bold" ];
+            inactiveBorderColor = [ scheme.base03 ];
+            searchingActiveBorderColor = [ scheme.base09 ];
+            optionsTextColor = [ scheme.base0D ];
+            selectedLineBgColor = [ scheme.base02 ];
+            cherryPickedCommitBgColor = [ scheme.base03 ];
+            cherryPickedCommitFgColor = [ scheme.base0D ];
+            markedBaseCommitFgColor = [ scheme.base0D ];
+            unstagedChangesColor = [ scheme.base0F ];
+            defaultFgColor = [ scheme.base05 ];
           };
           git = {
             paging.useConfig = true;
