@@ -100,14 +100,14 @@ in
             border = scheme.base01;
             background = scheme.base01;
             text = scheme.base0E;
-            indicator = "#282a2e";
+            indicator = scheme.base02;
             childBorder = scheme.base01;
           };
           unfocused = {
             border = scheme.base01;
             background = scheme.base01;
             text = scheme.base03;
-            indicator = "#0f0f0f";
+            indicator = scheme.base00;
             childBorder = scheme.base01;
           };
         };

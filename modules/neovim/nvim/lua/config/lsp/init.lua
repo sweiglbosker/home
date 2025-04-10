@@ -41,6 +41,8 @@ end
 vim.api.nvim_create_autocmd("LspAttach", { callback = function(args)
   local client = vim.lsp.get_client_by_id(args.data.client_id)
 
+  client.server_capabilities.semanticTokensProvider = nil
+
   vim.keymap.set('n', 'grr', function()
     vim.lsp.buf.references() 
   end, { desc = "Code references (LSP)" }) 
@@ -66,6 +68,10 @@ vim.api.nvim_create_autocmd("LspAttach", { callback = function(args)
       return pumvisible() and '<C-E>' or '<Esc>'
     end, { expr = true })
   end
+
+  -- if client:supports_method(methods.textDocument_semanticTokens) then
+  -- end
+
 
   vim.keymap.set('n', 'E', '<cmd>lua vim.lsp.buf.hover()<CR>', { silent = true })
   -- if client:supports_method(methods.textDocument_inlayHint) then

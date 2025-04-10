@@ -1,10 +1,11 @@
 { config, lib, pkgs, inputs, ... }:
 let
   cfg = config.modules.qutebrowser;
+  scheme = config.modules.scheme;
 in
 {
   options.modules.qutebrowser = {
-    enable = lib.mkEnableOption "sway";
+    enable = lib.mkEnableOption "qutebrowser";
     wrapWithNixGL = lib.mkEnableOption "NixGL Wrapper";
   };
 
@@ -12,7 +13,13 @@ in
     programs.qutebrowser = lib.mkIf cfg.enable {
       enable = true;
       package = if cfg.wrapWithNixGL then config.lib.nixGL.wrap pkgs.qutebrowser else pkgs.qutebrowser;
-      loadAutoconfig = true;
+      loadAutoconfig = false;
+      extraConfig = ''
+        ${builtins.readFile ./config.py}
+        c.colors.completion.category.bg = "${scheme.base00}";
+        c.colors.completion.category.border.top = "${scheme.base00}";
+        c.colors.completion.category.border.bottom = "${scheme.base00}";
+      '';
     };
   };
 }

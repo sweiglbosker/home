@@ -17,12 +17,14 @@
     };
 
     foot.enable = true;
-    # colors.mountain.enable = true;
+    colors.mountain.enable = true;
     # colors.default-dark.enable = true;
     # colors.tomorrow.enable = true;
     # colors.google-dark.enable = true;
-    colors.grayscale-dark.enable = true;
+    # colors.grayscale-dark.enable = true;
+    # colors.grayscale-light.enable = true;
     gpg.enable = true;
+    qutebrowser.enable = true;
 
     pass = {
       enable = true;
