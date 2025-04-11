@@ -19,6 +19,11 @@ in
       recursive = true;
     };
 
+    xdg.configFile."nvim/colors" = {
+      source = ./nvim/colors;
+      recursive = true;
+    };
+
     programs.neovim = {
       enable = true;
       defaultEditor = true;

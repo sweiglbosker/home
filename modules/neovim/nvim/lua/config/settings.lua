@@ -17,7 +17,8 @@ vim.o.termguicolors = true
 vim.opt.laststatus=3
 --%-0{minwid}.{maxwid}{item
 -- vim.opt.statusline="%=%f%=%r %p%% « %l, %c %y"
-vim.opt.statusline="%f%=%p%% « %l, %c"
+vim.opt.statusline="%f%=%p%% « %l, %c "
+vim.cmd[[packadd termdebug]]
 -- vim.opt.winbar="%!nvim_treesitter#statusline()"
 -- vim.cmd[[
 -- hi StatusLineNC guibg=none
@@ -40,9 +41,9 @@ vim.opt.foldlevel = 99
 -- vim.cmd[[syntax off]]
 -- vim.o.winborder = 'rounded' breaks telescope
 vim.cmd[[set wildchar=<C-n>]]
--- vim.api.nvim_sel_hl(0, 'Comment', {})
+-- vim.api.nvim_set_hl(0, 'Comment', {})
 vim.api.nvim_set_hl(0, 'Constant', {})
--- vim.api.nvim_sel_hl(0, 'String', {})
+vim.api.nvim_set_hl(0, 'String', {})
 vim.api.nvim_set_hl(0, 'Character', {})
 vim.api.nvim_set_hl(0, 'Number', {})
 vim.api.nvim_set_hl(0, 'Boolean', {})

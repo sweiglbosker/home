@@ -71,6 +71,10 @@ in
         bindkey -M vicmd / fzf-history-widget
 #        bindkey -M vicmd " f" fzf-cd-widget
 #        bindkey -M vicmd . fzf
+        if [[ -n "$TMUX" ]]; then
+        # TODO: fix continuum so i dont need this hack
+          export TERM=screen-256color
+        fi
       '';
     };
   };
