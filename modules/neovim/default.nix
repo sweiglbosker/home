@@ -60,6 +60,7 @@ in
           type = "lua";
         }
         plenary-nvim
+        mini-icons
         oil-nvim
         nvim-lspconfig
         base16-nvim
@@ -77,6 +78,9 @@ in
         hi FloatBorder guifg=${scheme.base01}
         hi WinSeparator guifg=${scheme.base01}
         hi WinBar guifg=${scheme.base03}
+        hi LineNr guifg=${scheme.base02}
+        hi LineNrAbove guifg=${scheme.base02}
+        hi LineNrBelow guifg=${scheme.base02}
         ]]
 
         ${builtins.readFile ./nvim/init.lua}
