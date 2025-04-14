@@ -60,6 +60,7 @@ in
           type = "lua";
         }
         plenary-nvim
+        oil-nvim
         nvim-lspconfig
         base16-nvim
         telescope-nvim
