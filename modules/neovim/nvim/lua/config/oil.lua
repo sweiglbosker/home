@@ -3,15 +3,20 @@ require("oil").setup({
   columns = {
     "icon"
   },
-  win_options = {
-    wrap = false,
-    signcolumn = "no",
-    cursorcolumn = false,
-    foldcolumn = "0",
-    spell = false,
-    list = false,
-    conceallevel = 3,
-    concealcursor = "nvic",
-  },
   constrain_cursor = "editable",
+  skip_confirm_for_simple_edits = true,
+  win_options = {
+    number = false,
+    relativenumber = false,
+    cursorline = true,
+  },
+  view_options = {
+    show_hidden = true,
+  },
+  float = {
+    max_width = .7,
+    max_height = .5,
+    win_options = {
+    },
+  },
 })

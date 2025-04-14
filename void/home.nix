@@ -23,6 +23,7 @@
     # colors.google-dark.enable = true;
     # colors.grayscale-dark.enable = true;
     # colors.grayscale-light.enable = true;
+    fzf.enable = true;
     gpg.enable = true;
     qutebrowser.enable = true;
 

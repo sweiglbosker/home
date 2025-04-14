@@ -38,7 +38,12 @@ nmap('<leader>wn', '<C-w><C-j>', { desc = "Focus window below the current one" }
 nmap('<leader>we', '<C-w><C-k>', { desc = "Focus window above the current one" })
 nmap('<leader>wi', '<C-w><C-l>', { desc = "Focus window right of the current one" })
 
-nmap('<leader>fo', '<cmd>Telescope find_files<CR>', { silent = true })
+-- nmap('<leader>fo', '<cmd>Telescope find_files<CR>', { silent = true })
+nmap('<leader>fo', '<cmd>FzfLua files<CR>', { silent = true })
+-- nmap('<leader>fe', '<cmd>lua require("oil").open(nil, { preview = { split = "aboveleft" } })<CR>', { silent = true })
+nmap('<leader>fe', '<cmd>lua require("oil").toggle_float()<CR>', { silent = true })
+
 nmap('<leader>?', '<cmd>Telescope live_grep<CR>', { silent = true })
 
 nmap('<leader>to', '<cmd>te<CR>', { silent = true; desc = "Open a terminal buffer in the current window." })
+

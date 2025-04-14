@@ -66,6 +66,7 @@ in
         base16-nvim
         telescope-nvim
         telescope-fzf-native-nvim
+        fzf-lua
         vim-obsession
       ];
       # extraLuaPackages = ps: with ps; [

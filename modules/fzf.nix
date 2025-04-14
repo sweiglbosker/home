@@ -18,16 +18,19 @@ in
       enableZshIntegration = true;
       colors = {
         bg = scheme.base00;
-        # "bg+" = scheme.base00;
-        "bg+" = scheme.base01; # "#151515";
+        "bg+" = scheme.base01;
+        # "bg+" = scheme.base01; # "#151515";
+        query = scheme.base05 + ":regular";
         spinner = scheme.base0C;
         hl = scheme.base0D;
+        "hl+" = scheme.base0D;
         header = scheme.base0D;
         info = scheme.base0A;
-        pointer = scheme.base0C;
-        marker = "red";
+        pointer = scheme.base01;
+        marker = scheme.base0D;
         fg = scheme.base05;
-        "fg+" = scheme.base0B;
+        "fg+" = scheme.base0B + ":regular";
+        prompt = scheme.base0C;
       };
       tmux = {
         enableShellIntegration = true;
@@ -36,6 +39,7 @@ in
       defaultOptions = [
         "--style minimal"
         "--bind ctrl-n:down,ctrl-e:up"
+        # "--no-bold"
         # "--style full"
       ];
       fileWidgetOptions = [
