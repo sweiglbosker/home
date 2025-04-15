@@ -19,7 +19,7 @@ vim.opt.laststatus=3
 --%-0{minwid}.{maxwid}{item
 -- vim.opt.statusline="%=%f%=%r %p%% « %l, %c %y"
 vim.opt.statusline="%f%=%p%% « %l, %c "
-vim.cmd[[packadd termdebug]]
+vim.cmd[[packadd! termdebug]]
 -- vim.opt.winbar="%!nvim_treesitter#statusline()"
 -- vim.cmd[[
 -- hi StatusLineNC guibg=none
