@@ -2,6 +2,15 @@
 let
   cfg = config.modules.neovim;
   scheme = config.modules.scheme;
+  fromGitHub = ref: repo: pkgs.vimUtils.buildVimPlugin {
+    pname = "${lib.strings.sanitizeDerivationName repo}";
+    version = ref;
+    src = builtins.fetchGit {
+      url = "https://github.com/${repo}.git";
+      ref = ref;
+    };
+    doCheck = false;
+  };
 in
 {
   options.modules.neovim = {
@@ -23,6 +32,7 @@ in
       source = ./nvim/colors;
       recursive = true;
     };
+
 
     programs.neovim = {
       enable = true;
@@ -66,8 +76,17 @@ in
         base16-nvim
         telescope-nvim
         telescope-fzf-native-nvim
-        fzf-lua
+        # fzf-lua
+#        https://github.com/ibhagwan/fzf-lua/commit/26095d98c2969730457bf5b483919280e2cfb8bb
+        # (fromGitHub "HEAD" "ibhagwan/fzf-lua")
+        # fzf-lua.overrideAttrs (finalAttrs: previousAttrs: {
+        #    previousAttrs.doCheck = false;
+        # })
         vim-obsession
+        (pkgs.neovimUtils.buildNeovimPlugin {
+          luaAttr = pkgs.luaPackages.fzf-lua;
+          doCheck = false;
+        })
       ];
       # extraLuaPackages = ps: with ps; [
       # ];

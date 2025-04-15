@@ -13,7 +13,7 @@ vim.o.lbr = true
 vim.o.shortmess = vim.o.shortmess .. "I"
 vim.o.termguicolors = true
 vim.opt.fillchars = {eob = " "}
---vim.o.smd = false
+vim.o.smd = false
 --vim.opt.laststatus = 3
 vim.opt.laststatus=3
 --%-0{minwid}.{maxwid}{item

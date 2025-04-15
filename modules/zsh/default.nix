@@ -75,6 +75,19 @@ in
         # TODO: fix continuum so i dont need this hack
           export TERM=screen-256color
         fi
+
+        precmd() {
+          # roleplaying to hide my zsh usage 
+          print -Pn "\e]0;$(dirs -p | head -1)\e\\"
+          print -Pn "\e]133;A\e\\"
+          if ! builtin zle; then
+            print -n "\e]133;D\e\\"
+          fi
+        }
+        function preexec {
+          print -Pn "\e]0;''${(q)1}\e\\"
+          print -n "\e]133;C\e\\"
+        }
       '';
     };
   };

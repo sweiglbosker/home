@@ -43,7 +43,8 @@ nmap('<leader>fo', '<cmd>FzfLua files<CR>', { silent = true })
 -- nmap('<leader>fe', '<cmd>lua require("oil").open(nil, { preview = { split = "aboveleft" } })<CR>', { silent = true })
 nmap('<leader>fe', '<cmd>lua require("oil").toggle_float()<CR>', { silent = true })
 
-nmap('<leader>?', '<cmd>Telescope live_grep<CR>', { silent = true })
+-- nmap('<leader>?', '<cmd>Telescope live_grep<CR>', { silent = true })
+nmap('<leader>?', '<cmd>FzfLua live_grep_native<CR>', { silent = true })
 
 nmap('<leader>to', '<cmd>te<CR>', { silent = true; desc = "Open a terminal buffer in the current window." })
 

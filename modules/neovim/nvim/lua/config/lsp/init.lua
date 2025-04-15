@@ -6,7 +6,8 @@ local map = vim.keymap.set
 
 vim.lsp.config = {
   ['clangd'] = require("config.lsp.clangd"),
-  ['zls'] = require("config.lsp.zls")
+  ['zls'] = require("config.lsp.zls"),
+  ['lua_ls'] = require("config.lsp.lua_ls"),
 }
 
 local servers = {
@@ -88,15 +89,16 @@ vim.api.nvim_create_autocmd("LspAttach", { callback = function(args)
   end
 end})
 
-local lspconfig = require('lspconfig')
+-- local lspconfig = require('lspconfig')
 
-for server, config in pairs(servers) do
---  config.capabilities = require('blink.cmp').get_lsp_capabilities(config.capabilities)
-  vim.lsp.config[server].settings = config
-  vim.lsp.enable(server)
-  lspconfig.rust_analyzer.setup({})
---  lspconfig[server].setup({})
-end
+-- for server, config in pairs(servers) do
+-- --  config.capabilities = require('blink.cmp').get_lsp_capabilities(config.capabilities)
+--   -- vim.lsp.config[server].settings = config
+--   -- vim.lsp.config[server] = config
+--   -- vim.lsp.enable(server)
+--   -- lspconfig.rust_analyzer.setup({})
+-- --  lspconfig[server].setup({})
+-- end
 
--- vim.lsp.config['clangd'] = require('config.lsp.clangd')
--- vim.lsp.enable('clangd')
+-- vim.lsp.enable({'lua_ls', 'zls', 'clangd'})
+vim.lsp.enable({'zls', 'clangd'})

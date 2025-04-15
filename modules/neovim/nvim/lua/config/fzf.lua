@@ -1,6 +1,7 @@
 require("fzf-lua").setup({
   defaults = {
     file_icons = false,
+    prompt = false,
     -- hidden = true,
   },
   previewers = {
@@ -19,6 +20,13 @@ require("fzf-lua").setup({
     previewer = "builtin",
     cwd_prompt = false,
     prompt = "  ",
+  },
+  grep = {
+    actions = {
+      ['<ctrl-g>'] = nil,
+    },
+    no_header = true,
+    no_header_i = true,
   },
   winopts = {
     -- fullscreen = true,
