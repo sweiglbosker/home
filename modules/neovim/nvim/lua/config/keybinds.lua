@@ -48,11 +48,6 @@ nmap('<leader>?', '<cmd>FzfLua live_grep_native<CR>', { silent = true })
 
 nmap('<leader>to', '<cmd>te<CR>', { silent = true; desc = "Open a terminal buffer in the current window." })
 
-vim.keymap.set('t', '<Esc>', '<C-\\><C-n>', { silent = true })
-vim.keymap.set('t', '<C-\\><C-n>', function()
-  vim.keymap.set('t', '<Esc>', '<Esc>', { buffer = true})
-  vim.keymap.set('t', '<C-\\><C-n>', '<C-\\><C-n>', { buffer = true})
-end, { silent = true })
 
 
 

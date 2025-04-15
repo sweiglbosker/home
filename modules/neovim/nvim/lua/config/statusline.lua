@@ -1,6 +1,7 @@
 local modes = {
   ["n"] = "",
   ["no"] = "",
+  ["nt"] = "",
   ["v"] = "VISUAL",
   ["V"] = "VISUAL-LINE",
   [""] = "VISUAL-BLOCK",
@@ -38,7 +39,11 @@ M.statusline = function()
 end
 
 M.termStatus = function()
-  return " TERM » %{b:term_title}%=%p%% « %l, %c "
+  return table.concat {
+    " ",
+    mode(),
+    "%{b:term_title}%=%p%% « %l, %c "
+  }
 end
 
 M.setup = function(config)

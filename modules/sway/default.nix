@@ -114,8 +114,8 @@ in
 
         bars = [{
           statusCommand = "i3status";
-          mode = "hide";
-          hiddenState = "hide";
+          # mode = "hide";
+          # hiddenState = "hide";
           fonts = {
             names = [ "BerkeleyMonoPatched Nerd Font Propo" ];
             size = "10.0";

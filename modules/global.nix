@@ -1,6 +1,7 @@
 { config, lib, pkgs, inputs, ...}:
 let
   cfg = config.modules.global;
+  berkeley-mono = pkgs.callPackage ../packages/berkeley-mono.nix { inherit pkgs; };
 in
 {
   imports = [ ./default.nix ];
@@ -95,6 +96,7 @@ in
         ripgrep
         lean4
         dmenu
+        berkeley-mono
       ] ++ (lib.optional cfg.notNixOS nixgl.auto.nixGLDefault)
         ++ (lib.optionals cfg.wayland 
         [
