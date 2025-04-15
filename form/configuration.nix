@@ -6,6 +6,7 @@
       ./hardware-configuration.nix
     ];
 
+  boot.kernelPackages = pkgs.linuxPackages_latest;
   boot.loader.systemd-boot.enable = true;
   boot.loader.systemd-boot.consoleMode = "max";
   boot.loader.efi.canTouchEfiVariables = true;
@@ -23,7 +24,7 @@
   };
 
   services.xserver.xkb.layout = "us";
-  services.xserver.xkb.variant = "colemak_dh";
+  services.xserver.xkb.variant = "colemak_dh,";
 
   services.pipewire = {
     enable = true;
@@ -43,11 +44,14 @@
 
   users.users.stefan = {
     isNormalUser = true;
-    extraGroups = [ "wheel" "networkmanager" ]; # Enable ‘sudo’ for the user.
+    extraGroups = [ "wheel" "networkmanager" "gamemode" ]; # Enable ‘sudo’ for the user.
     packages = with pkgs; [
+      unzip
       tree
       discord-ptb
       ungoogled-chromium
+      osu-lazer-bin
+      xfce.thunar
     ];
     shell = pkgs.zsh;
   };
@@ -55,6 +59,7 @@
   #programs.firefox.enable = true;
   programs.foot.enable = true;
   programs.sway.enable = true;
+  programs.steam.enable = true;
 
   security = {
     polkit.enable = true;

@@ -17,6 +17,7 @@
       ];
     };
 
+    colors.mountain.enable = true;
     gpg.enable = true;
 
     pass = {
@@ -33,6 +34,11 @@
     sway = {
       enable = true;
       terminal = "foot";
+    };
+
+    i3status = {
+      enable = true;
+      wireless = true;
     };
 
     qutebrowser = {
