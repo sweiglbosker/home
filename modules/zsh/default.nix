@@ -42,6 +42,8 @@ in
         ll = "eza -l";
         hide = "swayhide";
         lg = "lazygit";
+        gdb = "gdb -q";
+        py = "ipython3";
       };
       autosuggestion.enable = true;
       initExtra = ''
@@ -75,6 +77,8 @@ in
         # TODO: fix continuum so i dont need this hack
           export TERM=screen-256color
         fi
+
+        export PATH=$HOME:/.local/riscv/bin:$PATH:$HOME/.local/bin
 
         precmd() {
           # roleplaying to hide my zsh usage 

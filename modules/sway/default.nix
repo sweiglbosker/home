@@ -38,7 +38,7 @@ in
     ];
     wayland.windowManager.sway = lib.mkIf cfg.enable {
       enable = true;
-      package = if cfg.wrapWithNixGL then config.lib.nixGL.wrap pkgs.sway else pkgs.sway;
+      package = if cfg.wrapWithNixGL then (config.lib.nixGL.wrap pkgs.sway) else pkgs.sway;
 #      package = null;
       config = rec {
         modifier = "Mod1";
@@ -114,8 +114,8 @@ in
 
         bars = [{
           statusCommand = "i3status";
-          # mode = "hide";
-          # hiddenState = "hide";
+          mode = "hide";
+          hiddenState = "hide";
           fonts = {
             names = [ "BerkeleyMonoPatched Nerd Font Propo" ];
             size = "10.0";
