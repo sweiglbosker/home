@@ -59,7 +59,12 @@ in
 
     programs = {
       home-manager.enable = true;
-      direnv.enable = true;
+      direnv = {
+        enable = true;
+        enableZshIntegration = true;
+        enableBashIntegration = true;
+        silent = true;
+      };
     };
 
     dconf = {

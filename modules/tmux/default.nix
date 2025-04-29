@@ -42,6 +42,10 @@ in
       extraConfig = ''
         set -g default-terminal "screen-256color"
         set -g default-command zsh # this fixes colors for some reason
+        # undercurl support in neovim
+        set -as terminal-overrides ',*:Smulx=\E[4::%p1%dm'
+        # support colors for undercurl
+        set -as terminal-overrides ',*:Setulc=\E[58::2::%p1%{65536}%/%d::%p1%{256}%/%{255}%&%d::%p1%{255}%&%d%;m'
         set -g renumber-windows on
 
         bind R source-file ~/.config/tmux/tmux.conf

@@ -6,8 +6,8 @@ require("fzf-lua").setup({
   },
   previewers = {
     builtin = {
-      -- syntax = false,
-      -- treesitter = false,
+      syntax = false,
+      treesitter = false,
       -- toggle_behavior = "extend",
     },
   },
@@ -38,10 +38,10 @@ require("fzf-lua").setup({
     backdrop = 70,
     -- border = "rounded",
     -- border = "none",
-    -- treesitter = {
-    --   enabled = false,
-    --   fzf_colors = false,
-    -- },
+    treesitter = {
+      enabled = false,
+      fzf_colors = false,
+    },
     border = { "", "─", "", "", "", "", "", "" },
     preview = {
       layout = "horizontal",

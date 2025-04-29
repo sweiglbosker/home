@@ -43,6 +43,14 @@ in
         ".envrc"
         ".direnv/"
         ".ignore/"
+        ".cache/"
+        "*.o"
+        "*.a"
+        "*.so"
+        "*.ko"
+        "*.lib"
+        # "*.out"
+        # "*.elf"
       ];
       signing = {
        signByDefault = true;

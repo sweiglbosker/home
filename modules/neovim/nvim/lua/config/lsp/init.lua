@@ -48,6 +48,8 @@ vim.api.nvim_create_autocmd("LspAttach", { callback = function(args)
     vim.lsp.buf.references() 
   end, { desc = "Code references (LSP)" }) 
 
+  vim.keymap.set('n', 'gca', '<cmd>FzfLua lsp_code_actions<CR>', { desc = "Code actions (LSP)" }) 
+
   vim.keymap.set('n', 'gd', function()
     vim.lsp.buf.definition() 
   end, { desc = "Goto definition (LSP)" }) 
@@ -58,7 +60,6 @@ vim.api.nvim_create_autocmd("LspAttach", { callback = function(args)
     map('i', "<CR>", function()
       return pumvisible() and '<C-y>' or '<CR>'
     end, { expr = true })
-
 
     -- TODO: this ignores/overwrites default omnifunc rn
     map('i', "<C-n>", function()
