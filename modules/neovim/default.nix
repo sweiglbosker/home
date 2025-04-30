@@ -42,26 +42,26 @@ in
       vimdiffAlias = true;
       plugins = with pkgs.vimPlugins; [
         nvim-treesitter
-        nvim-treesitter.withAllGrammars
-        # (nvim-treesitter.withPlugins (p: with p; [
-        #   tree-sitter-nix
-        #   tree-sitter-make
-        #   tree-sitter-verilog
-        #   tree-sitter-scheme
-        #   tree-sitter-llvm
-        #   tree-sitter-html
-        #   tree-sitter-glsl
-        #   tree-sitter-devicetree
-        #   tree-sitter-cuda
-        #   tree-sitter-c
-        #   tree-sitter-cpp
-        #   tree-sitter-lua
-        #   tree-sitter-zig
-        #   tree-sitter-rust
-        #   tree-sitter-toml
-        #   tree-sitter-markdown
-        #   tree-sitter-markdown-inline
-        # ]))
+        # nvim-treesitter.withAllGrammars
+        (nvim-treesitter.withPlugins (p: with p; [
+          tree-sitter-nix
+          tree-sitter-make
+          tree-sitter-verilog
+          tree-sitter-scheme
+          tree-sitter-llvm
+          tree-sitter-html
+          tree-sitter-glsl
+          tree-sitter-devicetree
+          tree-sitter-cuda
+          tree-sitter-c
+          tree-sitter-cpp
+          tree-sitter-lua
+          tree-sitter-zig
+          tree-sitter-rust
+          tree-sitter-toml
+          tree-sitter-markdown
+          tree-sitter-markdown-inline
+        ]))
 
         {
           plugin = lean-nvim;

@@ -1,16 +1,16 @@
-nixos and home-manager configurations for various systems
----------------------------------------------------------
+stefan's nix configs
+--------------------
 
 ![deskop](desktop.png)
 
 ### Notes
 
-- secret management done outside of nix, i use [pass](https://www.passwordstore.org/) 
-- i use the [colemak dh](https://colemakmods.github.io/mod-dh/#qwerty-changes) keyboard layout, this is not easy to change with current modules
+- everything uses an alternate keyboard layout
+- I use the runit init system, and wrap user services using [turnstile](https://github.com/chimera-linux/turnstile) (which should in theory be session manager agnostic, but my configurations will only work for runit). 
 
-### Systems
+### Current Systems
 
-- [form](/form): Mini itx desktop in my dorm.
+- [form](/form): Mini itx desktop in my dorm. (I barely use this these days)
     * os: NixOS
     * case: FormD T1
     * gpu: NVIDIA GeForce RTX 4080 SUPER (proprietary drivers, open-source kernel module)
