@@ -19,6 +19,7 @@ in
         c.colors.completion.category.bg = "${scheme.base00}";
         c.colors.completion.category.border.top = "${scheme.base00}";
         c.colors.completion.category.border.bottom = "${scheme.base00}";
+        c.colors.webpage.preferred_color_scheme = "${if scheme.light then "light" else "dark"}"
       '';
     };
   };
