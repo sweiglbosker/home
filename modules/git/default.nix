@@ -19,6 +19,7 @@ in
         co = "checkout";
         ri = "rebase -i";
         ag = "add -g";
+        ac = "commit --ammend";
         pushf = "push --force-with-lease";
       };
       delta = {

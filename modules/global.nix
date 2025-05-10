@@ -99,7 +99,7 @@ in
         nerd-fonts.comic-shanns-mono
         eza
         ripgrep
-        lean4
+        elan
         dmenu
         berkeley-mono
       ] ++ (lib.optional cfg.notNixOS nixgl.auto.nixGLDefault)

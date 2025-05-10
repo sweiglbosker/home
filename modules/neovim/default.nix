@@ -61,6 +61,7 @@ in
           tree-sitter-toml
           tree-sitter-markdown
           tree-sitter-markdown-inline
+          tree-sitter-tablegen
         ]))
 
         {
@@ -95,7 +96,8 @@ in
         vim.cmd[[
         colorscheme ${scheme.name}
         hi PmenuSel guifg=${scheme.base05} guibg=${scheme.base03}
-        hi StatusLine guibg=fg guifg=bg cterm=reverse gui=bold
+        " hi StatusLine guibg=fg guifg=bg cterm=reverse gui=bold
+        hi StatusLine guibg=bg guifg=fg
         hi FloatBorder guifg=${scheme.base01}
         hi WinSeparator guifg=${scheme.base01}
         hi WinBar guifg=${scheme.base03}

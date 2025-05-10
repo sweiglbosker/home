@@ -50,6 +50,7 @@ in
         source ~/.oh-my-zsh/themes/${cfg.theme}.zsh-theme 
         setopt nobeep
         export KEYTIMEOUT=1
+        export NO_COLOR=1
 #       export KEYTIMEOUT=20 # note, set higher if you want to use surround mode or any chording
 
         bindkey -M vicmd m vi-backward-char 
@@ -80,13 +81,27 @@ in
 
         export PATH=$HOME:/.local/riscv/bin:$PATH:$HOME/.local/bin
 
+        function zle-keymap-select() {
+          case $KEYMAP in 
+            vicmd) echo -ne '\e[1 q';; # block
+            viins) echo -ne '\e[5 q';; # beam
+            main) echo -ne '\e[5 q';; # beam
+          esac
+        }
+        zle -N zle-keymap-select
+        zle-line-init() {
+          zle -K viins
+          echo -ne '\e[5 q' # beam
+        }
+        zle -N zle-line-init
+        echo -ne '\e[5 q'
         precmd() {
-          # roleplaying to hide my zsh usage 
           print -Pn "\e]0;$(dirs -p | head -1)\e\\"
           print -Pn "\e]133;A\e\\"
           if ! builtin zle; then
             print -n "\e]133;D\e\\"
           fi
+          echo -ne '\e[5 q'
         }
         function preexec {
           print -Pn "\e]0;''${(q)1}\e\\"

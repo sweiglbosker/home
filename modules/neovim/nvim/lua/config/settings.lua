@@ -16,6 +16,7 @@ vim.opt.fillchars = {eob = " "}
 vim.o.smd = false
 --vim.opt.laststatus = 3
 vim.opt.laststatus=3
+vim.opt.cmdheight=0
 --%-0{minwid}.{maxwid}{item
 -- vim.opt.statusline="%=%f%=%r %p%% « %l, %c %y"
 vim.opt.statusline="%f%=%p%% « %l, %c "
@@ -33,7 +34,7 @@ vim.cmd[[packadd! termdebug]]
 vim.opt.pumheight = 6
 vim.opt.expandtab = true
 vim.o.mouse=""
-vim.o.guicursor=""
+-- vim.o.guicursor=""
 vim.o.swapfile=false
 vim.opt.foldmethod = "expr"
 vim.opt.foldexpr = "v:lua.vim.treesitter.foldexpr()"
@@ -41,6 +42,7 @@ vim.opt.foldexpr = "v:lua.vim.treesitter.foldexpr()"
 vim.opt.foldlevel = 99
 -- vim.cmd[[syntax off]]
 -- vim.o.winborder = 'rounded' breaks telescope
+
 vim.cmd[[set wildchar=<C-n>]]
 -- vim.api.nvim_set_hl(0, 'Comment', {})
 vim.api.nvim_set_hl(0, 'Constant', {})

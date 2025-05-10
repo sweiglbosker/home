@@ -80,14 +80,14 @@ vim.api.nvim_create_autocmd("LspAttach", { callback = function(args)
   --   vim.lsp.inlay_hint.enable()
   -- end
 
-  if client:supports_method(methods.textDocument_formatting) then
-    vim.api.nvim_create_autocmd("BufWritePre", {
-      buffer = args.buf,
-      callback = function()
-        vim.lsp.buf.format({bufnr = args.buf, id = client_id})
-      end
-    })
-  end
+  -- if client:supports_method(methods.textDocument_formatting) then
+  --   vim.api.nvim_create_autocmd("BufWritePre", {
+  --     buffer = args.buf,
+  --     callback = function()
+  --       vim.lsp.buf.format({bufnr = args.buf, id = client_id})
+  --     end
+  --   })
+  -- end
 end})
 
 -- local lspconfig = require('lspconfig')

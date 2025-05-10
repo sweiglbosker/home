@@ -6,3 +6,4 @@ vim.keymap.set({'n', 'v'}, 'n', 'g<Down>', { buffer = true })
 vim.keymap.set({'n', 'v'}, 'e', 'g<Up>', { buffer = true })
 
 vim.opt.statusline="%f"
+vim.opt.conceallevel=3

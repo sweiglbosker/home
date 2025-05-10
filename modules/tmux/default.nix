@@ -99,6 +99,9 @@ in
         bind -T copy-mode-vi E send-keys -X scroll-up 
         bind -T copy-mode-vi I send-keys -X bottom-line
 
+        bind -T copy-mode-vi v send-keys -X begin-selection
+        bind -T copy-mode-vi y send-keys -X copy-pipe-and-cancel
+
         bind -r M resize-pane -L 10
         bind -r N resize-pane -D 10
         bind -r E resize-pane -U 10

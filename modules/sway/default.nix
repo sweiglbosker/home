@@ -50,6 +50,7 @@ in
 
         fonts = {
           names = [ "BerkeleyMonoPatched Nerd Font" ];
+          style = "Bold";
           size = 10.0;
         };
 
@@ -90,25 +91,25 @@ in
         colors = {
           background = scheme.base00;
           focused = {
-            border = scheme.base01;
-            background = scheme.base01;
+            border = scheme.base00;
+            background = scheme.base00;
             text = scheme.base0E;
             indicator = scheme.base02;
-            childBorder = scheme.base0B;
+            childBorder = scheme.base01;
           };
           focusedInactive = {
-            border = scheme.base01;
-            background = scheme.base01;
+            border = scheme.base00;
+            background = scheme.base00;
             text = scheme.base0E;
             indicator = scheme.base02;
-            childBorder = scheme.base01;
+            childBorder = scheme.base00;
           };
           unfocused = {
-            border = scheme.base01;
-            background = scheme.base01;
+            border = scheme.base00;
+            background = scheme.base00;
             text = scheme.base03;
             indicator = scheme.base00;
-            childBorder = scheme.base01;
+            childBorder = scheme.base00;
           };
         };
 
@@ -271,7 +272,7 @@ in
 
       extraConfig = ''
         title_align center
-        default_border pixel 1
+        default_border pixel 2
       '';
     };
   };

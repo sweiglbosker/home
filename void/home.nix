@@ -16,6 +16,7 @@
       ];
     };
 
+    zsh.theme = "simple";
     foot.enable = true;
     colors.mountain.enable = true;
     # colors.default-dark.enable = true;
