@@ -49,8 +49,8 @@ in
         right = "i";
 
         fonts = {
-          names = [ "BerkeleyMonoPatched Nerd Font" ];
-          style = "Bold";
+          names = [ "GoMono Nerd Font Propo" ];
+          # style = "Bold";
           size = 10.0;
         };
 
@@ -118,7 +118,7 @@ in
           mode = "hide";
           hiddenState = "hide";
           fonts = {
-            names = [ "BerkeleyMonoPatched Nerd Font Propo" ];
+            names = [ "GoMono Nerd Font Propo" ];
             size = "10.0";
           };
           extraConfig = ''
@@ -131,7 +131,7 @@ in
             focusedWorkspace = {
               border = scheme.base00; # "#0d0d0d";
               background = scheme.base00; # "#0d0d0d";
-              text = scheme.base0E;
+              text = scheme.base05;
             };
             activeWorkspace = {
               border = scheme.base00; # "#0d0d0d";

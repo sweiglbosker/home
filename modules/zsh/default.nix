@@ -41,7 +41,7 @@ in
         ls = "eza";
         ll = "eza -l";
         hide = "swayhide";
-        lg = "lazygit";
+        lg = "NO_COLOR= lazygit";
         gdb = "gdb -q";
         py = "ipython3";
       };

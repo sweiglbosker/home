@@ -102,6 +102,7 @@ in
         elan
         dmenu
         berkeley-mono
+        fanwood
       ] ++ (lib.optional cfg.notNixOS nixgl.auto.nixGLDefault)
         ++ (lib.optionals cfg.wayland 
         [

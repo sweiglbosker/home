@@ -15,17 +15,23 @@ in
       enable = true;
       settings = {
         # font = "ComicShannsMono Nerd Font Mono 10";
-        font = "BerkeleyMonoPatched Nerd Font 10";
-        "font-size" = 15;
+        # font = "GoMono Nerd Font Propo";
+        font = "Fanwood Text";
+        "font-size" = 24;
 
-        width = "60%";
-        height = "50%";
+        # width = "60%";
+        # height = "50%";
+        width = "100%";
+        height = "100%";
+        padding-left = "35%";
+        padding-top = "35%";
 
-        "text-color" = scheme.base05;
+        input-color = scheme.base05;
+        "text-color" = scheme.base02;
         "placeholder-color" = scheme.base00;
 
-        "selection-background" = scheme.base01; #151515
-        "selection-color" = scheme.base0B;
+        "selection-background" = scheme.base00; #151515
+        "selection-color" = scheme.base05;
         "selection-background-padding"= "0, -1";
 
         "text-cursor-style"="bar";
@@ -34,17 +40,11 @@ in
         "prompt-text"="\"\"";
 
         "background-color"=scheme.base00;
+        num-results = 5;
 
-        "outline-width" = 2;
-        "outline-color" = scheme.base01;
-
-        "border-width"=0;
-        "border-color"="#00000000";
-
-
-        "corner-radius"=8;
-
-        "text-cursor" = true;
+        "outline-width" = 0;
+        "border-width" = 0;
+        hide-cursor = true;
         "hidden-character" = "";
         terminal = "foot";
         ascii-input = true;
