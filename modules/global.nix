@@ -2,6 +2,7 @@
 let
   cfg = config.modules.global;
   berkeley-mono = pkgs.callPackage ../packages/berkeley-mono.nix { inherit pkgs; };
+  scheme = config.modules.scheme;
 in
 {
   imports = [ ./default.nix ];
@@ -71,7 +72,7 @@ in
       enable = true;
       settings = {
         "org/gnome/desktop/interface" = {
-          color-scheme = "prefer-dark";
+          color-scheme = "${if scheme.light then "prefer-light" else "prefer-dark"}";
         };
       };
     };
@@ -79,7 +80,20 @@ in
 
     gtk = {
       enable = true;
-      gtk3.extraConfig.gtk-application-prefer-dark-theme = 1;
+      gtk3.extraConfig.gtk-application-prefer-dark-theme = if scheme.light then 0 else 1;
+      gtk4.extraConfig.gtk-application-prefer-dark-theme = if scheme.light then 0 else 1;
+      theme = {
+        name = "${if scheme.light then "Adwaita" else "Adwaita-dark"}";
+        # package = pkgs.gnome.gnome-themes-extra;
+      };
+    };
+
+    qt = {
+      platformTheme.name = "gnome";
+      style = {
+        package = pkgs.adwaita-qt;
+        name = "${if scheme.light then "adwaita" else "adwaita-dark"}";
+      };
     };
 
     targets.genericLinux.enable = cfg.notNixOS;
