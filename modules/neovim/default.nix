@@ -93,21 +93,10 @@ in
       # extraLuaPackages = ps: with ps; [
       # ];
       extraLuaConfig = ''
-        vim.cmd[[
-        colorscheme ${scheme.name}
-        hi PmenuSel guifg=${scheme.base05} guibg=${scheme.base03}
-        " hi StatusLine guibg=fg guifg=bg cterm=reverse gui=bold
-        hi StatusLine guibg=bg guifg=fg
-        hi FloatBorder guifg=${scheme.base01}
-        hi WinSeparator guifg=${scheme.base01}
-        hi WinBar guifg=${scheme.base03}
-        hi LineNr guifg=${scheme.base02}
-        hi LineNrAbove guifg=${scheme.base02}
-        hi LineNrBelow guifg=${scheme.base02}
-        ]]
 
         ${builtins.readFile ./nvim/init.lua}
         vim.cmd[[${scheme.extraVimConfig}]]
+        vim.cmd[[colorscheme ${scheme.name}]]
       '';
     };
   };

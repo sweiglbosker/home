@@ -1,9 +1,10 @@
 vim.g.mapleader = ' '
 
-vim.o.number = true
-vim.o.relativenumber = true
--- vim.o.number = false
--- vim.o.relativenumber = false
+-- vim.o.number = true
+-- vim.o.relativenumber = true
+vim.o.number = false
+vim.o.relativenumber = false
+
 vim.o.splitright = true
 vim.o.splitbelow = true
 vim.o.scrolloff = 15
