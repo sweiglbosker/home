@@ -65,7 +65,7 @@ in
         "tztime local" = {
           position = 10;
           settings = {
-            format = "󰥔 %-I:%M %P";
+            format = "◴ %-I:%M %P";
             
           };
         };

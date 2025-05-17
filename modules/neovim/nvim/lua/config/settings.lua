@@ -48,38 +48,6 @@ vim.opt.foldenable=true
 -- vim.o.winborder = 'rounded' breaks telescope
 
 vim.cmd[[set wildchar=<C-n>]]
--- vim.api.nvim_set_hl(0, 'Comment', {})
-vim.api.nvim_set_hl(0, 'Constant', {})
--- vim.api.nvim_set_hl(0, 'String', {})
-vim.api.nvim_set_hl(0, 'Character', { link = "String" })
-vim.api.nvim_set_hl(0, 'Number', {})
-vim.api.nvim_set_hl(0, 'Boolean', {})
-vim.api.nvim_set_hl(0, 'Float', {})
-vim.api.nvim_set_hl(0, 'Identifier', {})
-vim.api.nvim_set_hl(0, 'Function', {})
-vim.api.nvim_set_hl(0, 'Statement', {})
-vim.api.nvim_set_hl(0, 'Conditional', {})
-vim.api.nvim_set_hl(0, 'Repeat', {})
-vim.api.nvim_set_hl(0, 'Label', {})
-vim.api.nvim_set_hl(0, 'Operator', {})
-vim.api.nvim_set_hl(0, 'Keyword', {})
-vim.api.nvim_set_hl(0, 'Exception', {})
-vim.api.nvim_set_hl(0, 'PreProc', {})
-vim.api.nvim_set_hl(0, 'Include', {})
-vim.api.nvim_set_hl(0, 'Define', {})
-vim.api.nvim_set_hl(0, 'Macro', {})
-vim.api.nvim_set_hl(0, 'PreCondit', {})
-vim.api.nvim_set_hl(0, 'Type', {})
-vim.api.nvim_set_hl(0, 'StorageClass', {})
-vim.api.nvim_set_hl(0, 'Structure', {})
-vim.api.nvim_set_hl(0, 'Typedef', {})
-vim.api.nvim_set_hl(0, 'Special', {})
-vim.api.nvim_set_hl(0, 'SpecialChar', { link = 'String' })
-vim.api.nvim_set_hl(0, 'Tag', {})
-vim.api.nvim_set_hl(0, 'Delimiter', {})
--- vim.api.nvim_set_hl(0, 'SpecialComment', {})
-vim.api.nvim_set_hl(0, 'Debug', {})
--- vim.api.nvim_set_hl(0, 'Underlined', {})
 
 vim.cmd[[cnoreabbrev ts lua vim.treesitter.start()]]
 

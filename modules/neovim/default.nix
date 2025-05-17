@@ -77,7 +77,7 @@ in
         oil-nvim
         nvim-lspconfig
         # tinted-vim
-        base16-vim
+        base16-nvim
         telescope-nvim
         telescope-fzf-native-nvim
         # fzf-lua

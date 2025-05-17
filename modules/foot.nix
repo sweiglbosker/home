@@ -19,7 +19,8 @@ in
         main = {
           # font="ComicShannsMono Nerd Font Mono:size=12";
           # font="BerkeleyMonoPatched Nerd Font Mono:size=12";
-          font ="GoMono Nerd Font Mono:size=12";
+          # font ="Hack Nerd Font Mono:size=10";
+          font ="TamzenForPowerline:size=11,Cozette:size=11";
           title="term";
           resize-by-cells="no";
           pad="0x0 center";

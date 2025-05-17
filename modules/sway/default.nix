@@ -49,7 +49,7 @@ in
         right = "i";
 
         fonts = {
-          names = [ "GoMono Nerd Font Propo" ];
+          names = [ "Roboto" ];
           # style = "Bold";
           size = 10.0;
         };
@@ -85,8 +85,18 @@ in
           };
           "DP-2" = {
             mode = "1920x1080@239.761Hz";
+            position = "0,440";
+          };
+          "HDMI-A-1" = {
+            transform = "90";
+            position = "1920,0";
           };
         };
+
+        workspaceAutoBackAndForth = true;
+        workspaceOutputAssign = [
+        { output = "HDMI-A-1"; workspace = "0"; }
+        ];
 
         colors = {
           background = scheme.base00;
@@ -95,21 +105,21 @@ in
             background = scheme.base00;
             text = scheme.base0E;
             indicator = scheme.base02;
-            childBorder = scheme.base01;
+            childBorder = scheme.base0B;
           };
           focusedInactive = {
             border = scheme.base00;
             background = scheme.base00;
             text = scheme.base0E;
             indicator = scheme.base02;
-            childBorder = scheme.base00;
+            childBorder = scheme.base01;
           };
           unfocused = {
             border = scheme.base00;
             background = scheme.base00;
             text = scheme.base03;
             indicator = scheme.base00;
-            childBorder = scheme.base00;
+            childBorder = scheme.base01;
           };
         };
 
@@ -118,7 +128,7 @@ in
           mode = "hide";
           hiddenState = "hide";
           fonts = {
-            names = [ "GoMono Nerd Font Propo" ];
+            names = [ "TamzenForPowerline" "cozette" ];
             size = "10.0";
           };
           extraConfig = ''
@@ -126,26 +136,26 @@ in
             separator_symbol " "
           '';
           colors = {
-            background = scheme.base00; # "#0d0d0d";
+            background = scheme.base02; # "#0d0d0d";
             statusline = scheme.base05;
             focusedWorkspace = {
-              border = scheme.base00; # "#0d0d0d";
-              background = scheme.base00; # "#0d0d0d";
+              border = scheme.base02; # "#0d0d0d";
+              background = scheme.base02; # "#0d0d0d";
               text = scheme.base05;
             };
             activeWorkspace = {
-              border = scheme.base00; # "#0d0d0d";
-              background = scheme.base00; # "#0d0d0d";
+              border = scheme.base02; # "#0d0d0d";
+              background = scheme.base02; # "#0d0d0d";
               text = scheme.base03;
             };
             inactiveWorkspace = {
-              border = scheme.base00; # "#0d0d0d";
-              background = scheme.base00; # "#0d0d0d";
+              border = scheme.base02; # "#0d0d0d";
+              background = scheme.base02; # "#0d0d0d";
               text = scheme.base03;
             };
             bindingMode = {
-              border = scheme.base00; # "#0d0d0d";
-              background = scheme.base00; # "#0d0d0d";
+              border = scheme.base02; # "#0d0d0d";
+              background = scheme.base02; # "#0d0d0d";
               text = scheme.base0E;
             };
           };
@@ -222,7 +232,7 @@ in
           "${modifier}+7" = "workspace number 7";
           "${modifier}+8" = "workspace number 8";
           "${modifier}+9" = "workspace number 9";
-          "${modifier}+0" = "workspace number 0";
+          "${modifier}+period" = "workspace number 0";
 
           "${modifier}+Shift+1" = "move container to workspace number 1";
           "${modifier}+Shift+2" = "move container to workspace number 2";
@@ -272,7 +282,7 @@ in
 
       extraConfig = ''
         title_align center
-        default_border pixel 2
+        default_border pixel 1
       '';
     };
   };

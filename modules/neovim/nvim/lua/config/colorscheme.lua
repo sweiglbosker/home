@@ -1,4 +1,3 @@
-vim.cmd[[hi link FzfLuaBorder FloatBorder]]
 vim.api.nvim_create_autocmd("ColorScheme", { callback = function(args)
   local colors = require('base16-colorscheme').colors
   vim.api.nvim_set_hl(0, 'FloatBorder', { fg = colors.base01 })
@@ -13,7 +12,7 @@ vim.api.nvim_create_autocmd("ColorScheme", { callback = function(args)
      hi TabLine guibg=bg
   ]]
 
-  vim.api.nvim_set_hl(0, 'FzfLuaBorder', { link = FloatBorder })
+  vim.api.nvim_set_hl(0, 'FzfLuaBorder', { fg = colors.base01 })
 
 
   -- i dislike syntax highlighting

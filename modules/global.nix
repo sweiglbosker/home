@@ -68,6 +68,8 @@ in
       };
     };
 
+    fonts.fontconfig.enable = true;
+
     dconf = {
       enable = true;
       settings = {
@@ -110,14 +112,17 @@ in
       ];
 
       packages = with pkgs; [
-        nerd-fonts.comic-shanns-mono
         eza
+        fanwood
         ripgrep
         elan
         dmenu
         berkeley-mono
-        fanwood
-      ] ++ (lib.optional cfg.notNixOS nixgl.auto.nixGLDefault)
+        tamzen
+        roboto
+        cozette
+      ] ++ (builtins.filter lib.attrsets.isDerivation (builtins.attrValues pkgs.nerd-fonts))
+        ++ (lib.optional cfg.notNixOS nixgl.auto.nixGLDefault)
         ++ (lib.optionals cfg.wayland 
         [
           wl-clipboard

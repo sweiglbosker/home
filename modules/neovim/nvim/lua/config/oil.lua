@@ -1,7 +1,7 @@
 require("oil").setup({
   default_file_explorer = true,
   columns = {
-    "icon"
+    -- "icon"
   },
   constrain_cursor = "editable",
   skip_confirm_for_simple_edits = true,
