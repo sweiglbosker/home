@@ -7,5 +7,7 @@
     ./google-dark.nix
     ./grayscale-light.nix
     ./grayscale-dark.nix
+    ./evenok-dark.nix
+    ./bright.nix
   ];
 }

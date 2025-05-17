@@ -39,8 +39,11 @@ vim.o.mouse=""
 vim.o.swapfile=false
 vim.opt.foldmethod = "expr"
 vim.opt.foldexpr = "v:lua.vim.treesitter.foldexpr()"
+
 --vim.opt.foldcolumn = "0"
 vim.opt.foldlevel = 99
+vim.opt.foldlevelstart = 99
+vim.opt.foldenable=true
 -- vim.cmd[[syntax off]]
 -- vim.o.winborder = 'rounded' breaks telescope
 
@@ -78,4 +81,5 @@ vim.api.nvim_set_hl(0, 'Delimiter', {})
 vim.api.nvim_set_hl(0, 'Debug', {})
 -- vim.api.nvim_set_hl(0, 'Underlined', {})
 
-vim.cmd[[cnoreabbrev ts 'lua vim.treesitter.start()']]
+vim.cmd[[cnoreabbrev ts lua vim.treesitter.start()]]
+

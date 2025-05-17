@@ -44,6 +44,7 @@ in
         lg = "NO_COLOR= lazygit";
         gdb = "gdb -q";
         py = "ipython3";
+        fetch = "fastfetch";
       };
       autosuggestion.enable = true;
       initExtra = ''

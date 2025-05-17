@@ -18,9 +18,11 @@
 
     zsh.theme = "simple";
     foot.enable = true;
-    # colors.mountain.enable = true;
+    colors.mountain.enable = true;
     # colors.default-dark.enable = true;
-    colors.tomorrow.enable = true;
+    # colors.tomorrow.enable = true;
+    # colors.bright.dark.enable = true;
+    # colors.evenok-dark.enable = true;
     # colors.google-dark.enable = true;
     # colors.grayscale-dark.enable = true;
     # colors.grayscale-light.enable = true;

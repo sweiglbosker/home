@@ -33,6 +33,7 @@ in
       recursive = true;
     };
 
+    # home.sessionVariables.MANPAGER = "nvim +Man!";
 
     programs.neovim = {
       enable = true;
@@ -75,7 +76,8 @@ in
         mini-icons
         oil-nvim
         nvim-lspconfig
-        base16-nvim
+        # tinted-vim
+        base16-vim
         telescope-nvim
         telescope-fzf-native-nvim
         # fzf-lua
