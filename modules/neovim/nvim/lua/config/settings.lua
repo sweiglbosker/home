@@ -11,7 +11,7 @@ vim.o.scrolloff = 15
 vim.o.sidescrolloff = 12
 vim.o.wrap = false
 vim.o.lbr = true
-vim.o.shortmess = vim.o.shortmess .. "I"
+vim.o.shortmess = "tToOCFIsWcCi"
 vim.o.termguicolors = true
 vim.opt.fillchars = {eob = " "}
 vim.o.smd = false
@@ -49,5 +49,6 @@ vim.opt.foldenable=true
 
 vim.cmd[[set wildchar=<C-n>]]
 
+vim.g.loaded_matchparen = 1
 vim.cmd[[cnoreabbrev ts lua vim.treesitter.start()]]
-
+require('vim._extui').enable({})

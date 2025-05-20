@@ -37,10 +37,10 @@
 
   programs.zsh = {
     enable = true;
-    ohMyZsh = {
-      enable = true;
-    };
+    ohMyZsh.enable = true;
   };
+
+  documentation.dev.enable = true;
 
   users.users.stefan = {
     isNormalUser = true;
@@ -92,6 +92,11 @@
     gnupg
     pinentry-qt
     btop
+    man-pages
+    man-pages-posix
+    wineWowPackages.staging
+    winetricks
+    wineWowPackages.waylandFull
   ];
 
   environment.pathsToLink = [ "/share/zsh" ];

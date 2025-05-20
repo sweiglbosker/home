@@ -36,6 +36,7 @@ in
         };
 
         colors = {
+          alpha=0.8;
           # foreground="cacaca";
           # background="0f0f0f";
           # regular0="0f0f0f";

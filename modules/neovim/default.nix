@@ -47,6 +47,7 @@ in
         (nvim-treesitter.withPlugins (p: with p; [
           tree-sitter-nix
           tree-sitter-make
+          tree-sitter-cmake
           tree-sitter-verilog
           tree-sitter-scheme
           tree-sitter-llvm
@@ -75,7 +76,10 @@ in
         plenary-nvim
         mini-icons
         oil-nvim
+        tmux-nvim
+        # noice-nvim
         nvim-lspconfig
+        # blink-cmp
         # tinted-vim
         base16-nvim
         telescope-nvim

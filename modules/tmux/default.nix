@@ -38,6 +38,13 @@ in
             set -g @continuum-restore 'on'
           '';
         }
+        # {
+        #   plugin = vim.tmux-navigatior;
+        #   extraConfig = ''
+        #   set -g 
+        #   '';
+        # }
+
       ];
       extraConfig = ''
         set -g default-terminal "screen-256color"
@@ -78,10 +85,18 @@ in
         bind e select-pane -U
         bind i select-pane -R
 
+        is_vim="ps -o state= -o comm= -t '#{pane_tty}' \
+            | grep -iqE '^[^TXZ ]+ +(\\S+\\/)?g?\.?(view|l?n?vim?x?|fzf)(diff)?(-wrapped)?$'"
+
+        bind-key -n 'M-m' if-shell "$is_vim" 'send-keys M-m' 'select-pane -L'
+        bind-key -n 'M-n' if-shell "$is_vim" 'send-keys M-n' 'select-pane -D'
+        bind-key -n 'M-e' if-shell "$is_vim" 'send-keys M-e' 'select-pane -U'
+        bind-key -n 'M-i' if-shell "$is_vim" 'send-keys M-i' 'select-pane -R'
+
         bind-key -T root m if -F "#{==:#{pane_mode},tree-mode}" "send h" "send m"
         bind-key -T root n if -F "#{==:#{pane_mode},tree-mode}" "send j" "send n"
         bind-key -T root e if -F "#{==:#{pane_mode},tree-mode}" "send k" "send e"
-        bind-key -T root i if -F "#{==:#{pane_mode},tree-mode}" "send l" "send i;"
+        bind-key -T root i if -F "#{==:#{pane_mode},tree-mode}" "send l" "send i"
 
         bind -T copy-mode-vi m send-keys -X cursor-left
         bind -T copy-mode-vi n send-keys -X cursor-down

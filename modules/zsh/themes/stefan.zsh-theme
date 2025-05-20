@@ -10,10 +10,14 @@ function gitstatus_prompt_update() {
   [[ $VCS_STATUS_RESULT == 'ok-sync' ]] || return 0 # not in a repo
 
 
-  local green='%{%F{green}%}'
-  local red='%{%F{red}%}'
-  local yellow='%{%F{yellow}%}'
-  local blue='%{%F{blue}%}'
+  # local green='%{%F{green}%}'
+  # local red='%{%F{red}%}'
+  # local yellow='%{%F{yellow}%}'
+  # local blue='%{%F{blue}%}'
+  local green=''
+  local red=''
+  local yellow=''
+  local blue=''
 
   local name
   if [[ -n $VCS_STATUS_LOCAL_BRANCH ]]; then
@@ -59,21 +63,21 @@ INS_MODE='%{%F{reset}%}[%{%F{green}%}i%{%F{reset}%}]'
 NORMAL_MODE='%{%F{reset}%}[%{%F{yellow}%}n%{%F{reset}%}]'
 VI_MODE=$INS_MODE
 
-function zle-keymap-select() {
-  VI_MODE="${${KEYMAP/vicmd/${NORMAL_MODE}}/(main|viins)/${INS_MODE}}"
-  zle reset-prompt
-#  zle -R
-}
-
-zle -N zle-keymap-select # hook readline so we can determine mode
+# function zle-keymap-select() {
+#   VI_MODE="${${KEYMAP/vicmd/${NORMAL_MODE}}/(main|viins)/${INS_MODE}}"
+#   zle reset-prompt
+# #  zle -R
+# }
+#
+# zle -N zle-keymap-select # hook readline so we can determine mode
 
 # normally, SIGINT (<C-c>) will put you in ins, but indictator wont update.
 # fix: hook TRAPINT, update mode and repropagate the SIGINT
 # im too lazy to figure out if its possible to keep normal mode and send a sigint
-TRAPINT() {
-    export VI_MODE=$INS_MODE
-    return $((128+$1))
-}
+# TRAPINT() {
+#     export VI_MODE=$INS_MODE
+#     return $((128+$1))
+# }
 
 source "$(gitstatus-share)/gitstatus.plugin.zsh" || return
 
@@ -86,7 +90,8 @@ setopt prompt_subst prompt_percent no_prompt_bang
 
 NEWLINE=$'\n'
 GIT_PROMPT_INFO=${GITSTATUS_PROMPT:+ $GITSTATUS_PROMPT}
-PROMPT='%F{magenta}%~% %f%  ${VI_MODE}${NEWLINE}%{%F{yellow}%}λ %b%f% '
+# PROMPT='%F{magenta}%~% %f%  ${VI_MODE}${NEWLINE}%{%F{yellow}%}λ %b%f% '
+PROMPT='%~%${NEWLINE} λ %b% '
 RPROMPT='$(virtualenv_info)% ${GITSTATUS_PROMPT:+ $GITSTATUS_PROMPT} '
 ZSH_THEME_GIT_PROMPT_PREFIX="%{$fg[green]%}"
 ZSH_THEME_GIT_PROMPT_SUFFIX="%{$reset_color%}"

@@ -17,10 +17,9 @@
       ];
     };
 
-    # colors.mountain.enable = true;
-    colors.tomorrow.enable = true;
+    colors.mountain.enable = true;
+    # colors.tomorrow.enable = true;
     gpg.enable = true;
-    zsh.theme = "simple";
 
     pass = {
       enable = true;
