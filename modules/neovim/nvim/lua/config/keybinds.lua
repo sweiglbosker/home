@@ -45,6 +45,10 @@ nmap('<M-m>', function() require("tmux").move_left() end, { desc = "Focus window
 nmap('<M-n>', function() require("tmux").move_bottom() end, { desc = "Focus window below the current one" })
 nmap('<M-e>', function() require("tmux").move_top() end, { desc = "Focus window above the current one" })
 nmap('<M-i>', function() require("tmux").move_right() end, { desc = "Focus window right of the current one" })
+nmap('<M-M>', function() require("tmux").resize_left() end, { desc = "Resize left side of split" })
+nmap('<M-N>', function() require("tmux").resize_bottom() end, { desc = "Resize bottom side of split" })
+nmap('<M-E>', function() require("tmux").resize_top() end, { desc = "Resize top side of split" })
+nmap('<M-I>', function() require("tmux").resize_right() end, { desc = "Resize right side of split" })
 
 -- nmap('<leader>fo', '<cmd>Telescope find_files<CR>', { silent = true })
 nmap('<leader>fo', '<cmd>FzfLua files<CR>', { silent = true })

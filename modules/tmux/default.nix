@@ -88,10 +88,42 @@ in
         is_vim="ps -o state= -o comm= -t '#{pane_tty}' \
             | grep -iqE '^[^TXZ ]+ +(\\S+\\/)?g?\.?(view|l?n?vim?x?|fzf)(diff)?(-wrapped)?$'"
 
+        bind-key -n M-C if-shell "$is_vim" "send-keys C-w; send-keys q" kill-pane
+
+        # bind-key -n M-Enter "split-window -h; select-layout -E"
+        bind-key -n M-Enter if-shell "tmux list-panes | wc -l | 'grep -q ^1$'" "split-window -h" "select-pane -t bottom-right; split-window -v; select-layout -E"
+        bind-key -n M-f resize-pane -Z
+
+        bind-key -n M-1 if-shell 'tmux select-window -t :1' ''' 'new-window -t :1'
+        bind-key -n M-2 if-shell 'tmux select-window -t :2' ''' 'new-window -t :2'
+        bind-key -n M-3 if-shell 'tmux select-window -t :3' ''' 'new-window -t :3'
+        bind-key -n M-4 if-shell 'tmux select-window -t :4' ''' 'new-window -t :4'
+        bind-key -n M-5 if-shell 'tmux select-window -t :5' ''' 'new-window -t :5'
+        bind-key -n M-6 if-shell 'tmux select-window -t :6' ''' 'new-window -t :6'
+        bind-key -n M-7 if-shell 'tmux select-window -t :7' ''' 'new-window -t :7'
+        bind-key -n M-8 if-shell 'tmux select-window -t :8' ''' 'new-window -t :8'
+        bind-key -n M-9 if-shell 'tmux select-window -t :9' ''' 'new-window -t :9'
+        bind-key -n M-0 if-shell 'tmux select-window -t :0' ''' 'new-window -t :0'
+
+        bind-key -n M-! if-shell "tmux join-pane -t :1" "" "new-window -dt :1; join-pane -t :1; select-pane -t top-left; kill-pane; select-layout -E"
+        bind-key -n M-@ if-shell "tmux join-pane -t :2" "" "new-window -dt :2; join-pane -t :2; select-pane -t top-left; kill-pane; select-layout -E"
+        bind-key -n M-# if-shell "tmux join-pane -t :3" "" "new-window -dt :3; join-pane -t :3; select-pane -t top-left; kill-pane; select-layout -E"
+        bind-key -n M-$ if-shell "tmux join-pane -t :4" "" "new-window -dt :4; join-pane -t :4; select-pane -t top-left; kill-pane; select-layout -E"
+        bind-key -n M-% if-shell "tmux join-pane -t :5" "" "new-window -dt :5; join-pane -t :5; select-pane -t top-left; kill-pane; select-layout -E"
+        bind-key -n M-^ if-shell "tmux join-pane -t :6" "" "new-window -dt :6; join-pane -t :6; select-pane -t top-left; kill-pane; select-layout -E"
+        bind-key -n M-& if-shell "tmux join-pane -t :7" "" "new-window -dt :7; join-pane -t :7; select-pane -t top-left; kill-pane; select-layout -E"
+        bind-key -n M-* if-shell "tmux join-pane -t :8" "" "new-window -dt :8; join-pane -t :8; select-pane -t top-left; kill-pane; select-layout -E"
+        bind-key -n M-( if-shell "tmux join-pane -t :9" "" "new-window -dt :9; join-pane -t :9; select-pane -t top-left; kill-pane; select-layout -E"
+        bind-key -n M-) if-shell "tmux join-pane -t :0" "" "new-window -dt :0; join-pane -t :0; select-pane -t top-left; kill-pane; select-layout -E"
+
         bind-key -n 'M-m' if-shell "$is_vim" 'send-keys M-m' 'select-pane -L'
         bind-key -n 'M-n' if-shell "$is_vim" 'send-keys M-n' 'select-pane -D'
         bind-key -n 'M-e' if-shell "$is_vim" 'send-keys M-e' 'select-pane -U'
         bind-key -n 'M-i' if-shell "$is_vim" 'send-keys M-i' 'select-pane -R'
+        bind-key -n 'M-M' if-shell "$is_vim" 'send-keys M-M' 'resize-pane -L 1'
+        bind-key -n 'M-N' if-shell "$is_vim" 'send-keys M-N' 'resize-pane -D 1'
+        bind-key -n 'M-E' if-shell "$is_vim" 'send-keys M-E' 'resize-pane -U 1'
+        bind-key -n 'M-I' if-shell "$is_vim" 'send-keys M-I' 'resize-pane -R 1'
 
         bind-key -T root m if -F "#{==:#{pane_mode},tree-mode}" "send h" "send m"
         bind-key -T root n if -F "#{==:#{pane_mode},tree-mode}" "send j" "send n"
