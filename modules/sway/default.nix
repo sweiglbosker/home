@@ -41,7 +41,7 @@ in
       package = if cfg.wrapWithNixGL then (config.lib.nixGL.wrap pkgs.sway) else pkgs.sway;
 #      package = null;
       config = rec {
-        modifier = "Mod1";
+        modifier = "Mod4";
 
         left = "m";
         down = "n";
@@ -166,6 +166,7 @@ in
           wrapping = "force";
         };
 
+
         window = {
           border = 1;
           hideEdgeBorders = "--i3 smart";
@@ -283,6 +284,8 @@ in
       extraConfig = ''
         title_align center
         default_border pixel 1
+        mouse_warping none
+        output HDMI-A-1 disable
       '';
     };
   };
