@@ -47,7 +47,7 @@ in
         fetch = "fastfetch";
       };
       autosuggestion.enable = true;
-      initExtra = ''
+      initContent = ''
         source ~/.oh-my-zsh/themes/${cfg.theme}.zsh-theme 
         setopt nobeep
         export KEYTIMEOUT=1

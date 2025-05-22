@@ -7,5 +7,5 @@ function virtualenv_info {
 setopt prompt_subst prompt_percent no_prompt_bang
 
 NEWLINE=$'\n'
-PROMPT='%~% %f%  ${NEWLINE}λ %b%f% '
+PROMPT='%~% %f%  ${NEWLINE}%b%f% '
 RPROMPT='$(virtualenv_info)% '
