@@ -20,5 +20,6 @@
     ./pass
     ./colors
     ./zathura.nix
+    ./zoxide.nix
   ];
 }
