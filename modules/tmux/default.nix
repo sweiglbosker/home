@@ -15,6 +15,17 @@ in
       (writeShellScriptBin "session-load" "${builtins.readFile ./session-load.sh}")
     ];
 
+    programs.sesh = {
+      enable = true;
+      enableTmuxIntegration = false;
+      icons = false;
+      settings = {
+        default_session = {
+          "startup_command" = "nvim +':FzfLua files'";
+        };
+      };
+    };
+
     programs.tmux = {
       enable = true;
       customPaneNavigationAndResize = true;
@@ -24,6 +35,7 @@ in
       baseIndex = 1;
       escapeTime = 0;
       focusEvents = true;
+      shell = "${pkgs.zsh}/bin/zsh";
       plugins = with pkgs.tmuxPlugins; [
         {
           plugin = resurrect;
@@ -36,6 +48,7 @@ in
           plugin = continuum;
           extraConfig = ''
             set -g @continuum-restore 'on'
+            set -g @continuum-save-interval '15' # minutes
           '';
         }
         # {
@@ -46,13 +59,10 @@ in
         # }
 
       ];
-      extraConfig = ''
+      extraConfig = 
+      ''
         set -g default-terminal "screen-256color"
-        set -g default-command zsh # this fixes colors for some reason
-        # undercurl support in neovim
-        set -as terminal-overrides ',*:Smulx=\E[4::%p1%dm'
-        # support colors for undercurl
-        set -as terminal-overrides ',*:Setulc=\E[58::2::%p1%{65536}%/%d::%p1%{256}%/%{255}%&%d::%p1%{255}%&%d%;m'
+        # set -g default-command zsh # this fixes colors for some reason
         set -g renumber-windows on
 
         bind R source-file ~/.config/tmux/tmux.conf
@@ -62,6 +72,7 @@ in
         bind f switch-client -T file
         bind F switch-client -T dir
 
+
         bind d detach-client 
 
         bind -T tab o choose-tree -Zw
@@ -70,6 +81,9 @@ in
         bind -T tab i next-window
         bind -T tab n new-window
 
+        bind s choose-tree -Zs
+        bind S choose-tree -Z
+        bind p run-shell "sesh connect \"$(sesh list | fzf --tmux --no-sort --ansi)\""
         bind -T dir o run-shell -b 'fd . -td | fzf --tmux --scheme=path | xargs --no-run-if-empty tmux split-window -h -c'
         bind -T dir O run-shell -b 'fd . -td | fzf --tmux --scheme=path | xargs --no-run-if-empty tmux new-window -c'
         bind -T file o run-shell -b 'fd . -tf | fzf --tmux --scheme=path | xargs --no-run-if-empty tmux split-window -h -c $(pwd) $EDITOR'
@@ -158,7 +172,6 @@ in
         bind \] swap-pane -D
 
         bind v copy-mode
-        bind F resize-pane -Z
 
         bind h select-pane -m
         bind j next-window
@@ -175,6 +188,9 @@ in
         set -g status-left ""
         set -g status-justify centre
         set -g status-position top
+
+        # don't detach after killing the current session
+        set -g detach-on-destroy off
       '';
     };
   };

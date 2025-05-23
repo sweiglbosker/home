@@ -3,7 +3,6 @@
 # usage: to create a project/session, create a symlink in .projects to the working directory 
 # the name of the symlink is the name of the project
 
-# if there is no path specified, prompt via fzf
 if ! [[ -d $HOME/.projects ]]; then
   echo "Error: Couldn't find '~/.projects' directory." >&2
   exit 1
@@ -12,7 +11,8 @@ fi
 if [[ $# -eq 1 ]]; then
   input=$1
 else
-  input=$(cd $HOME/.projects; find . -type l | sed 's/^\.\///' | fzf)
+# if there is no path specified, prompt via fzf
+  input=$(cd $HOME/.projects; find . -type l | sed 's/^\.\///' | fzf --tmux)
 fi
 
 if [[ -z $input ]]; then
