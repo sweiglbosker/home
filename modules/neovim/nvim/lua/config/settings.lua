@@ -16,7 +16,7 @@ vim.o.termguicolors = true
 vim.opt.fillchars = {eob = " "}
 vim.o.smd = false
 --vim.opt.laststatus = 3
-vim.opt.laststatus=3
+vim.opt.laststatus=1
 vim.opt.cmdheight=0
 --%-0{minwid}.{maxwid}{item
 -- vim.opt.statusline="%=%f%=%r %p%% « %l, %c %y"

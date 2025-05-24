@@ -10,10 +10,14 @@ vim.api.nvim_create_autocmd("ColorScheme", { callback = function(args)
      hi TabLineFill guibg=bg
      hi TabLineSel guibg=bg guifg=fg
      hi TabLine guibg=bg
+     hi Normal guibg=NONE
+     hi NormalNC guibg=NONE
+     hi NormalFloat guibg=NONE
+     hi StatusLine guibg=NONE guifg=fg
+     hi StatusLineNC guibg=NONE
   ]]
 
   vim.api.nvim_set_hl(0, 'FzfLuaBorder', { fg = colors.base01 })
-
 
   -- i dislike syntax highlighting
   -- vim.api.nvim_set_hl(0, 'Comment', {})

@@ -68,7 +68,9 @@ in
 
         {
           plugin = lean-nvim;
-          config = ''
+          config = 
+          # lua
+          ''
             require('lean').setup{ mappings = true }
           '';
           type = "lua";
@@ -98,8 +100,8 @@ in
       ];
       # extraLuaPackages = ps: with ps; [
       # ];
-      extraLuaConfig = ''
-
+      extraLuaConfig = 
+      ''
         ${builtins.readFile ./nvim/init.lua}
         vim.cmd[[${scheme.extraVimConfig}]]
         vim.cmd[[colorscheme ${scheme.name}]]

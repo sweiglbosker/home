@@ -19,8 +19,8 @@ in
         main = {
           # font="ComicShannsMono Nerd Font Mono:size=12";
           # font="BerkeleyMonoPatched Nerd Font Mono:size=12";
-          # font ="Hack Nerd Font Mono:size=10";
-          font ="TamzenForPowerline:size=11,Cozette:size=11";
+          font ="CodeNewRoman Nerd Font Mono:size=12";
+          # font ="TamzenForPowerline:size=11,Cozette:size=11";
           title="term";
           resize-by-cells="no";
           pad="0x0 center";
@@ -36,7 +36,7 @@ in
         };
 
         colors = {
-          alpha=0.8;
+          alpha=0.7;
           # foreground="cacaca";
           # background="0f0f0f";
           # regular0="0f0f0f";
