@@ -178,9 +178,9 @@ in
         bind l display-message
         bind K select-layout -E
 
-        set -g status-style bg='${scheme.base00}',fg='${scheme.base03}'
-        set-window-option -g window-status-style fg='${scheme.base03}',bg='${scheme.base00}'
-        set-window-option -g window-status-current-style fg='${scheme.base05}',bg='${scheme.base00}'
+        set -g status-style bg=default,fg='${scheme.base03}'
+        set-window-option -g window-status-style fg='${scheme.base03}',bg=default
+        set-window-option -g window-status-current-style fg='${scheme.base05}',bg=default
 
         set -g pane-border-style fg='${scheme.base01}'
         set -g pane-active-border-style fg='${scheme.base01}'
