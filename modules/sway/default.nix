@@ -35,8 +35,10 @@ in
       (writeShellScriptBin "browser" ''
         swaymsg 'set $PROP newcont:tabbed ; exec qutebrowser --target window'
       '')
+      autotiling
     ];
     wayland.windowManager.sway = lib.mkIf cfg.enable {
+      checkConfig = false;
       enable = true;
       package = if cfg.wrapWithNixGL then (config.lib.nixGL.wrap pkgs.sway) else pkgs.sway;
 #      package = null;
@@ -93,6 +95,11 @@ in
           };
         };
 
+        gaps = {
+          inner = 10;
+          outer = 0;
+        };
+
         workspaceAutoBackAndForth = true;
         workspaceOutputAssign = [
         { output = "HDMI-A-1"; workspace = "0"; }
@@ -101,34 +108,35 @@ in
         colors = {
           background = scheme.base00;
           focused = {
-            border = scheme.base00;
-            background = scheme.base00;
-            text = scheme.base0E;
-            indicator = scheme.base02;
-            childBorder = scheme.base0B;
+            border = scheme.base0E;
+            background = scheme.base0E;
+            text = scheme.base00; # TODO: light/dark
+            indicator = scheme.base0D;
+            childBorder = scheme.base0E;
           };
           focusedInactive = {
-            border = scheme.base00;
+            border = scheme.base00 + "00";
             background = scheme.base00;
             text = scheme.base0E;
             indicator = scheme.base02;
-            childBorder = scheme.base01;
+            childBorder = scheme.base00 + "00";
           };
           unfocused = {
-            border = scheme.base00;
+            border = scheme.base00 + "00";
             background = scheme.base00;
             text = scheme.base03;
             indicator = scheme.base00;
-            childBorder = scheme.base01;
+            childBorder = scheme.base00 + "00";
           };
         };
 
         bars = [{
           statusCommand = "i3status";
-          mode = "hide";
-          hiddenState = "hide";
+          # mode = "hide";
+          # hiddenState = "hide";
+          position = "top";
           fonts = {
-            names = [ "TamzenForPowerline" "cozette" ];
+            names = [ "Hack Nerd Font Propo" "Material Icons Round" ];
             size = "10.0";
           };
           extraConfig = ''
@@ -136,26 +144,26 @@ in
             separator_symbol " "
           '';
           colors = {
-            background = scheme.base02; # "#0d0d0d";
+            background = scheme.base00; # "#0d0d0d";
             statusline = scheme.base05;
             focusedWorkspace = {
-              border = scheme.base02; # "#0d0d0d";
-              background = scheme.base02; # "#0d0d0d";
+              border = scheme.base00; # "#0d0d0d";
+              background = scheme.base00; # "#0d0d0d";
               text = scheme.base05;
             };
             activeWorkspace = {
-              border = scheme.base02; # "#0d0d0d";
-              background = scheme.base02; # "#0d0d0d";
+              border = scheme.base00; # "#0d0d0d";
+              background = scheme.base00; # "#0d0d0d";
               text = scheme.base03;
             };
             inactiveWorkspace = {
-              border = scheme.base02; # "#0d0d0d";
-              background = scheme.base02; # "#0d0d0d";
+              border = scheme.base00; # "#0d0d0d";
+              background = scheme.base00; # "#0d0d0d";
               text = scheme.base03;
             };
             bindingMode = {
-              border = scheme.base02; # "#0d0d0d";
-              background = scheme.base02; # "#0d0d0d";
+              border = scheme.base00; # "#0d0d0d";
+              background = scheme.base00; # "#0d0d0d";
               text = scheme.base0E;
             };
           };
@@ -168,8 +176,8 @@ in
 
 
         window = {
-          border = 1;
-          hideEdgeBorders = "--i3 smart";
+          border = 2;
+          # hideEdgeBorders = "--i3 smart";
           commands = [
             {
               command = "mark --add \"prop:$$PROP:\"";
@@ -267,7 +275,12 @@ in
           "--locked XF86MonBrightnessUp" = "exec lightctl -d up";
         };
 
-        startup = cfg.startup;
+        startup = [
+        {
+          command = "autotiling -l 2";
+          always = true;
+        }
+        ] ++ cfg.startup;
 
         seat = {
           "*" = {
@@ -283,10 +296,23 @@ in
 
       extraConfig = ''
         title_align center
-        default_border pixel 1
+        default_border pixel 2
         mouse_warping none
         output HDMI-A-1 disable
       '';
+      # + ''
+      #   blur enable
+      #   blur_xray disable
+      #   corner_radius 0
+      #   shadows disable
+      #   titlebar_separator disable
+      #
+      #   layer_effects "launcher" {
+      #     reset;
+      #     blur enable;
+      #     shadows disable;
+      #   }
+      # '';
     };
   };
 }
