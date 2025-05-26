@@ -88,7 +88,8 @@ require("fzf-lua").setup({
     -- ["--tmux"] = "",
     ["--style"] = "minimal",
     ["--ansi"] = true,
-    -- ["--no-bold"] = "",
+    ["--no-bold"] = "",
+    ["--bind"] = "ctrl-n:down,ctrl-e:up",
   },
   hls = {
     border = "FloatBorder",

@@ -4,6 +4,8 @@ let
 in
 {
   imports = [
+    ./bluetooth.nix
+    ./osu.nix
     # ./kmonad.nix
   ];
 
@@ -91,6 +93,7 @@ in
       man-pages-posix
       cage
       zsh
+      discord-ptb
     ]; # TODO
 
 
@@ -115,6 +118,8 @@ in
     programs.foot.enable = true;
     programs.foot.enableZshIntegration = false; # TODO: https://github.com/NixOS/nixpkgs/pull/409627
     programs.sway.enable = true;
+    programs.sway.package = pkgs.sway;
+
     programs.steam = {
       enable = true;
     };
@@ -171,9 +176,6 @@ in
         "f0f0f0"
       ];
     };
-
     system.stateVersion = "24.11";
   };
-
-
 }

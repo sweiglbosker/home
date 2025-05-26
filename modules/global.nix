@@ -114,6 +114,7 @@ in
       packages = with pkgs; [
         eza
         fanwood
+        jq
         ripgrep
         elan
         dmenu
@@ -121,6 +122,8 @@ in
         tamzen
         roboto
         cozette
+        inter
+        material-icons
       ] ++ (builtins.filter lib.attrsets.isDerivation (builtins.attrValues pkgs.nerd-fonts))
         ++ (lib.optional cfg.notNixOS nixgl.auto.nixGLDefault)
         ++ (lib.optionals cfg.wayland 

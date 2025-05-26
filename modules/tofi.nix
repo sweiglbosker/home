@@ -16,8 +16,9 @@ in
       settings = {
         # font = "ComicShannsMono Nerd Font Mono 10";
         # font = "GoMono Nerd Font Propo";
-        font = "Fanwood Text";
+        font = "${pkgs.inter}/share/fonts/tuetype/InterVariable.ttf";
         "font-size" = 24;
+        hint-font = false;
 
         # width = "60%";
         # height = "50%";

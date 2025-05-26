@@ -27,5 +27,9 @@
     hardware.opengl.extraPackages = with pkgs; [
       vaapiVdpau
     ];
+
+    nixos = {
+      osu.enable = true;
+    };
   };
 }
