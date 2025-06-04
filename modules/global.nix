@@ -2,6 +2,7 @@
 let
   cfg = config.modules.global;
   berkeley-mono = pkgs.callPackage ../packages/berkeley-mono.nix { inherit pkgs; };
+  binaryninja = pkgs.callPackage ../packages/binaryninja.nix { inherit pkgs; };
   scheme = config.modules.scheme;
 in
 {
@@ -119,6 +120,7 @@ in
         elan
         dmenu
         berkeley-mono
+        binaryninja
         tamzen
         roboto
         cozette

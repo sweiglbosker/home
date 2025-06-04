@@ -60,6 +60,7 @@ in
           tree-sitter-lua
           tree-sitter-zig
           tree-sitter-rust
+          tree-sitter-haskell
           tree-sitter-toml
           tree-sitter-markdown
           tree-sitter-markdown-inline
