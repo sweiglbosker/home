@@ -9,8 +9,7 @@ pkgs.buildFHSEnv {
     libGL
     libxml2
     libxkbcommon
-    python311
-    (python311.withPackages(ps: with ps; [ pypresence]))
+    (python312.withPackages(ps: with ps; [ pypresence z3-solver ]))
     xorg.libX11
     xorg.libxcb
     xorg.xcbutilimage
@@ -23,7 +22,7 @@ pkgs.buildFHSEnv {
   ];
   runScript = pkgs.writeScript "binaryninja.sh" ''
     set -e
-    exec "~/.opt/binaryninja/binaryninja"         # ! change this path if your installation is located somewhere else.
+    exec "~/.local/opt/binaryninja/binaryninja"         # ! change this path if your installation is located somewhere else.
   '';
   meta = {
     description = "binaryninja";
