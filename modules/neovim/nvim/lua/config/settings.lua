@@ -3,6 +3,8 @@ vim.g.mapleader = ' '
 -- vim.o.number = true
 -- vim.o.relativenumber = true
 vim.o.number = false
+vim.o.tabstop = 2
+vim.o.shiftwidth = 2
 vim.o.relativenumber = false
 
 vim.o.splitright = true
