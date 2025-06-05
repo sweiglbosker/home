@@ -60,6 +60,7 @@ in
         init.defaultBranch = "main";
         merge.conflictStyle = "zdiff3";
         pull.rebase = true;
+        push.autoSetupRemote = true;
         rebase = {
           autoSquash = true;
           updateRefs = true;
