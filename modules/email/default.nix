@@ -16,6 +16,9 @@ in
       passwordCommand = "${pkgs.pass}/bin/pass show email/stefan@s00.xyz";
       aerc = {
         enable = true;
+        extraAccounts = {
+         default = "INBOX";
+        };
       };
       imap = {
         host = "imap.s00.xyz";

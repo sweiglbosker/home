@@ -46,6 +46,7 @@ in
       	wrapWithNixGL = cfg.notNixOS;
       };
       email.enable = true;
+      aerc.enable = true;
       zsh.enable = true;
       tmux.enable = true;
       fzf.enable = true;
