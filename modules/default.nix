@@ -1,6 +1,7 @@
 { ... }:
 {
   imports = [
+    ./aerc.nix
     ./scheme
     ./foot.nix
     ./mako.nix
@@ -16,6 +17,7 @@
     ./neovim
     ./qutebrowser
     ./services
+    ./email
     ./gpg
     ./pass
     ./colors
