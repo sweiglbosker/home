@@ -1,4 +1,4 @@
-{ config, lib, pkgs, ...}:
+{ config, lib, pkgs, startup ? [], ...}:
 let
   cfg = config.modules.neovim;
   scheme = config.modules.scheme;
@@ -10,6 +10,20 @@ let
       ref = ref;
     };
     doCheck = false;
+  };
+  grammarMatcher = yes: builtins.filter (drv: let
+    # NOTE: matches if pkgs.neovimUtils.grammarToPlugin was called on it.
+    cond = (builtins.match "^vimplugin-treesitter-grammar-.*" "${lib.getName drv}") != null;
+    match = if yes then cond else ! cond;
+  in
+  if drv ? outPath then match else ! yes);
+
+  start = grammarMatcher false startup;
+  collected_grammars = grammarMatcher true startup;
+
+  ts_grammars_combined = pkgs.symlinkJoin {
+    name = "all-treesitter-grammars";
+    paths = map (e: e.outPath) collected_grammars;
   };
 in
 {
@@ -28,85 +42,69 @@ in
       recursive = true;
     };
 
-    xdg.configFile."nvim/colors" = {
-      source = ./nvim/colors;
-      recursive = true;
-    };
-
-    # home.sessionVariables.MANPAGER = "nvim +Man!";
-
-    programs.neovim = {
+    programs.neovim = 
+    {
       enable = true;
       defaultEditor = true;
       viAlias = false;
       vimAlias = false;
       vimdiffAlias = true;
+      # allGrammars = pkgs.symlinkJoin {
+      #   name = "allgrammars";
+      #   paths = builtins.attrValues pkgs.vimPlugins.nvim-treesitter.grammarPlugins;
+      # };
       plugins = with pkgs.vimPlugins; [
-        nvim-treesitter
         # nvim-treesitter.withAllGrammars
-        (nvim-treesitter.withPlugins (p: with p; [
-          tree-sitter-nix
-          tree-sitter-make
-          tree-sitter-cmake
-          tree-sitter-verilog
-          tree-sitter-scheme
-          tree-sitter-llvm
-          tree-sitter-html
-          tree-sitter-glsl
-          tree-sitter-devicetree
-          tree-sitter-cuda
-          tree-sitter-c
-          tree-sitter-cpp
-          tree-sitter-lua
-          tree-sitter-zig
-          tree-sitter-rust
-          tree-sitter-haskell
-          tree-sitter-toml
-          tree-sitter-markdown
-          tree-sitter-markdown-inline
-          tree-sitter-tablegen
-        ]))
+        nvim-treesitter.withPlugins (p: pkgs.symlinkJoin {
+          name = "allgrammars";
+          paths = builtins.attrValues pkgs.vimPlugins.nvim-treesitter.grammarPlugins;
+        })
+            # p.tree-sitter-nix
+            # p.tree-sitter-verilog
+            # p.tree-sitter-llvm
+            # p.tree-sitter-cuda
+            # p.tree-sitter-cpp
+            # p.tree-sitter-c
+            # p.tree-sitter-lua
+            # p.tree-sitter-zig
+            # p.tree-sitter-haskell
+            # p.tree-sitter-markdown
+            # p.tree-sitter-tablegen
+        lz-n
 
         {
           plugin = lean-nvim;
-          config = 
-          # lua
-          ''
-            require('lean').setup{ mappings = true }
-          '';
+          optional = true;
           type = "lua";
         }
-        plenary-nvim
-        mini-icons
-        oil-nvim
+
+        {
+          plugin = plenary-nvim;
+          optional = true;
+        }
         tmux-nvim
-        # noice-nvim
-        nvim-lspconfig
-        # blink-cmp
-        # tinted-vim
         base16-nvim
-        telescope-nvim
-        telescope-fzf-native-nvim
-        # fzf-lua
-#        https://github.com/ibhagwan/fzf-lua/commit/26095d98c2969730457bf5b483919280e2cfb8bb
-        # (fromGitHub "HEAD" "ibhagwan/fzf-lua")
-        # fzf-lua.overrideAttrs (finalAttrs: previousAttrs: {
-        #    previousAttrs.doCheck = false;
-        # })
-        vim-obsession
-        (pkgs.neovimUtils.buildNeovimPlugin {
-          luaAttr = pkgs.luaPackages.fzf-lua;
-          doCheck = false;
-        })
+        {
+          plugin = telescope-nvim;
+          optional = true;
+          type = "lua";
+          config = 
+          # lua 
+          '' 
+          require("lz.n").load({
+            "telescope.nvim",
+            cmd = "Telescope",
+          })
+          '';
+        }
       ];
-      # extraLuaPackages = ps: with ps; [
-      # ];
       extraLuaConfig = 
+      # lua
       ''
         ${builtins.readFile ./nvim/init.lua}
-        vim.cmd[[${scheme.extraVimConfig}]]
         vim.cmd[[colorscheme ${scheme.name}]]
       '';
+      extraPackages = [ pkgs.ripgrep pkgs.gcc ];
     };
   };
 }

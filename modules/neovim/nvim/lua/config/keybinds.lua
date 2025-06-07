@@ -21,7 +21,7 @@ swapnv('i', 'l')
 
 swapnv('M', 'H')
 swapnv('N', 'J')
---swapnv('E', 'K')
+swapnv('E', 'K')
 swapnv('I', 'L')
 
 nmap('<leader>tn', ':tabnew<CR>', { desc = "Open a new tab" })
@@ -50,13 +50,12 @@ map({'n', 't', 'i'}, '<M-N>', function() require("tmux").resize_bottom() end, { 
 map({'n', 't', 'i'}, '<M-E>', function() require("tmux").resize_top() end, { desc = "Resize top side of split" })
 map({'n', 't', 'i'}, '<M-I>', function() require("tmux").resize_right() end, { desc = "Resize right side of split" })
 
--- nmap('<leader>fo', '<cmd>Telescope find_files<CR>', { silent = true })
-nmap('<leader>fo', '<cmd>FzfLua files<CR>', { silent = true })
+nmap('<leader>fo', '<cmd>Telescope find_files<CR>', { silent = true })
+-- nmap('<leader>fo', '<cmd>FzfLua files<CR>', { silent = true })
 -- nmap('<leader>fe', '<cmd>lua require("oil").open(nil, { preview = { split = "aboveleft" } })<CR>', { silent = true })
 nmap('<leader>fe', '<cmd>lua require("oil").toggle_float()<CR>', { silent = true })
 
--- nmap('<leader>?', '<cmd>Telescope live_grep<CR>', { silent = true })
-nmap('<leader>?', '<cmd>FzfLua live_grep_native<CR>', { silent = true })
+nmap('<leader>?', '<cmd>Telescope live_grep<CR>', { silent = true })
 
 nmap('<leader>to', '<cmd>te<CR>', { silent = true; desc = "Open a terminal buffer in the current window." })
 
