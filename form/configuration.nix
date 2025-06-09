@@ -9,7 +9,7 @@
   config.nixos = {
     username = "stefan";
     hostname = "form";
-    wifi = false;
+    wifi = true;
   };
 
   config = {
