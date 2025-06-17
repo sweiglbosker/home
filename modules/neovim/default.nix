@@ -9,6 +9,10 @@ let
     };
     doCheck = false;
   };
+  tsparsers = pkgs.symlinkJoin {
+    name = "tsparsers";
+    paths = (pkgs.vimPlugins.nvim-treesitter.withAllGrammars).dependencies;
+  };
 in
 {
   options.modules.neovim = {
@@ -57,28 +61,28 @@ in
             }
           '';
         }
-        (nvim-treesitter.withPlugins (p: with p; [
-          tree-sitter-nix
-          tree-sitter-make
-          tree-sitter-cmake
-          tree-sitter-verilog
-          tree-sitter-scheme
-          tree-sitter-llvm
-          tree-sitter-html
-          tree-sitter-glsl
-          tree-sitter-devicetree
-          tree-sitter-cuda
-          tree-sitter-c
-          tree-sitter-cpp
-          tree-sitter-lua
-          tree-sitter-zig
-          tree-sitter-rust
-          tree-sitter-haskell
-          tree-sitter-toml
-          tree-sitter-markdown
-          tree-sitter-markdown-inline
-          tree-sitter-tablegen
-        ]))
+        # (nvim-treesitter.withPlugins (p: with p; [
+        #   tree-sitter-nix
+        #   tree-sitter-make
+        #   tree-sitter-cmake
+        #   tree-sitter-verilog
+        #   tree-sitter-scheme
+        #   tree-sitter-llvm
+        #   tree-sitter-html
+        #   tree-sitter-glsl
+        #   tree-sitter-devicetree
+        #   tree-sitter-cuda
+        #   tree-sitter-c
+        #   tree-sitter-cpp
+        #   tree-sitter-lua
+        #   tree-sitter-zig
+        #   tree-sitter-rust
+        #   tree-sitter-haskell
+        #   tree-sitter-toml
+        #   tree-sitter-markdown
+        #   tree-sitter-markdown-inline
+        #   tree-sitter-tablegen
+        # ]))
 
         {
           plugin = lean-nvim;
@@ -117,6 +121,7 @@ in
         ${builtins.readFile ./nvim/init.lua}
         vim.cmd[[${scheme.extraVimConfig}]]
         vim.cmd[[colorscheme ${scheme.name}]]
+        vim.opt.runtimepath:prepend('${tsparsers}')
       '';
     };
   };

@@ -1,8 +1,7 @@
 vim.g.mapleader = ' '
 
--- vim.o.number = true
--- vim.o.relativenumber = true
-vim.o.number = false
+vim.o.relativenumber = true
+vim.o.number = true
 vim.o.tabstop = 2
 vim.o.shiftwidth = 2
 vim.o.relativenumber = false
@@ -17,13 +16,10 @@ vim.o.shortmess = "tToOCFIsWcCi"
 vim.o.termguicolors = true
 vim.opt.fillchars = {eob = " "}
 vim.o.smd = false
---vim.opt.laststatus = 3
-vim.opt.laststatus=1
+vim.opt.laststatus=2
 vim.opt.cmdheight=0
---%-0{minwid}.{maxwid}{item
 -- vim.opt.statusline="%=%f%=%r %p%% « %l, %c %y"
-vim.opt.statusline="%f%=%p%% « %l, %c "
-vim.cmd[[packadd! termdebug]]
+-- vim.opt.statusline="%f%=%p%% « %l, %c "
 -- vim.opt.winbar="%!nvim_treesitter#statusline()"
 -- vim.cmd[[
 -- hi StatusLineNC guibg=none
