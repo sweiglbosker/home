@@ -23,5 +23,6 @@
     ./colors
     ./zathura.nix
     ./zoxide.nix
+    ./firefox.nix
   ];
 }

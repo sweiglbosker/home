@@ -39,6 +39,7 @@ in
       global = {
         wayland = lib.mkDefault true;
       };
+      firefox.enable = true;
       sway = {
         wrapWithNixGL = cfg.notNixOS;
       };
