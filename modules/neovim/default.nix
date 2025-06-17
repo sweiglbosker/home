@@ -3,9 +3,7 @@ let
   cfg = config.modules.neovim;
   scheme = config.modules.scheme;
   fromGitHub = ref: repo: pkgs.vimUtils.buildVimPlugin {
-    pname = "${lib.strings.sanitizeDerivationName repo}";
-    version = ref;
-    src = builtins.fetchGit {
+    pname = "${lib.strings.sanitizeDerivationName repo}"; version = ref; src = builtins.fetchGit {
       url = "https://github.com/${repo}.git";
       ref = ref;
     };
@@ -43,7 +41,22 @@ in
       vimdiffAlias = true;
       plugins = with pkgs.vimPlugins; [
         nvim-treesitter
+        base16-nvim
         # nvim-treesitter.withAllGrammars
+        {
+          plugin = nvim-highlight-colors;
+          type = "lua";
+          config =
+          # lua
+          ''
+            require("nvim-highlight-colors").setup {
+              render = 'virtual',
+              virtual_symbol_position = 'eow',
+              virtual_symbol_prefix = " ",
+              virtual_symbol_suffix = "",
+            }
+          '';
+        }
         (nvim-treesitter.withPlugins (p: with p; [
           tree-sitter-nix
           tree-sitter-make
@@ -83,8 +96,6 @@ in
         # noice-nvim
         nvim-lspconfig
         # blink-cmp
-        # tinted-vim
-        base16-nvim
         telescope-nvim
         telescope-fzf-native-nvim
         # fzf-lua
