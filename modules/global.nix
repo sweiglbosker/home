@@ -28,7 +28,7 @@ in
           type = lib.types.pathInStore;
           description = "derivation that will behave like dmenu";
           example = pkgs.dmenu;
-          default = pkgs.tofi;
+          default = pkgs.fuzzel;
         };
       };
     };
@@ -53,7 +53,7 @@ in
       fzf.enable = true;
       git.enable = true;
       lazygit.enable = true;
-      tofi.enable = true;
+      fuzzel.enable = true;
       zathura.enable = true;
     };
 
@@ -90,7 +90,6 @@ in
         };
       };
     };
-
 
     gtk = {
       enable = true;
