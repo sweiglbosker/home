@@ -97,6 +97,7 @@ in
         c.colors.completion.category.border.top = "${bg2}";
         c.colors.completion.category.border.bottom = "${bg2}";
         c.colors.webpage.preferred_color_scheme = "${if scheme.light then "light" else "dark"}"
+        c.colors.webpage.darkmode.enabled = ${if scheme.light then "False" else "True"}
 
         c.hints.border="${fg}"
       '';

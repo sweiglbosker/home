@@ -14,9 +14,9 @@ config.bind('j', 'search-next')
 config.bind('J', 'search-prev')
 config.bind('l', 'mode-enter insert')
 
-c.fonts.default_family = 'GoMono Nerd Font Propo'
-c.fonts.prompts = '11pt GoMono Nerd Font Propo'
-c.fonts.default_size = '11pt'
+# c.fonts.default_family = 'sans'
+# c.fonts.prompts = 'sans'
+# c.fonts.default_size = '12pt'
 c.hints.chars = 'arstneio'
 c.hints.radius=0
 
@@ -33,7 +33,7 @@ c.editor.command=["neovide", "{file}", "--", "-c", "normal {line}G{column0}l"]
 c.prompt.filebrowser=False
 c.prompt.radius=0
 c.scrolling.bar="never"
-c.scrolling.smooth=True
+c.scrolling.smooth=False
 c.search.incremental=False
 c.search.wrap=False
 c.search.wrap_messages=False
