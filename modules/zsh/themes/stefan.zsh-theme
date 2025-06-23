@@ -59,6 +59,14 @@ function gitstatus_prompt_update() {
   GITSTATUS_PROMPT="%f${p}%f"
 }
 
+function nl() {
+  if [ -z "$_NL_PROMPT" ]; then
+    _NL_PROMPT=1
+  elif [ "$_NL_PROMPT" -eq 1 ]; then
+    echo ""
+  fi
+}
+
 INS_MODE='%{%F{reset}%}[%{%F{green}%}i%{%F{reset}%}]'
 NORMAL_MODE='%{%F{reset}%}[%{%F{yellow}%}n%{%F{reset}%}]'
 VI_MODE=$INS_MODE
@@ -85,13 +93,13 @@ gitstatus_stop 'MY' && gitstatus_start -s -1 -u -1 -c -1 -d -1 'MY'
 
 autoload -Uz add-zsh-hook
 add-zsh-hook precmd gitstatus_prompt_update
+add-zsh-hook precmd nl
 
 setopt prompt_subst prompt_percent no_prompt_bang
 
-NEWLINE=$'\n'
 GIT_PROMPT_INFO=${GITSTATUS_PROMPT:+ $GITSTATUS_PROMPT}
 # PROMPT='%F{magenta}%~% %f%  ${VI_MODE}${NEWLINE}%{%F{yellow}%}λ %b%f% '
-PROMPT='%~%${NEWLINE} λ %b% '
+PROMPT="%~% "$'\n'"%{%F{green}%}❯%{%F{reset}%} %b% "
 RPROMPT='$(virtualenv_info)% ${GITSTATUS_PROMPT:+ $GITSTATUS_PROMPT} '
 ZSH_THEME_GIT_PROMPT_PREFIX="%{$fg[green]%}"
 ZSH_THEME_GIT_PROMPT_SUFFIX="%{$reset_color%}"
