@@ -6,6 +6,7 @@
     ./foot.nix
     ./mako.nix
     ./neovide.nix
+    ./fuzzel.nix
     ./fzf.nix
     ./i3status.nix
     ./tofi.nix
