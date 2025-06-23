@@ -17,10 +17,7 @@ in
       };
       settings = {
         main = {
-          # font="ComicShannsMono Nerd Font Mono:size=12";
-          # font="BerkeleyMonoPatched Nerd Font Mono:size=12";
-          font ="CodeNewRoman Nerd Font Mono:size=12";
-          # font ="TamzenForPowerline:size=11,Cozette:size=11";
+          font ="monospace:size=12";
           title="term";
           resize-by-cells="no";
           pad="0x0 center";

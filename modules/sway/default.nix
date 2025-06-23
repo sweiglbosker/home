@@ -51,7 +51,7 @@ in
         right = "i";
 
         fonts = {
-          names = [ "Roboto" ];
+          names = [ "monospace" ];
           # style = "Bold";
           size = 10.0;
         };
@@ -136,7 +136,7 @@ in
           # hiddenState = "hide";
           position = "top";
           fonts = {
-            names = [ "Hack Nerd Font Propo" "Material Icons Round" ];
+            names = [ "sans-serif" "monospace" ];
             size = "10.0";
           };
           extraConfig = ''

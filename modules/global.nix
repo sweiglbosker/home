@@ -72,7 +72,15 @@ in
       };
     };
 
-    fonts.fontconfig.enable = true;
+    fonts.fontconfig = {
+      enable = true;
+      defaultFonts = {
+        monospace = [ "NotoMono Nerd Font Mono" ];
+        sansSerif = [ "Noto Sans" ];
+        serif = [ "Noto Serif" ];
+        emoji = [ "Noto Color Emoji"];
+      };
+    };
 
     dconf = {
       enable = true;
@@ -126,8 +134,10 @@ in
         binaryninja
         tamzen
         roboto
+        roboto-serif
         cozette
         inter
+        noto-fonts
         material-icons
       ] ++ (builtins.filter lib.attrsets.isDerivation (builtins.attrValues pkgs.nerd-fonts))
         ++ (lib.optional cfg.notNixOS nixgl.auto.nixGLDefault)
