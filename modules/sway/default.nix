@@ -96,12 +96,12 @@ in
           };
         };
 
-        gaps = {
-          inner = 10;
-          outer = 0;
-        };
+        # gaps = {
+        #   inner = 10;
+        #   outer = 0;
+        # };
 
-        workspaceAutoBackAndForth = true;
+        workspaceAutoBackAndForth = false;
         workspaceOutputAssign = [
         { output = "HDMI-A-1"; workspace = "0"; }
         ];
@@ -109,29 +109,33 @@ in
         colors = {
           background = scheme.base00;
           focused = {
-            border = scheme.base0E;
-            background = scheme.base0E;
+            border = scheme.base0D; # the border around the titlebar
+            background = scheme.base0D;
+            childBorder = scheme.base0D; 
             text = scheme.base00; # TODO: light/dark
-            indicator = scheme.base0D;
-            childBorder = scheme.base0E;
+            indicator = scheme.base09;
           };
           focusedInactive = {
-            border = scheme.base00 + "00";
+            border = scheme.base00;
             background = scheme.base00;
-            text = scheme.base0E;
+            text = scheme.base0D;
             indicator = scheme.base02;
-            childBorder = scheme.base00 + "00";
+            childBorder = scheme.base00;
           };
           unfocused = {
-            border = scheme.base00 + "00";
+            border = scheme.base00;
             background = scheme.base00;
-            text = scheme.base03;
-            indicator = scheme.base00;
-            childBorder = scheme.base00 + "00";
+            text = scheme.base04;
+            indicator = scheme.base01;
+            childBorder = scheme.base00;
           };
         };
 
-        bars = [{
+        bars = [
+        # {
+        #   command = "waybar";
+        # }
+        {
           statusCommand = "i3status";
           # mode = "hide";
           # hiddenState = "hide";
@@ -168,7 +172,8 @@ in
               text = scheme.base0E;
             };
           };
-        }];
+        }
+        ];
 
         focus = {
           followMouse = false;
@@ -276,12 +281,7 @@ in
           "--locked XF86MonBrightnessUp" = "exec lightctl -d up";
         };
 
-        startup = [
-        {
-          command = "autotiling -l 2";
-          always = true;
-        }
-        ] ++ cfg.startup;
+        startup = cfg.startup;
 
         seat = {
           "*" = {
@@ -297,7 +297,7 @@ in
 
       extraConfig = ''
         title_align center
-        default_border pixel 2
+        default_border pixel 1
         mouse_warping none
         output HDMI-A-1 disable
       '';
