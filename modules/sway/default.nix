@@ -65,8 +65,8 @@ in
 
         input = {
           "type:keyboard" = {
-            xkb_layout = "us";
-            xkb_variant = "colemak_dh";
+            xkb_layout = "us,us";
+            xkb_variant = "colemak_dh,";
           };
           "type:touchpad" = {
             dwt = "enabled"; # turn off if u are a gamer
