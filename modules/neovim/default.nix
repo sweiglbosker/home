@@ -200,7 +200,6 @@ in
       extraLuaConfig = 
       ''
         ${builtins.readFile ./nvim/init.lua}
-        vim.cmd[[${scheme.extraVimConfig}]]
         vim.cmd[[colorscheme ${scheme.name}]]
         vim.opt.runtimepath:prepend('${tsparsers}')
       '';

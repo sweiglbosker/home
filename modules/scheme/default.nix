@@ -18,14 +18,6 @@ in
       default = false;
       description = "whether this is a light colorscheme";
     };
-    extraVimConfig = lib.mkOption {
-      type = lib.types.str;
-      default = "";
-      description = ''
-        extra vimscript config for the theme.
-        Intended use is to set extra highlights.
-        '';
-    };
     base00 = lib.mkOption hexColor;
     base01 = lib.mkOption hexColor;
     base02 = lib.mkOption hexColor;
@@ -42,6 +34,14 @@ in
     base0D = lib.mkOption hexColor;
     base0E = lib.mkOption hexColor;
     base0F = lib.mkOption hexColor;
+    base10 = lib.mkOption hexColor;
+    base11 = lib.mkOption hexColor;
+    base12 = lib.mkOption hexColor;
+    base13 = lib.mkOption hexColor;
+    base14 = lib.mkOption hexColor;
+    base15 = lib.mkOption hexColor;
+    base16 = lib.mkOption hexColor;
+    base17 = lib.mkOption hexColor;
   };
 
   # config = lib.mkIf cfg.enable {
