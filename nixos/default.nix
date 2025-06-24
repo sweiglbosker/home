@@ -6,7 +6,7 @@ in
   imports = [
     ./bluetooth.nix
     ./osu.nix
-    # ./kmonad.nix
+    ./keyd.nix
   ];
 
   options.nixos = with lib.options; {
