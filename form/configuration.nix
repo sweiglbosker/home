@@ -13,6 +13,8 @@
   };
 
   config = {
+    system.stateVersion = "24.11";
+
     hardware.graphics.enable = true;
     boot.initrd.kernelModules = [ "nvidia" "nvidia_uvm" "nvidia_drm" ];
     boot.extraModulePackages = [ config.boot.kernelPackages.nvidia_x11 ];

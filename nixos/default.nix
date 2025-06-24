@@ -176,6 +176,5 @@ in
         "f0f0f0"
       ];
     };
-    system.stateVersion = "24.11";
   };
 }
