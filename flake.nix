@@ -16,6 +16,10 @@
       url = "github:nix-community/neovim-nightly-overlay";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+    nixos-hardware = {
+      url = "github:NixOS/nixos-hardware/master";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
   };
 
   outputs = 
@@ -25,6 +29,7 @@
       home-manager, 
       nixgl,
       neovim-nightly,
+      nixos-hardware,
       ... 
     }:
     let
@@ -57,6 +62,25 @@
                   inherit system inputs pkgs;
                 };
               };
+            }
+          ];
+        };
+        fw = nixpkgs.lib.nixosSystem {
+          inherit system;
+          specialArgs = { inherit inputs; };
+          modules = [
+            nixos-hardware.nixosModules.framework-13-7040-amd
+            ./fw/configuration.nix
+            home-manager.nixosModules.home-manager
+            {
+							home-manager = {
+								users.stefan = import ./fw/home.nix;
+								useGlobalPkgs = true;
+								useUserPackages = true;
+								extraSpecialArgs = {
+									inherit system inputs pkgs;
+								};
+							};
             }
           ];
         };
