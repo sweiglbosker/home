@@ -191,5 +191,8 @@ in
         "f0f0f0"
       ];
     };
+
+    services.printing.enable = true;
+    services.printing.drivers = [ pkgs.gutenprint pkgs.brlaser pkgs.brgenml1lpr pkgs.brgenml1cupswrapper ];
   };
 }
