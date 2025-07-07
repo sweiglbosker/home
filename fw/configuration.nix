@@ -9,6 +9,7 @@
   config.nixos = {
     username = "stefan";
     hostname = "fw";
+    yubikey.enable = true;
   };
 
   config = {

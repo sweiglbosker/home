@@ -7,6 +7,7 @@ in
     ./bluetooth.nix
     ./osu.nix
     ./keyd.nix
+    ./yubikey.nix
   ];
 
   options.nixos = with lib.options; {
