@@ -77,13 +77,13 @@
       # '';
     # };
     services.fwupd.enable = true;
-    systemd.services.fprintd = {
-      wantedBy = [ "multi-user.target" ];
-      serviceConfig.Type = "simple";
-    };
-    services.fprintd.enable = true;
-    services.fprintd.tod.enable = true;
-    services.fprintd.tod.driver = pkgs.libfprint-2-tod1-goodix;
+    # systemd.services.fprintd = {
+    #   wantedBy = [ "multi-user.target" ];
+    #   serviceConfig.Type = "simple";
+    # };
+    # services.fprintd.enable = true;
+    # services.fprintd.tod.enable = true;
+    # services.fprintd.tod.driver = pkgs.libfprint-2-tod1-goodix;
     boot.initrd.systemd.enable = true;
     environment.systemPackages = [ pkgs.tpm2-tss ];
     system.stateVersion = "25.05";
