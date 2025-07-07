@@ -11,41 +11,46 @@ in
 
   config = mkIf cfg.enable {
     home.packages = with pkgs; [
-#      pinentry-qt
-      # pinentry-dmenu
+      pinentry-qt
     ];
-#    home.packages = with pkgs; [
-#    pinentry-bemenu
-#    (writeShellScriptBin "pinentry-menu" ''
-#      exec ${pkgs.pinentry-bemenu}/bin/pinentry-bemenu -l 10 --nf "#4c4c4c" --nb "#0f0f0f" --af "#4c4c4c" --ab "#0f0f0f" --tb "#0f0f0f" --tf "#8aac8b" --sb "#0f0f0f" --sf "#8aac8b"--hb "#0f0f0f" --hf "#8aac8b" --fn "ComicShannsMono Nerd Font Mono 12" 
-#    '')];
+
+    programs.gpg = {
+      scdaemonSettings = {
+        disable-ccid = true; 
+      };
+      settings = {
+        no-comments = true;
+        fixed-list-mode = true;
+        no-emit-version = true;
+        keyd-format = "0xlong";
+        list-options = "show-uid-validity";
+        verify-options = "show-uid-validity";
+        with-fingerprint = true;
+        require-cross-certification = true;
+        no-symkey-cache = true;
+        use-agent = true;
+        throw-keyds = true;
+
+        personal-cipher-preferences = "AES256 AES192 AES";
+        personal-digest-preferences = "SHA512 SHA384 SHA256";
+        personal-compress-preferences = "ZLIB BZIP2 ZIP Uncompressed";
+        default-preference-list = "SHA512 SHA384 SHA256 AES256 AES192 AES ZLIB BZIP2 ZIP Uncompressed";
+        cert-digest-algo = "SHA512";
+        s2k-digest-algo = "SHA512";
+        s2k-cipher-algo = "AES256";
+        charset = "utf-8";
+      };
+    };
     services.gpg-agent = {
       enable = true;
-      # TODO: look into forwarding and extra socket, seems useful
       enableBashIntegration = true;
       enableZshIntegration = true;
-      # enableNushellIntegration = true;
+      defaultCacheTtl = 60;
+      maxCacheTtl = 120;
       enableSshSupport = true;
       noAllowExternalCache = true;
       pinentryPackage = pkgs.pinentry-qt;
-      # pinentryPackage = pkgs.pinentry-dmenu;
-      #sshKeys = [ "36663E191B00E51513F90FA5CF2BCE8461C297CD" ];
-    };
 
-    home.file.".gnupg/pinentry-dmenu.conf" = {
-      text = ''
-        asterisk= "*";
-        # prompt = "";
-        font = "BerkeleyMonoPatched Nerd Font:size=13";
-        prompt_fg = "#cacaca";
-        prompt_bg = "#0d0d0d";
-        normal_fg = "#4c4c4c";
-        normal_bg = "#0d0d0d";
-        select_fg = "#8aac8b";
-        select_bg = "#0d0d0d";
-        desc_fg = "#cacaca";
-        desc_bg = "#0d0d0d";
-        '';
       sshKeys = [ "36663E191B00E51513F90FA5CF2BCE8461C297CD" "97D70F96084527401BBA8AB714165B7413D13345" ];
     };
   };
