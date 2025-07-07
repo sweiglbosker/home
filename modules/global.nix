@@ -137,6 +137,10 @@ in
         cozette
         inter
         noto-fonts
+        noto-fonts-extra
+        noto-fonts-cjk-sans
+        noto-fonts-cjk-serif
+        noto-fonts-emoji
         material-icons
       ] ++ (builtins.filter lib.attrsets.isDerivation (builtins.attrValues pkgs.nerd-fonts))
         ++ (lib.optional cfg.notNixOS nixgl.auto.nixGLDefault)
