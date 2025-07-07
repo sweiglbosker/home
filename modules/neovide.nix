@@ -16,9 +16,9 @@ in
         title-hidden = true;
         box-drawing.mode = "native";
         font = {
-          normal = ["BerkeleyMonoPatched Nerd Font"];
+          normal = ["monospace"];
           features = {
-            "BerkeleyMonoPatched Nerd Font" = ["+ss01" "+ss07" "+ss11" "-calt" "+ss09" "+ss02" "+ss14"];
+            "monospace" = ["+ss01" "+ss07" "+ss11" "-calt" "+ss09" "+ss02" "+ss14"];
           };
           size = 12.0;
         };
