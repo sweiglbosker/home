@@ -60,9 +60,7 @@
     # networking.proxy.noProxy = "127.0.0.1,localhost,internal.domain";
 
     # Set your time zone.
-    time.timeZone = "America/New_York";
-
-    console.useXkbConfig = true;
+    # console.useXkbConfig = true;
 
     # Enable automatic login for the user.
     # services.getty.autologinUser = "stefan";
