@@ -51,7 +51,7 @@ in
         right = "i";
 
         fonts = {
-          names = [ "monospace" ];
+          names = [ "sans-serif" "monospace" ];
           # style = "Bold";
           size = 10.0;
         };
@@ -149,22 +149,22 @@ in
             separator_symbol " "
           '';
           colors = {
-            background = scheme.base00; # "#0d0d0d";
+            background = scheme.base10; # "#0d0d0d";
             statusline = scheme.base05;
             focusedWorkspace = {
-              border = scheme.base00; # "#0d0d0d";
-              background = scheme.base00; # "#0d0d0d";
+              border = scheme.base10; # "#0d0d0d";
+              background = scheme.base10; # "#0d0d0d";
               text = scheme.base05;
             };
             activeWorkspace = {
-              border = scheme.base00; # "#0d0d0d";
-              background = scheme.base00; # "#0d0d0d";
-              text = scheme.base03;
+              border = scheme.base10; # "#0d0d0d";
+              background = scheme.base10; # "#0d0d0d";
+              text = scheme.base01;
             };
             inactiveWorkspace = {
-              border = scheme.base00; # "#0d0d0d";
+              border = scheme.base10; # "#0d0d0d";
               background = scheme.base00; # "#0d0d0d";
-              text = scheme.base03;
+              text = scheme.base01;
             };
             bindingMode = {
               border = scheme.base00; # "#0d0d0d";
@@ -273,12 +273,11 @@ in
           "${modifier}+space" = "focus mode_toggle";
 
           "${modifier}+Shift+f" = "fullscreen";
-          "--locked XF86AudioRaiseVolume" = "exec volumectl -d -u up";
-          "--locked XF86AudioLowerVolume" = "exec volumectl -d -u down";
-          "--locked XF86AudioMute" = "exec volumectl -d toggle-mute";
-          "--locked XF86AudioMicMute" = "exec volumectl -d -m toggle-mute";
-          "--locked XF86MonBrightnessDown" = "exec lightctl -d down";
-          "--locked XF86MonBrightnessUp" = "exec lightctl -d up";
+          "--locked XF86AudioRaiseVolume" = "exec pactl set-sink-volume @DEFAULT_SINK@ +1%";
+          "--locked XF86AudioLowerVolume" = "exec pactl set-sink-volume @DEFAULT_SINK@ -1%";
+          "--locked XF86AudioMute" = "exec pactl set-sink-mute @DEFAULT_SINK@ toggle";
+          "--locked XF86MonBrightnessDown" = "exec light -U 1";
+          "--locked XF86MonBrightnessUp" = "exec light -A 1";
         };
 
         startup = cfg.startup;
