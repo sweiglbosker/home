@@ -16,7 +16,10 @@ in
       borderColor = scheme.base0D; #"#a39ec4ff";
       borderSize = 1;
       defaultTimeout = 20000;
-      font = "BerkeleyMonoPatched Nerd Font 10";
+      font = "monospace 10";
     };
+    home.packages = with pkgs; [
+      libnotify
+    ];
   };
 }
