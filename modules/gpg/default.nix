@@ -46,6 +46,7 @@ in
         desc_fg = "#cacaca";
         desc_bg = "#0d0d0d";
         '';
+      sshKeys = [ "36663E191B00E51513F90FA5CF2BCE8461C297CD" "97D70F96084527401BBA8AB714165B7413D13345" ];
     };
   };
 }
