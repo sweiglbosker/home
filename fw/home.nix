@@ -41,6 +41,7 @@
 
     wob.enable = true;
     foot.enable = true;
+    mpv.enable = true;
 
     neovim = {
       enable = true;
