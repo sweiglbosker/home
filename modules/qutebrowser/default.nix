@@ -5,7 +5,7 @@ let
   fg = "${scheme.base05}";
   fg2 = "${scheme.base03}";
   bg = "${scheme.base00}";
-  bg2 = "${scheme.base02}";
+  bg2 = "${scheme.base01}";
 in
 {
   options.modules.qutebrowser = {

@@ -14,9 +14,9 @@ config.bind('j', 'search-next')
 config.bind('J', 'search-prev')
 config.bind('l', 'mode-enter insert')
 
-# c.fonts.default_family = 'sans'
+c.fonts.default_family = 'monospace'
 # c.fonts.prompts = 'sans'
-# c.fonts.default_size = '12pt'
+c.fonts.default_size = '11pt'
 c.hints.chars = 'arstneio'
 c.hints.radius=0
 
