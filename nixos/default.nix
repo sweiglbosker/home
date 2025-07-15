@@ -54,10 +54,25 @@ in
 
     nixpkgs.config.allowUnfree = true;
 
-    boot.kernelPackages = pkgs.linuxPackages_latest;
-    boot.loader.systemd-boot.enable = true;
-    boot.loader.systemd-boot.consoleMode = "max";
-    boot.loader.efi.canTouchEfiVariables = true;
+    boot = {
+      consoleLogLevel=0;
+      initrd.verbose = false;
+      initrd.systemd.enable = true; # required for early stuff
+      kernelPackages = pkgs.linuxPackages_latest;
+      kernelParams = ["quiet" "splash"  "rd.systemd.show_status=false" "rd.udev.log_level=3" "udev.log_priority=3" "boot.shell_on_fail"];
+      loader = {
+        timeout = 0;
+        systemd-boot = {
+          enable = true;
+          consoleMode = "auto";
+          editor = false;
+        };
+        efi.canTouchEfiVariables = true;
+      };
+      plymouth = {
+        enable = true;
+      };
+    };
 
     networking = {
       hostName = cfg.hostname;
@@ -103,6 +118,10 @@ in
     services.greetd = {
       enable = false;
       settings = {
+        initial_session = {
+          command = "sway --unsupported-gpu";
+          user = "${cfg.username}";
+        };
         default_session = {
           command = "${pkgs.greetd.greetd}/bin/agreety --cmd 'sway --unsupported-gpu'"; 
         };
@@ -172,8 +191,12 @@ in
 
     # environment.pathsToLink = [ "/share/zsh" ];
     console = {
+      packages = [
+        pkgs.cozette
+      ];
       earlySetup = true;
       useXkbConfig = true;
+      font = "${pkgs.cozette}/share/consolefonts/cozette12x26.psfu";
       colors = [
         "0f0f0f"
         "ac8a8c"
