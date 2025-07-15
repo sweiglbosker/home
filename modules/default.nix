@@ -11,6 +11,7 @@
     ./i3status.nix
     ./tofi.nix
     ./lazygit.nix
+    ./mpv.nix
     ./git
     ./tmux
     ./zsh
@@ -22,6 +23,7 @@
     ./gpg
     ./pass
     ./colors
+    ./wob.nix
     ./zathura.nix
     ./zoxide.nix
     ./firefox.nix
