@@ -39,6 +39,7 @@
       key = "B5200ABFBD213FC9C17C6DB91291CBBCF3B9F225";
     };
 
+    wob.enable = true;
     foot.enable = true;
 
     neovim = {
