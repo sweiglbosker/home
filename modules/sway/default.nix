@@ -36,10 +36,12 @@ in
         swaymsg 'set $PROP newcont:tabbed ; exec qutebrowser --target window'
       '')
       autotiling
+      pamixer
     ];
     wayland.windowManager.sway = lib.mkIf cfg.enable {
       checkConfig = false;
       enable = true;
+      systemd.enable = true;
       package = if cfg.wrapWithNixGL then (config.lib.nixGL.wrap pkgs.sway) else pkgs.sway;
 #      package = null;
       config = rec {
@@ -273,11 +275,12 @@ in
           "${modifier}+space" = "focus mode_toggle";
 
           "${modifier}+Shift+f" = "fullscreen";
-          "--locked XF86AudioRaiseVolume" = "exec pactl set-sink-volume @DEFAULT_SINK@ +1%";
-          "--locked XF86AudioLowerVolume" = "exec pactl set-sink-volume @DEFAULT_SINK@ -1%";
-          "--locked XF86AudioMute" = "exec pactl set-sink-mute @DEFAULT_SINK@ toggle";
-          "--locked XF86MonBrightnessDown" = "exec light -U 1";
-          "--locked XF86MonBrightnessUp" = "exec light -A 1";
+          # this can probably be simplified but im not a sed wizard
+          "--locked XF86AudioRaiseVolume" = "exec pamixer -ui 2 && pamixer --get-volume > $WOBSOCK";
+          "--locked XF86AudioLowerVolume" = "exec pamixer -ud 2 && pamixer --get-volume > $WOBSOCK";
+          "--locked XF86AudioMute" = ''exec pamixer --toggle-mute && ( [ "$(pamixer --get-mute)" = "true" ] && echo 0 > $WOBSOCK ) || pamixer --get-volume > $WOBSOCK'';
+          "--locked XF86MonBrightnessUp" = "exec light -A 5 && light -G | cut -d'.' -f1 > $WOBSOCK";
+          "--locked XF86MonBrightnessDown" = "exec light -U 5 && light -G | cut -d'.' -f1 > $WOBSOCK";
         };
 
         startup = cfg.startup;
@@ -292,6 +295,7 @@ in
 
       extraConfigEarly = ''
         set $PROP none
+        set $WOBSOCK $XDG_RUNTIME_DIR/wob.sock
       '';
 
       extraConfig = ''
