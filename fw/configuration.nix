@@ -19,8 +19,11 @@
     programs.light.enable = true;
     services.xserver = {
       enable = true;
-      displayManager.gdm.enable = true;
-      desktopManager.gnome.enable = true;
+      displayManager = {
+        defaultSession = "sway";
+        gdm.enable = true;
+      };
+      # desktopManager.gnome.enable = true;
     };
 
     services.kmonad = {

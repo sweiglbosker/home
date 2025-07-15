@@ -22,9 +22,10 @@
     services.xserver.videoDrivers = ["nvidia"];
     services.desktopManager.plasma6.enable = true;
     services.displayManager.sddm = {
-      enable = true;
+      enable = false;
     };
     services.xserver.enable = true;
+    console.earlySetup = true;
     hardware.nvidia = {
       modesetting.enable = true;
       open = true;
