@@ -112,7 +112,7 @@ in
       cage
       zsh
       discord-ptb
-    ]; # TODO
+    ] ++ (lib.optional cfg.wifi networkmanagerapplet); # TODO
 
 
     services.greetd = {
