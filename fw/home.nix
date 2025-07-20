@@ -66,6 +66,7 @@
     neovide.enable = true;
     zsh.enable = true;
     tofi.enable = true;
+    mpd.enable = true;
     rmpc.enable = true;
   };
 }

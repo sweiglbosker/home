@@ -27,6 +27,7 @@
     ./zathura.nix
     ./zoxide.nix
     ./firefox.nix
+    ./mpd.nix
     ./rmpc.nix
   ];
 }
