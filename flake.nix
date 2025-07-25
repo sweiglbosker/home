@@ -21,15 +21,15 @@
     };
   };
 
-  outputs = 
-    inputs@{ 
+  outputs =
+    inputs@{
       self,
-      nixpkgs, 
-      home-manager, 
+      nixpkgs,
+      home-manager,
       nixgl,
       neovim-nightly,
       nixos-hardware,
-      ... 
+      ...
     }:
     let
       system = "x86_64-linux";
@@ -42,14 +42,15 @@
         inherit system overlays;
       };
       inherit (pkgs) lib;
-    in {
+    in
+    {
       nixosConfigurations = {
         form = nixpkgs.lib.nixosSystem {
           inherit system;
           specialArgs = {
             inherit inputs;
           };
-          modules = [ 
+          modules = [
             ./form/configuration.nix
             home-manager.nixosModules.home-manager
             {
@@ -72,14 +73,14 @@
             ./fw/configuration.nix
             home-manager.nixosModules.home-manager
             {
-							home-manager = {
-								users.stefan = import ./fw/home.nix;
-								useGlobalPkgs = true;
-								useUserPackages = true;
-								extraSpecialArgs = {
-									inherit system inputs pkgs;
-								};
-							};
+              home-manager = {
+                users.stefan = import ./fw/home.nix;
+                useGlobalPkgs = true;
+                useUserPackages = true;
+                extraSpecialArgs = {
+                  inherit system inputs pkgs;
+                };
+              };
             }
           ];
         };

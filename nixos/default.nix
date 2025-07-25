@@ -1,6 +1,12 @@
-{ config, lib, pkgs, inputs, ... }:
-let 
-  cfg = config.nixos; 
+{
+  config,
+  lib,
+  pkgs,
+  inputs,
+  ...
+}:
+let
+  cfg = config.nixos;
 in
 {
   imports = [
@@ -11,7 +17,7 @@ in
   ];
 
   options.nixos = with lib.options; {
-    hostname = mkOption { 
+    hostname = mkOption {
       type = lib.types.str;
       description = "Hostname for the system";
       default = "nixos";
@@ -46,7 +52,10 @@ in
     # nixos = {
     # };
     nix = {
-      settings.experimental-features = [ "nix-command" "flakes" ];
+      settings.experimental-features = [
+        "nix-command"
+        "flakes"
+      ];
     };
 
     # time.timeZone = lib.mkDefault cfg.timezone;
@@ -55,11 +64,18 @@ in
     nixpkgs.config.allowUnfree = true;
 
     boot = {
-      consoleLogLevel=0;
+      consoleLogLevel = 0;
       initrd.verbose = false;
       initrd.systemd.enable = true; # required for early stuff
       kernelPackages = pkgs.linuxPackages_latest;
-      kernelParams = ["quiet" "splash"  "rd.systemd.show_status=false" "rd.udev.log_level=3" "udev.log_priority=3" "boot.shell_on_fail"];
+      kernelParams = [
+        "quiet"
+        "splash"
+        "rd.systemd.show_status=false"
+        "rd.udev.log_level=3"
+        "udev.log_priority=3"
+        "boot.shell_on_fail"
+      ];
       loader = {
         timeout = 0;
         systemd-boot = {
@@ -90,8 +106,8 @@ in
         "networkmanager"
         "gamemode"
       ];
-        # ++ (lib.optional cfg.wifi "networkmanager")
-        # ++ (lib.optional cfg.gaming "gamemode");
+      # ++ (lib.optional cfg.wifi "networkmanager")
+      # ++ (lib.optional cfg.gaming "gamemode");
       packages = with pkgs; [
         unzip
         tree
@@ -100,20 +116,22 @@ in
       shell = cfg.shell;
     };
 
-    environment.systemPackages = with pkgs; [
-      neovim
-      wl-clipboard
-      wmenu
-      gnupg
-      pinentry-qt
-      btop
-      man-pages
-      man-pages-posix
-      cage
-      zsh
-      discord-ptb
-    ] ++ (lib.optional cfg.wifi networkmanagerapplet); # TODO
-
+    environment.systemPackages =
+      with pkgs;
+      [
+        neovim
+        wl-clipboard
+        wmenu
+        gnupg
+        pinentry-qt
+        btop
+        man-pages
+        man-pages-posix
+        cage
+        zsh
+        discord-ptb
+      ]
+      ++ (lib.optional cfg.wifi networkmanagerapplet); # TODO
 
     services.greetd = {
       enable = false;
@@ -123,7 +141,7 @@ in
           user = "${cfg.username}";
         };
         default_session = {
-          command = "${pkgs.greetd.greetd}/bin/agreety --cmd 'sway --unsupported-gpu'"; 
+          command = "${pkgs.greetd.greetd}/bin/agreety --cmd 'sway --unsupported-gpu'";
         };
       };
     };
@@ -155,28 +173,30 @@ in
       rtkit.enable = true;
       doas = {
         enable = true;
-        extraRules = [{
-          users = ["${cfg.username}"];
-          keepEnv = true;
-          persist = true;
-        }];
+        extraRules = [
+          {
+            users = [ "${cfg.username}" ];
+            keepEnv = true;
+            persist = true;
+          }
+        ];
       };
     };
 
-		i18n.defaultLocale = "en_US.UTF-8";
+    i18n.defaultLocale = "en_US.UTF-8";
 
-		i18n.extraLocaleSettings = {
-			LC_ADDRESS = "en_US.UTF-8";
-			LC_IDENTIFICATION = "en_US.UTF-8";
-			LC_MEASUREMENT = "en_US.UTF-8";
-			LC_MONETARY = "en_US.UTF-8";
-			LC_NAME = "en_US.UTF-8";
-			LC_NUMERIC = "en_US.UTF-8";
-			LC_PAPER = "en_US.UTF-8";
-			LC_TELEPHONE = "en_US.UTF-8";
-			LC_TIME = "en_US.UTF-8";
-		};
-    
+    i18n.extraLocaleSettings = {
+      LC_ADDRESS = "en_US.UTF-8";
+      LC_IDENTIFICATION = "en_US.UTF-8";
+      LC_MEASUREMENT = "en_US.UTF-8";
+      LC_MONETARY = "en_US.UTF-8";
+      LC_NAME = "en_US.UTF-8";
+      LC_NUMERIC = "en_US.UTF-8";
+      LC_PAPER = "en_US.UTF-8";
+      LC_TELEPHONE = "en_US.UTF-8";
+      LC_TIME = "en_US.UTF-8";
+    };
+
     services.xserver.xkb.layout = "us";
     services.xserver.xkb.variant = "colemak_dh,";
 
@@ -248,6 +268,12 @@ in
     };
 
     services.printing.enable = true;
-    services.printing.drivers = [ pkgs.gutenprint pkgs.brlaser pkgs.brgenml1lpr pkgs.brgenml1cupswrapper ];
+    services.printing.drivers = [
+      pkgs.gutenprint
+      pkgs.brlaser
+      pkgs.brgenml1lpr
+      pkgs.brgenml1cupswrapper
+    ];
   };
+
 }

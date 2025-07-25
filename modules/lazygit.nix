@@ -1,4 +1,9 @@
-{ config, lib, pkgs, ... }:
+{
+  config,
+  lib,
+  pkgs,
+  ...
+}:
 let
   cfg = config.modules.lazygit;
   scheme = config.modules.scheme;
@@ -36,13 +41,16 @@ in
             startInteractiveRebase = "u";
           };
         };
-        gui= {
+        gui = {
           notARepository = "skip";
           mouseEvents = false;
           showRandomTip = false;
           border = "single";
           theme = {
-            activeBorderColor = [ scheme.base0D  "bold" ];
+            activeBorderColor = [
+              scheme.base0D
+              "bold"
+            ];
             inactiveBorderColor = [ scheme.base03 ];
             searchingActiveBorderColor = [ scheme.base09 ];
             optionsTextColor = [ scheme.base0D ];

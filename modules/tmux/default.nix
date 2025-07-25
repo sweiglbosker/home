@@ -1,4 +1,9 @@
-{ config, lib, pkgs, ... }:
+{
+  config,
+  lib,
+  pkgs,
+  ...
+}:
 let
   cfg = config.modules.tmux;
   scheme = config.modules.scheme;
@@ -54,13 +59,12 @@ in
         # {
         #   plugin = vim.tmux-navigatior;
         #   extraConfig = ''
-        #   set -g 
+        #   set -g
         #   '';
         # }
 
       ];
-      extraConfig = 
-      ''
+      extraConfig = ''
         set -g default-terminal "screen-256color"
         # set -g default-command zsh # this fixes colors for some reason
         set -g renumber-windows on

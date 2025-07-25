@@ -1,4 +1,10 @@
-{ config, lib, pkgs, inputs, ...}:
+{
+  config,
+  lib,
+  pkgs,
+  inputs,
+  ...
+}:
 let
   cfg = config.modules.global;
   berkeley-mono = pkgs.callPackage ../packages/berkeley-mono.nix { inherit pkgs; };
@@ -18,8 +24,11 @@ in
     extraPackages = mkOption {
       type = with lib.types; listOf package;
       description = "List of extra packages to install";
-      example = [ pkgs.cowsay pkgs.lolcat ];
-      default = [];
+      example = [
+        pkgs.cowsay
+        pkgs.lolcat
+      ];
+      default = [ ];
     };
     menu = mkOption {
       type = lib.types.submodule {
@@ -44,7 +53,7 @@ in
         wrapWithNixGL = cfg.notNixOS;
       };
       qutebrowser = {
-      	wrapWithNixGL = cfg.notNixOS;
+        wrapWithNixGL = cfg.notNixOS;
       };
       email.enable = true;
       aerc.enable = true;
@@ -58,8 +67,8 @@ in
     };
 
     nixGL = lib.mkIf cfg.notNixOS {
-        packages = inputs.nixgl.packages;
-        defaultWrapper = "mesa";
+      packages = inputs.nixgl.packages;
+      defaultWrapper = "mesa";
     };
 
     programs = {
@@ -78,7 +87,7 @@ in
         monospace = [ "NotoMono Nerd Font Mono" ];
         sansSerif = [ "Noto Sans" ];
         serif = [ "Noto Serif" ];
-        emoji = [ "Noto Color Emoji"];
+        emoji = [ "Noto Color Emoji" ];
       };
     };
 
@@ -122,30 +131,32 @@ in
         "$HOME/scripts"
       ];
 
-      packages = with pkgs; [
-        eza
-        fanwood
-        jq
-        ripgrep
-        elan
-        dmenu
-        berkeley-mono
-        binaryninja
-        tamzen
-        roboto
-        roboto-serif
-        cozette
-        inter
-        noto-fonts
-        noto-fonts-extra
-        noto-fonts-cjk-sans
-        noto-fonts-cjk-serif
-        noto-fonts-emoji
-        material-icons
-      ] ++ (builtins.filter lib.attrsets.isDerivation (builtins.attrValues pkgs.nerd-fonts))
-        ++ (lib.optional cfg.notNixOS nixgl.auto.nixGLDefault)
-        ++ (lib.optionals cfg.wayland 
+      packages =
+        with pkgs;
         [
+          eza
+          fanwood
+          jq
+          ripgrep
+          elan
+          dmenu
+          berkeley-mono
+          binaryninja
+          tamzen
+          roboto
+          roboto-serif
+          cozette
+          inter
+          noto-fonts
+          noto-fonts-extra
+          noto-fonts-cjk-sans
+          noto-fonts-cjk-serif
+          noto-fonts-emoji
+          material-icons
+        ]
+        ++ (builtins.filter lib.attrsets.isDerivation (builtins.attrValues pkgs.nerd-fonts))
+        ++ (lib.optional cfg.notNixOS nixgl.auto.nixGLDefault)
+        ++ (lib.optionals cfg.wayland [
           wl-clipboard
           #...
         ])

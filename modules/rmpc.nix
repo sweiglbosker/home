@@ -1,4 +1,9 @@
-{ config, lib, pkgs, ... }:
+{
+  config,
+  lib,
+  pkgs,
+  ...
+}:
 let
   cfg = config.modules.rmpc;
 in
@@ -6,7 +11,7 @@ in
   options.modules.rmpc.enable = lib.mkEnableOption "rmpc";
 
   config = lib.mkIf cfg.enable {
-    programs.rmpc = { 
+    programs.rmpc = {
       enable = true;
     };
   };

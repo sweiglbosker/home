@@ -1,4 +1,9 @@
-{ config, lib, pkgs, ... }:
+{
+  config,
+  lib,
+  pkgs,
+  ...
+}:
 let
   cfg = config.modules.git;
 in
@@ -30,7 +35,7 @@ in
           dark = true;
         };
       };
-#      extraConfig = {};
+      #      extraConfig = {};
       # hooks = {
       #    pre-commit = ;
       # };
@@ -54,7 +59,7 @@ in
         # "*.elf"
       ];
       signing = {
-       signByDefault = true;
+        signByDefault = true;
       };
       extraConfig = {
         init.defaultBranch = "main";

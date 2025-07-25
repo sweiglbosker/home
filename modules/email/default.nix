@@ -1,4 +1,9 @@
-{ config, lib, pkgs, ... }:
+{
+  config,
+  lib,
+  pkgs,
+  ...
+}:
 let
   cfg = config.modules.email;
 in
@@ -17,7 +22,7 @@ in
       aerc = {
         enable = true;
         extraAccounts = {
-         default = "INBOX";
+          default = "INBOX";
         };
       };
       imap = {

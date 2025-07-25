@@ -1,4 +1,10 @@
-{ inputs, config, lib, pkgs, ... }:
+{
+  inputs,
+  config,
+  lib,
+  pkgs,
+  ...
+}:
 {
   imports = [
     ../modules/global.nix
@@ -8,7 +14,7 @@
   config.modules = {
     global = {
       wayland = true;
-  
+
       extraPackages = with pkgs; [
         wmenu
         cmatrix

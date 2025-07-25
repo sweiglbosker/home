@@ -1,4 +1,9 @@
-{ config, lib, pkgs, ... }:
+{
+  config,
+  lib,
+  pkgs,
+  ...
+}:
 let
   cfg = config.modules.aerc;
 in
@@ -35,14 +40,18 @@ in
 
         "messages:folder=Drafts"."<Enter>" = ":recall<Enter>";
         messages = {
-          /*** CUSTOM SECTION ***/
+          /**
+            * CUSTOM SECTION **
+          */
           "n" = ":next<Enter>";
           "e" = ":prev<Enter>";
           N = ":next-folder<enter>";
           E = ":prev-folder<enter>";
           j = ":next-result<enter>";
           J = ":prev-result<enter>";
-          /***               ***/
+          /**
+            *               **
+          */
           g = ":select 0<Enter>";
           G = ":select -1<Enter>";
 
@@ -147,4 +156,3 @@ in
     };
   };
 }
-

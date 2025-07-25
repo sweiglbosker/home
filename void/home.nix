@@ -1,4 +1,10 @@
-{ inputs, config, lib, pkgs, ... }:
+{
+  inputs,
+  config,
+  lib,
+  pkgs,
+  ...
+}:
 {
   imports = [
     ../modules/global.nix
@@ -67,10 +73,9 @@
     mako.enable = true;
     neovide.enable = true;
 
-
     services = {
       enable = true;
-      coreServices = ["dbus"];
+      coreServices = [ "dbus" ];
       services = {
         "pipewire" = {
           run = "${builtins.readFile ./services/pipewire/run}";

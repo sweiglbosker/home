@@ -1,10 +1,15 @@
-{ config, lib, pkgs, inputs, ... }:
 {
-  imports = 
-    [
-      ../nixos
-      ./hardware-configuration.nix
-    ];
+  config,
+  lib,
+  pkgs,
+  inputs,
+  ...
+}:
+{
+  imports = [
+    ../nixos
+    ./hardware-configuration.nix
+  ];
 
   config.nixos = {
     username = "stefan";
@@ -16,10 +21,14 @@
     system.stateVersion = "24.11";
 
     hardware.graphics.enable = true;
-    boot.initrd.kernelModules = [ "nvidia" "nvidia_uvm" "nvidia_drm" ];
+    boot.initrd.kernelModules = [
+      "nvidia"
+      "nvidia_uvm"
+      "nvidia_drm"
+    ];
     boot.extraModulePackages = [ config.boot.kernelPackages.nvidia_x11 ];
     # boot.kernelParams = [];
-    services.xserver.videoDrivers = ["nvidia"];
+    services.xserver.videoDrivers = [ "nvidia" ];
     services.desktopManager.plasma6.enable = true;
     services.displayManager.sddm = {
       enable = false;

@@ -1,4 +1,9 @@
-{ config, lib, pkgs, ... }:
+{
+  config,
+  lib,
+  pkgs,
+  ...
+}:
 let
   cfg = config.modules.tofi;
   scheme = config.modules.scheme;
@@ -31,16 +36,16 @@ in
         "text-color" = scheme.base02;
         "placeholder-color" = scheme.base00;
 
-        "selection-background" = scheme.base00; #151515
+        "selection-background" = scheme.base00; # 151515
         "selection-color" = scheme.base05;
-        "selection-background-padding"= "0, -1";
+        "selection-background-padding" = "0, -1";
 
-        "text-cursor-style"="bar";
-        "text-cursor-color"=scheme.base05;
+        "text-cursor-style" = "bar";
+        "text-cursor-color" = scheme.base05;
 
-        "prompt-text"="\"\"";
+        "prompt-text" = "\"\"";
 
-        "background-color"=scheme.base00;
+        "background-color" = scheme.base00;
         num-results = 5;
 
         "outline-width" = 0;

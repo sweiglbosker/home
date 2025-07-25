@@ -1,4 +1,9 @@
-{ config, lib, pkgs, ... }:
+{
+  config,
+  lib,
+  pkgs,
+  ...
+}:
 let
   cfg = config.modules.fzf;
   scheme = config.modules.scheme;
@@ -44,7 +49,7 @@ in
       ];
       fileWidgetOptions = [
         "--preview 'bat --style=numbers --theme base16 --line-range :500 {}'"
-#        "--preview 'head{}'"
+        #        "--preview 'head{}'"
       ];
     };
   };

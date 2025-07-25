@@ -1,4 +1,11 @@
-{ self, config, lib, pkgs, nixgl, ... }:
+{
+  self,
+  config,
+  lib,
+  pkgs,
+  nixgl,
+  ...
+}:
 let
   cfg = config.modules.sway;
   scheme = config.modules.scheme;
@@ -8,23 +15,25 @@ in
     enable = lib.mkEnableOption "sway";
     wrapWithNixGL = lib.mkEnableOption "NixGL wrapper.";
     terminal = lib.mkOption {
-        type = lib.types.str;
-        description = "Terminal command.";
+      type = lib.types.str;
+      description = "Terminal command.";
     };
     startup = lib.mkOption {
-      type = lib.types.listOf (lib.types.submodule {
-        options = {
-          command = lib.mkOption {
-            type = lib.types.string;
-            description = "Command to be executed on startup.";
+      type = lib.types.listOf (
+        lib.types.submodule {
+          options = {
+            command = lib.mkOption {
+              type = lib.types.string;
+              description = "Command to be executed on startup.";
+            };
+            always = lib.mkOption {
+              type = lib.types.bool;
+              default = false;
+              description = "Whether to run command on each restart";
+            };
           };
-          always = lib.mkOption {
-            type = lib.types.bool;
-            default = false;
-            description = "Whether to run command on each restart";
-          };
-        };
-      });
+        }
+      );
       default = [ ];
       description = "List of commands that sway will run on startup. This should be used only for sway specific applications";
     };
@@ -43,7 +52,7 @@ in
       enable = true;
       systemd.enable = true;
       package = if cfg.wrapWithNixGL then (config.lib.nixGL.wrap pkgs.sway) else pkgs.sway;
-#      package = null;
+      #      package = null;
       config = rec {
         modifier = "Mod4";
 
@@ -53,16 +62,19 @@ in
         right = "i";
 
         fonts = {
-          names = [ "sans-serif" "monospace" ];
+          names = [
+            "sans-serif"
+            "monospace"
+          ];
           # style = "Bold";
           size = 10.0;
         };
 
         terminal = "${cfg.terminal}";
-     #   menu = ''wmenu-run -n 4c4c4c -N 0d0d0d -s 8aac8b -S 0d0d0d -l 10 -f "ComicShannsMono Nerd Font Mono 10"'';
+        #   menu = ''wmenu-run -n 4c4c4c -N 0d0d0d -s 8aac8b -S 0d0d0d -l 10 -f "ComicShannsMono Nerd Font Mono 10"'';
         # menu = "tofi-run | xargs swaymsg exec";
         menu = "fuzzel";
-    
+
         defaultWorkspace = "workspace number 1";
 
         input = {
@@ -105,7 +117,10 @@ in
 
         workspaceAutoBackAndForth = false;
         workspaceOutputAssign = [
-        { output = "HDMI-A-1"; workspace = "0"; }
+          {
+            output = "HDMI-A-1";
+            workspace = "0";
+          }
         ];
 
         colors = {
@@ -113,7 +128,7 @@ in
           focused = {
             border = scheme.base0D; # the border around the titlebar
             background = scheme.base0D;
-            childBorder = scheme.base0D; 
+            childBorder = scheme.base0D;
             text = scheme.base00; # TODO: light/dark
             indicator = scheme.base09;
           };
@@ -134,54 +149,56 @@ in
         };
 
         bars = [
-        # {
-        #   command = "waybar";
-        # }
-        {
-          statusCommand = "i3status";
-          # mode = "hide";
-          # hiddenState = "hide";
-          position = "top";
-          fonts = {
-            names = [ "sans-serif" "monospace" ];
-            size = "10.0";
-          };
-          extraConfig = ''
-            modifier ${modifier}
-            separator_symbol " "
-          '';
-          colors = {
-            background = scheme.base10; # "#0d0d0d";
-            statusline = scheme.base05;
-            focusedWorkspace = {
-              border = scheme.base10; # "#0d0d0d";
+          # {
+          #   command = "waybar";
+          # }
+          {
+            statusCommand = "i3status";
+            # mode = "hide";
+            # hiddenState = "hide";
+            position = "top";
+            fonts = {
+              names = [
+                "sans-serif"
+                "monospace"
+              ];
+              size = "10.0";
+            };
+            extraConfig = ''
+              modifier ${modifier}
+              separator_symbol " "
+            '';
+            colors = {
               background = scheme.base10; # "#0d0d0d";
-              text = scheme.base05;
+              statusline = scheme.base05;
+              focusedWorkspace = {
+                border = scheme.base10; # "#0d0d0d";
+                background = scheme.base10; # "#0d0d0d";
+                text = scheme.base05;
+              };
+              activeWorkspace = {
+                border = scheme.base10; # "#0d0d0d";
+                background = scheme.base10; # "#0d0d0d";
+                text = scheme.base01;
+              };
+              inactiveWorkspace = {
+                border = scheme.base10; # "#0d0d0d";
+                background = scheme.base00; # "#0d0d0d";
+                text = scheme.base01;
+              };
+              bindingMode = {
+                border = scheme.base00; # "#0d0d0d";
+                background = scheme.base00; # "#0d0d0d";
+                text = scheme.base0E;
+              };
             };
-            activeWorkspace = {
-              border = scheme.base10; # "#0d0d0d";
-              background = scheme.base10; # "#0d0d0d";
-              text = scheme.base01;
-            };
-            inactiveWorkspace = {
-              border = scheme.base10; # "#0d0d0d";
-              background = scheme.base00; # "#0d0d0d";
-              text = scheme.base01;
-            };
-            bindingMode = {
-              border = scheme.base00; # "#0d0d0d";
-              background = scheme.base00; # "#0d0d0d";
-              text = scheme.base0E;
-            };
-          };
-        }
+          }
         ];
 
         focus = {
           followMouse = false;
           wrapping = "force";
         };
-
 
         window = {
           border = 2;
@@ -223,7 +240,8 @@ in
           "${modifier}+Shift+c" = "kill";
 
           "${modifier}+Shift+r" = "reload";
-          "${modifier}+Shift+q" = "exec swaynag -t warning -m 'do you really want to exit?' -B 'yes, exit' 'swaymsg exit'";
+          "${modifier}+Shift+q" =
+            "exec swaynag -t warning -m 'do you really want to exit?' -B 'yes, exit' 'swaymsg exit'";
 
           "${modifier}+${left}" = "focus left";
           "${modifier}+${down}" = "focus down";
@@ -278,7 +296,8 @@ in
           # this can probably be simplified but im not a sed wizard
           "--locked XF86AudioRaiseVolume" = "exec pamixer -ui 2 && pamixer --get-volume > $WOBSOCK";
           "--locked XF86AudioLowerVolume" = "exec pamixer -ud 2 && pamixer --get-volume > $WOBSOCK";
-          "--locked XF86AudioMute" = ''exec pamixer --toggle-mute && ( [ "$(pamixer --get-mute)" = "true" ] && echo 0 > $WOBSOCK ) || pamixer --get-volume > $WOBSOCK'';
+          "--locked XF86AudioMute" =
+            ''exec pamixer --toggle-mute && ( [ "$(pamixer --get-mute)" = "true" ] && echo 0 > $WOBSOCK ) || pamixer --get-volume > $WOBSOCK'';
           "--locked XF86MonBrightnessUp" = "exec light -A 5 && light -G | cut -d'.' -f1 > $WOBSOCK";
           "--locked XF86MonBrightnessDown" = "exec light -U 5 && light -G | cut -d'.' -f1 > $WOBSOCK";
         };

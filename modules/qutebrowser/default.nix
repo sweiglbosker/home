@@ -1,4 +1,10 @@
-{ config, lib, pkgs, inputs, ... }:
+{
+  config,
+  lib,
+  pkgs,
+  inputs,
+  ...
+}:
 let
   cfg = config.modules.qutebrowser;
   scheme = config.modules.scheme;
@@ -40,7 +46,7 @@ in
         c.colors.downloads.start.fg = "${fg}"
         c.colors.downloads.stop.bg = "${bg2}"
         c.colors.downloads.stop.fg = "${fg}"
-        
+
         c.colors.hints.bg = "${scheme.base0D}"
         c.colors.hints.fg = "${bg}"
         c.colors.hints.match.fg = "${bg2}"

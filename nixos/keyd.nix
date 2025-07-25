@@ -1,4 +1,10 @@
-{ config, lib, inputs, pkgs, ...}:
+{
+  config,
+  lib,
+  inputs,
+  pkgs,
+  ...
+}:
 let
   cfg = config.nixos.keyd;
 in
@@ -74,8 +80,7 @@ in
               space = "_";
             };
           };
-          extraConfig = ''
-          '';
+          extraConfig = '''';
         };
       };
     };

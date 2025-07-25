@@ -1,10 +1,14 @@
-{ config, lib, pkgs, ... }:
 {
-  imports =
-    [
-      ../nixos
-      ./hardware-configuration.nix
-    ];
+  config,
+  lib,
+  pkgs,
+  ...
+}:
+{
+  imports = [
+    ../nixos
+    ./hardware-configuration.nix
+  ];
 
   config.nixos = {
     username = "stefan";
@@ -13,7 +17,10 @@
   };
 
   config = {
-    nix.settings.experimental-features = [ "nix-command" "flakes" ];
+    nix.settings.experimental-features = [
+      "nix-command"
+      "flakes"
+    ];
     services.openssh.enable = true;
 
     programs.light.enable = true;
@@ -37,7 +44,11 @@
       };
     };
 
-    users.users."stefan".extraGroups = [ "input" "uinput" "video" ]; # TODO: remove
+    users.users."stefan".extraGroups = [
+      "input"
+      "uinput"
+      "video"
+    ]; # TODO: remove
 
     environment.gnome.excludePackages = with pkgs; [
       gnome-photos
@@ -67,16 +78,16 @@
 
     # Enable automatic login for the user.
     # services.getty.autologinUser = "stefan";
-    
+
     # services.interception-tools = {
-      # enable = true;
-      # plugins = [ pkgs.interception ]
-      # udevmonConfig = ''
-      #    - JOB: "${pkgs.interception-tools}/bin/intercept -g $DEVNODE | ${pkgs.interception-tools-plugins.caps2esc}/bin/caps2esc | ${pkgs.interception-tools}/bin/uinput -d $DEVNODE"
-      #      DEVICE:
-      #        EVENTS:
-      #          EV_KEY: [KEY_CAPSLOCK, KEY_ESC]
-      # '';
+    # enable = true;
+    # plugins = [ pkgs.interception ]
+    # udevmonConfig = ''
+    #    - JOB: "${pkgs.interception-tools}/bin/intercept -g $DEVNODE | ${pkgs.interception-tools-plugins.caps2esc}/bin/caps2esc | ${pkgs.interception-tools}/bin/uinput -d $DEVNODE"
+    #      DEVICE:
+    #        EVENTS:
+    #          EV_KEY: [KEY_CAPSLOCK, KEY_ESC]
+    # '';
     # };
     services.fwupd.enable = true;
     # systemd.services.fprintd = {

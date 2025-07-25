@@ -1,8 +1,18 @@
-{ config, lib, pkgs, ... }:
+{
+  config,
+  lib,
+  pkgs,
+  ...
+}:
 let
   cfg = config.modules.gpg;
 
-  inherit (lib) mkEnableOption mkOption mkIf types;
+  inherit (lib)
+    mkEnableOption
+    mkOption
+    mkIf
+    types
+    ;
 in
 {
   options.modules.gpg = {
@@ -16,7 +26,7 @@ in
 
     programs.gpg = {
       scdaemonSettings = {
-        disable-ccid = true; 
+        disable-ccid = true;
       };
       settings = {
         no-comments = true;
@@ -51,7 +61,10 @@ in
       noAllowExternalCache = true;
       pinentryPackage = pkgs.pinentry-qt;
 
-      sshKeys = [ "36663E191B00E51513F90FA5CF2BCE8461C297CD" "97D70F96084527401BBA8AB714165B7413D13345" ];
+      sshKeys = [
+        "36663E191B00E51513F90FA5CF2BCE8461C297CD"
+        "97D70F96084527401BBA8AB714165B7413D13345"
+      ];
     };
   };
 }

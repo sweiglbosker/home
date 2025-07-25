@@ -1,4 +1,9 @@
-{ config, lib, pkgs, ...}:
+{
+  config,
+  lib,
+  pkgs,
+  ...
+}:
 let
   cfg = config.modules.neovim;
   scheme = config.modules.scheme;
@@ -6,49 +11,52 @@ let
     # if we don't symlink, startuptime grows by an order of magnitude because of long runtimepath
     name = "tsparsers";
     # paths = (pkgs.vimPlugins.nvim-treesitter.withAllGrammars).dependencies;
-    paths = (pkgs.vimPlugins.nvim-treesitter.withPlugins (p: with p; [
-      tree-sitter-nix
-      tree-sitter-nu
-      tree-sitter-go
-      tree-sitter-rst
-      tree-sitter-lua
-      tree-sitter-css
-      tree-sitter-yaml
-      tree-sitter-toml
-      tree-sitter-scss
-      tree-sitter-json
-      tree-sitter-html
-      tree-sitter-fish
-      tree-sitter-bash
-      tree-sitter-query
-      tree-sitter-ocaml
-      tree-sitter-ocaml-interface
-      tree-sitter-latex
-      tree-sitter-python
-      tree-sitter-bibtex
-      tree-sitter-verilog
-      tree-sitter-comment
-      tree-sitter-dockerfile
-      tree-sitter-make
-      tree-sitter-cmake
-      tree-sitter-verilog
-      tree-sitter-scheme
-      tree-sitter-llvm
-      tree-sitter-html
-      tree-sitter-glsl
-      tree-sitter-devicetree
-      tree-sitter-cuda
-      tree-sitter-c
-      tree-sitter-cpp
-      tree-sitter-lua
-      tree-sitter-zig
-      tree-sitter-rust
-      tree-sitter-haskell
-      tree-sitter-toml
-      tree-sitter-markdown
-      tree-sitter-markdown-inline
-      tree-sitter-tablegen
-    ])).dependencies;
+    paths =
+      (pkgs.vimPlugins.nvim-treesitter.withPlugins (
+        p: with p; [
+          tree-sitter-nix
+          tree-sitter-nu
+          tree-sitter-go
+          tree-sitter-rst
+          tree-sitter-lua
+          tree-sitter-css
+          tree-sitter-yaml
+          tree-sitter-toml
+          tree-sitter-scss
+          tree-sitter-json
+          tree-sitter-html
+          tree-sitter-fish
+          tree-sitter-bash
+          tree-sitter-query
+          tree-sitter-ocaml
+          tree-sitter-ocaml-interface
+          tree-sitter-latex
+          tree-sitter-python
+          tree-sitter-bibtex
+          tree-sitter-verilog
+          tree-sitter-comment
+          tree-sitter-dockerfile
+          tree-sitter-make
+          tree-sitter-cmake
+          tree-sitter-verilog
+          tree-sitter-scheme
+          tree-sitter-llvm
+          tree-sitter-html
+          tree-sitter-glsl
+          tree-sitter-devicetree
+          tree-sitter-cuda
+          tree-sitter-c
+          tree-sitter-cpp
+          tree-sitter-lua
+          tree-sitter-zig
+          tree-sitter-rust
+          tree-sitter-haskell
+          tree-sitter-toml
+          tree-sitter-markdown
+          tree-sitter-markdown-inline
+          tree-sitter-tablegen
+        ]
+      )).dependencies;
   };
 in
 {
@@ -110,15 +118,15 @@ in
           plugin = nvim-highlight-colors;
           type = "lua";
           config =
-          # lua
-          ''
-            require("nvim-highlight-colors").setup {
-              render = 'virtual',
-              virtual_symbol_position = 'eow',
-              virtual_symbol_prefix = " ",
-              virtual_symbol_suffix = "",
-            }
-          '';
+            # lua
+            ''
+              require("nvim-highlight-colors").setup {
+                render = 'virtual',
+                virtual_symbol_position = 'eow',
+                virtual_symbol_prefix = " ",
+                virtual_symbol_suffix = "",
+              }
+            '';
         }
 
         {
@@ -126,16 +134,16 @@ in
           optional = true;
           type = "lua";
           config =
-          # lua
-          ''
-            require("lz.n").load({
-              "lean",
-              ft = "lean",
-              after = function()
-                require('lean').setup({ mappings = true })
-              end,
-            })
-          '';
+            # lua
+            ''
+              require("lz.n").load({
+                "lean",
+                ft = "lean",
+                after = function()
+                  require('lean').setup({ mappings = true })
+                end,
+              })
+            '';
         }
 
         tmux-nvim
@@ -145,18 +153,18 @@ in
           plugin = telescope-nvim;
           optional = true;
           type = "lua";
-          config = 
-          # lua
-          ''
-            require("lz.n").load({
-              "telescope.nvim",
-              cmd = "Telescope",
-              after = function()
-                require('telescope').setup({})
-                require('telescope').load_extension('fzf')
-              end,
-            })
-          '';
+          config =
+            # lua
+            ''
+              require("lz.n").load({
+                "telescope.nvim",
+                cmd = "Telescope",
+                after = function()
+                  require('telescope').setup({})
+                  require('telescope').load_extension('fzf')
+                end,
+              })
+            '';
         }
         telescope-fzf-native-nvim
 
@@ -168,59 +176,58 @@ in
           plugin = mini-pairs;
           type = "lua";
           config =
-          # lua
-          ''
-          require("mini.pairs").setup()
-          '';
+            # lua
+            ''
+              require("mini.pairs").setup()
+            '';
         }
         {
           plugin = mini-surround;
           type = "lua";
           config =
-          # lua
-          ''
-          require("mini.surround").setup({ silent = true })
-          '';
+            # lua
+            ''
+              require("mini.surround").setup({ silent = true })
+            '';
         }
         {
           plugin = mini-trailspace;
           type = "lua";
           config =
-          # lua
-          ''
-          require("mini.trailspace").setup()
-          '';
+            # lua
+            ''
+              require("mini.trailspace").setup()
+            '';
         }
         {
           plugin = mini-splitjoin;
           type = "lua";
-          config = 
-          # lua 
-          ''
-          require("mini.splitjoin").setup({
-            mappings = { toggle = "", split = "", join = "" },
-          })
-          '';
+          config =
+            # lua
+            ''
+              require("mini.splitjoin").setup({
+                mappings = { toggle = "", split = "", join = "" },
+              })
+            '';
         }
         {
           plugin = treesj;
           type = "lua";
           config =
-          # lua
-          ''
-          require("treesj").setup({ use_default_keymaps = false, notify = false})
-          --require("lz.n").load({
-          --     "treesj",
-          --     cmd = {'TSJSplit', 'TSJToggle', 'TSJJoin'},
-          --     after = function()
-          --       require("treesj").setup(use_default_keymaps = false)
-          --     end,
-          -- })
-          '';
+            # lua
+            ''
+              require("treesj").setup({ use_default_keymaps = false, notify = false})
+              --require("lz.n").load({
+              --     "treesj",
+              --     cmd = {'TSJSplit', 'TSJToggle', 'TSJJoin'},
+              --     after = function()
+              --       require("treesj").setup(use_default_keymaps = false)
+              --     end,
+              -- })
+            '';
         }
       ];
-      extraLuaConfig = 
-      ''
+      extraLuaConfig = ''
         ${builtins.readFile ./nvim/init.lua}
         vim.cmd[[colorscheme ${scheme.name}]]
         vim.opt.runtimepath:prepend('${tsparsers}')
