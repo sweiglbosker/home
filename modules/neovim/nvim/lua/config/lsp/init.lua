@@ -1,19 +1,29 @@
 vim.opt.cot = "menu,menuone,noinsert"
 vim.opt.pumblend=5
 
+
 local methods = vim.lsp.protocol.Methods
 local map = vim.keymap.set
 
-vim.lsp.config = {
-  ['clangd'] = require("config.lsp.clangd"),
-  ['zls'] = require("config.lsp.zls"),
-  ['lua_ls'] = require("config.lsp.lua_ls"),
-}
 require("config.lsp.conform")
+-- vim.lsp.config = {
+--   ['clangd'] = require("config.lsp.clangd"),
+--   ['zls'] = require("config.lsp.zls"),
+-- }
 
 local servers = {
   clangd = {},
   zls = {},
+  basedpyright = {},
+  ruff = {},
+  -- lua_ls = {},
+  nixd = {
+    nixd = {
+      formatting = {
+        command = { "nixfmt" },
+      },
+    },
+  },
 -- rust_analyzer = {}
 }
 
@@ -42,18 +52,21 @@ end
 
 vim.api.nvim_create_autocmd("LspAttach", { callback = function(args)
   local client = vim.lsp.get_client_by_id(args.data.client_id)
+  if client == nil then
+    return
+  end
 
   client.server_capabilities.semanticTokensProvider = nil
 
   vim.keymap.set('n', 'grr', function()
-    vim.lsp.buf.references() 
-  end, { desc = "Code references (LSP)" }) 
+    vim.lsp.buf.references()
+  end, { desc = "Code references (LSP)" })
 
-  vim.keymap.set('n', 'gca', '<cmd>FzfLua lsp_code_actions<CR>', { desc = "Code actions (LSP)" }) 
+  vim.keymap.set('n', 'gca', '<cmd>FzfLua lsp_code_actions<CR>', { desc = "Code actions (LSP)" })
 
   vim.keymap.set('n', 'gd', function()
-    vim.lsp.buf.definition() 
-  end, { desc = "Goto definition (LSP)" }) 
+    vim.lsp.buf.definition()
+  end, { desc = "Goto definition (LSP)" })
 
   if client:supports_method(methods.textDocument_completion) then
     vim.lsp.completion.enable(true, client.id, args.buf, { autotrigger = false })
@@ -75,6 +88,10 @@ vim.api.nvim_create_autocmd("LspAttach", { callback = function(args)
   -- if client:supports_method(methods.textDocument_semanticTokens) then
   -- end
 
+  -- use pyright hover instead of ruff
+  if client.name == 'ruff' then
+    client.server_capabilities.hoverProvider = false
+  end
 
   vim.keymap.set('n', 'E', '<cmd>lua vim.lsp.buf.hover()<CR>', { silent = true })
   -- if client:supports_method(methods.textDocument_inlayHint) then
@@ -91,16 +108,17 @@ vim.api.nvim_create_autocmd("LspAttach", { callback = function(args)
   -- end
 end})
 
--- local lspconfig = require('lspconfig')
+lspconfig = require('lspconfig')
 
--- for server, config in pairs(servers) do
+for server, config in pairs(servers) do
 -- --  config.capabilities = require('blink.cmp').get_lsp_capabilities(config.capabilities)
 --   -- vim.lsp.config[server].settings = config
 --   -- vim.lsp.config[server] = config
 --   -- vim.lsp.enable(server)
 --   -- lspconfig.rust_analyzer.setup({})
--- --  lspconfig[server].setup({})
--- end
+ lspconfig[server].setup(config)
+end
 
 -- vim.lsp.enable({'lua_ls', 'zls', 'clangd'})
-vim.lsp.enable({'zls', 'clangd'})
+vim.lsp.enable({'zls', 'clangd', 'lua_ls'})
+
