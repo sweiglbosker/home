@@ -21,6 +21,10 @@ in
       ;
     };
 
+    programs.yubikey-touch-detector = {
+      enable = true;
+      libnotify = true;
+    };
     # for gpg and ssh
     services.pcscd.enable = true; # https://ludovicrousseau.blogspot.com/2019/06/gnupg-and-pcsc-conflicts.html
     services.udev.packages = [ pkgs.yubikey-personalization ];
