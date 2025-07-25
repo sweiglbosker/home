@@ -216,6 +216,36 @@ in
         "f0f0f0"
       ];
     };
+    programs.nix-ld = {
+      enable = true;
+      libraries = with pkgs; [
+        zlib
+        zstd
+        stdenv.cc.cc
+        curl
+        openssl
+        attr
+        libssh
+        bzip2
+        libxml2
+        acl
+        libsodium
+        util-linux
+        xz
+        systemd
+        pipewire
+        libelf
+        glib
+        gtk2
+        libusb1
+        flac
+        dbus
+        cairo
+        fontconfig
+        freetype
+        stdenv.cc.cc.lib
+      ];
+    };
 
     services.printing.enable = true;
     services.printing.drivers = [ pkgs.gutenprint pkgs.brlaser pkgs.brgenml1lpr pkgs.brgenml1cupswrapper ];
