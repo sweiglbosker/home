@@ -57,6 +57,17 @@ in
   };
 
   config = lib.mkIf cfg.enable {
+    home.packages = with pkgs; [
+      basedpyright
+      clang-tools
+      ruff
+      nixfmt-rfc-style
+      stylua
+      black
+      isort
+      nixd
+      lua-language-server
+    ];
     xdg.configFile."nvim/lua" = {
       source = ./nvim/lua;
       recursive = true;
@@ -81,7 +92,16 @@ in
 
         # preconfigured treesitter parsers
         nvim-treesitter
+        nvim-lspconfig
         tsparsers
+        {
+          plugin = lazydev-nvim;
+          type = "lua";
+          config = # lua
+          ''
+          require("lazydev").setup{}
+          '';
+        }
 
         # colorschemes. TODO: delete
         base16-nvim
