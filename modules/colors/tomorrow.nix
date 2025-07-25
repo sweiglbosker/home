@@ -1,4 +1,9 @@
-{ config, lib, pkgs, ... }:
+{
+  config,
+  lib,
+  pkgs,
+  ...
+}:
 let
   cfg = config.modules.colors.tomorrow;
   hexColorRegex = ''#([0-9a-fA-F]{3}){1,2}'';
