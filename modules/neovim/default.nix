@@ -140,6 +140,8 @@ in
         }
         telescope-fzf-native-nvim
 
+        conform-nvim
+
         # textobjects
         mini-ai
         {

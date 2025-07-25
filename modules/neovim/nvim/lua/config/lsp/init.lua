@@ -9,6 +9,7 @@ vim.lsp.config = {
   ['zls'] = require("config.lsp.zls"),
   ['lua_ls'] = require("config.lsp.lua_ls"),
 }
+require("config.lsp.conform")
 
 local servers = {
   clangd = {},
