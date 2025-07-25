@@ -9,8 +9,8 @@ if [[ $1 == "--type" ]]; then
 fi
 
 if [[ -n $WAYLAND_DISPLAY ]]; then
-	dmenu=wmenu
-        dmenu="wmenu -n 4c4c4c -N 0d0d0d -s 8aac8b -S 0d0d0d -l 10"
+  # dmenu="wmenu -n 4c4c4c -N 0d0d0d -s 8aac8b -S 0d0d0d -l 10"
+  dmenu="fuzzel --dmenu --layer=overlay"
 	xdotool="ydotool type --file -"
 elif [[ -n $DISPLAY ]]; then
 	dmenu=wmenu
