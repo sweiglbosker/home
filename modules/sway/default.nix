@@ -46,6 +46,7 @@ in
       '')
       autotiling
       pamixer
+      killall
     ];
     wayland.windowManager.sway = lib.mkIf cfg.enable {
       checkConfig = false;
@@ -153,13 +154,13 @@ in
           #   command = "waybar";
           # }
           {
-            statusCommand = "i3status";
+            statusCommand = "py3status --wm sway";
             # mode = "hide";
             # hiddenState = "hide";
             position = "top";
             fonts = {
               names = [
-                "sans-serif"
+#                "sans-serif"
                 "monospace"
               ];
               size = "10.0";
@@ -294,10 +295,10 @@ in
 
           "${modifier}+Shift+f" = "fullscreen";
           # this can probably be simplified but im not a sed wizard
-          "--locked XF86AudioRaiseVolume" = "exec pamixer -ui 2 && pamixer --get-volume > $WOBSOCK";
-          "--locked XF86AudioLowerVolume" = "exec pamixer -ud 2 && pamixer --get-volume > $WOBSOCK";
+          "--locked XF86AudioRaiseVolume" = "exec pamixer -ui 2 && pamixer --get-volume > $WOBSOCK && killall -s USR1 -r py3status";
+          "--locked XF86AudioLowerVolume" = "exec pamixer -ud 2 && pamixer --get-volume > $WOBSOCK && killall -s USR1 -r py3status";
           "--locked XF86AudioMute" =
-            ''exec pamixer --toggle-mute && ( [ "$(pamixer --get-mute)" = "true" ] && echo 0 > $WOBSOCK ) || pamixer --get-volume > $WOBSOCK'';
+            ''exec pamixer --toggle-mute && ( [ "$(pamixer --get-mute)" = "true" ] && echo 0 > $WOBSOCK ) || pamixer --get-volume > $WOBSOCK && killall -s USR1 -r py3status'';
           "--locked XF86MonBrightnessUp" = "exec light -A 5 && light -G | cut -d'.' -f1 > $WOBSOCK";
           "--locked XF86MonBrightnessDown" = "exec light -U 5 && light -G | cut -d'.' -f1 > $WOBSOCK";
         };
