@@ -34,11 +34,11 @@ in
         cursor = {
           style = "block";
           blink = "no";
-          color = "0f0f0f cacaca";
         };
 
         colors = {
           # alpha=0.7;
+          cursor = (fmt scheme.base00) + " " + (fmt scheme.base05);
           foreground = fmt scheme.base05;
           background = fmt scheme.base00;
           regular0 = fmt scheme.base01;
