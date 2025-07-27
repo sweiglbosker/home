@@ -26,7 +26,7 @@ in
     wmenu = mkOption {
       type = types.str;
       description = "dmenu command to use for passmenu in a wayland session";
-      default = "wmenu -n 4c4c4c -N 0d0d0d -s 8aac8b -S 0d0d0d -l 10";
+      default = "fuzzel --dmenu --layer=overlay";
     };
     xmenu = mkOption {
       type = types.str;
