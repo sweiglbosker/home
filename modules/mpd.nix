@@ -14,6 +14,9 @@ in
   };
 
   config = lib.mkIf cfg.enable {
+    home.packages = [
+      pkgs.mpdscribble
+    ];
     services.mpd = {
       enable = true;
       extraConfig = ''
@@ -25,6 +28,5 @@ in
       musicDirectory = "~/music";
     };
     services.mpd-discord-rpc.enable = true;
-    services.mpdscribble.enable = true;
   };
 }
