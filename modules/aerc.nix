@@ -32,7 +32,7 @@ in
           "\\[t" = ":prev-tab<Enter>";
           "\\]t" = ":next-tab<Enter>";
           "<C-t>" = ":term<Enter>";
-          "?" = ":help keys<Enter>";
+          "<C-?>" = ":help keys<Enter>";
           "<C-c>" = ":prompt 'Quit?' quit<Enter>";
           "<C-q>" = ":prompt 'Quit?' quit<Enter>";
           "<C-z>" = ":suspend<Enter>";
@@ -123,15 +123,13 @@ in
           "$noinherit" = "true";
           "$ex" = "<C-x>";
           "$complete" = "<C-o>";
-          "n" = ":next<Enter>";
-          "e" = ":prev<Enter>";
+          "<C-n>" = ":next-field<Enter>";
+          "<C-e>" = ":prev-field<Enter>";
           "<C-Left>" = ":switch-account -p<Enter>";
           "<C-Right>" = ":switch-account -n<Enter>";
           "<tab>" = ":next-field<Enter>";
           "<backtab>" = ":prev-field<Enter>";
-          "<C-p>" = ":prev-tab<Enter>";
           "<C-PgUp>" = ":prev-tab<Enter>";
-          "<C-n>" = ":next-tab<Enter>";
           "<C-PgDn>" = ":next-tab<Enter>";
         };
         "compose::review" = {
