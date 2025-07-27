@@ -6,6 +6,14 @@ vim.api.nvim_create_autocmd("ColorScheme", { callback = function(args)
   vim.api.nvim_set_hl(0, 'LineNr', { fg = colors.base02 })
   vim.api.nvim_set_hl(0, 'LineNrAbove', { fg = colors.base02 })
   vim.api.nvim_set_hl(0, 'LineNrBelow', { fg = colors.base02 })
+  vim.api.nvim_set_hl(0, 'TSVariable', { fg = colors.base05 })
+  vim.api.nvim_set_hl(0, 'Identifier', { fg = colors.base05 })
+  vim.api.nvim_set_hl(0, 'Operator', { fg = colors.base08 })
+  vim.api.nvim_set_hl(0, 'TSOperator', { fg = colors.base08 })
+  vim.api.nvim_set_hl(0, 'TSCharacter', { fg = colors.base0b })
+  vim.api.nvim_set_hl(0, 'TSOperator', { fg = colors.base08 })
+  vim.api.nvim_set_hl(0, 'TSLabel', { fg = colors.base0C })
+  vim.api.nvim_set_hl(0, 'Label', { fg = colors.base0C })
   vim.cmd[[
      hi TabLineFill guibg=bg
      hi TabLineSel guibg=bg guifg=fg
