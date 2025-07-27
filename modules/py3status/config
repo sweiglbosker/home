@@ -1,0 +1,94 @@
+py3status {
+  separator = False
+}
+general {
+  color_bad = "#ac8a8c"
+  color_degraded = "#aca98a"
+  color_good = "#cacaca"
+  color_orange = "#ceb188"
+  colors = false
+  interval = 60
+  separator = " "
+}
+
+order += "bluetooth airpods"
+order += "bluetooth headphones"
+order += "volume_status"
+#order += "wireless _first_"
+order += "networkmanager"
+order += "battery_level"
+order += "tztime local"
+
+battery all {
+  format = "bat %percentage"
+  format_percentage = "%.00f%s"
+  status_bat = "󰁹"
+  status_chr = "󱐋"
+  status_idle = "󱐋"
+}
+
+nvidia_smi {
+  on_error = "hide"
+}
+xrandr {
+  on_error = "hide"
+}
+
+tztime local {
+#  format = "%a, %b %e %I:%M %p"
+  format = "%I:%M %P"
+}
+
+nvidia-smi {
+  
+}
+battery_level {
+  blocks = "󰁺󰁻󰁼󰁽󰁾󰁿󰂀󰂁󰂂󰁹"
+  charging_character = "󰂄"
+  format = "{icon}"
+}
+
+volume_status {
+  format = "{icon}"
+  format_muted = "󰖁"
+  blocks = "󰕿󰖀󰕾"
+}
+
+# generic for all devices
+bluetooth {
+  format_device = "\?if=paired [\?if=icon=audio-headphones [\?if=connected 󱡏|󱡐]|[\?if=icon=audio-headset [\?if=connected 󰋎|󰋐]|[\?if=connected 󰂯|󰂲]]]"
+}
+
+bluetooth airpods {
+  # bluetoothctl set-alias "airpods"
+  format_device = "\?if=paired [\?if=alias=airpods [\?if=connected 󱡏|󱡐]]"
+  on_click 1 = "exec bluetoothctl connect \"$(bluetoothctl devices | grep airpods | sed -E 's/Device ([^ ]+).*$/\1/g')\" && pkill -10 py3status"
+  on_click 3 = "exec bluetoothctl disconnect \"$(bluetoothctl devices | grep airpods | sed -E 's/Device ([^ ]+).*$/\1/g')\" && pkill -10 py3status"
+}
+
+bluetooth headphones {
+  # bluetoothctl set-alias "headphones"
+  format_device = "\?if=paired [\?if=alias=headphones [\?if=connected 󰋋|󰟎]]"
+  on_click 1 = "exec bluetoothctl connect \"$(bluetoothctl devices | grep headphones | sed -E 's/Device ([^ ]+).*$/\1/g')\" && pkill -10 py3status"
+  on_click 3 = "exec bluetoothctl disconnect \"$(bluetoothctl devices | grep headphones | sed -E 's/Device ([^ ]+).*$/\1/g')\" && pkill -10 py3status"
+}
+
+volume master {
+  device = "default"
+  format = "vol %volume"
+  format_muted = "vol 0"
+}
+
+networkmanager {
+  format_device = "\?if=general_type=wifi [\?if=general_connection 󰤢|󰤮]|[\?if=general_connection 󰈁|󰈂]"
+}
+
+#wifi {
+#  blocks = "󰤯󰤟󰤢󰤥󰤨" 
+#}
+
+wireless _first_ {
+  format_down = "󰖪"
+  format_up = ""
+}
+
