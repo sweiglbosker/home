@@ -106,12 +106,17 @@ in
       gtk4.extraConfig.gtk-application-prefer-dark-theme = if scheme.light then 0 else 1;
       theme = {
         name = "${if scheme.light then "Adwaita" else "Adwaita-dark"}";
-        # package = pkgs.gnome.gnome-themes-extra;
+        package = pkgs.gnome-themes-extra;
+      };
+      iconTheme = {
+        name = "Adwaita-dark";
+        package = pkgs.adwaita-icon-theme;
       };
     };
 
     qt = {
-      platformTheme.name = "gnome";
+      enable = true;
+      platformTheme.name = "adwaita";
       style = {
         package = pkgs.adwaita-qt;
         name = "${if scheme.light then "adwaita" else "adwaita-dark"}";
