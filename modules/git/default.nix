@@ -60,6 +60,7 @@ in
       ];
       signing = {
         signByDefault = true;
+        # key = "7783298ECC2A778EAC7EF1C8C430A3B6C37610D1";
       };
       extraConfig = {
         init.defaultBranch = "main";

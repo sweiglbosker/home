@@ -1,3 +1,4 @@
+# ykman openpgp set-touch {sig,enc,aut}
 {
   config,
   lib,

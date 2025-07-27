@@ -30,7 +30,6 @@
         defaultSession = "sway";
         gdm.enable = true;
       };
-      # desktopManager.gnome.enable = true;
     };
 
     services.kmonad = {

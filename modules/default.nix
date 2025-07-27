@@ -28,6 +28,7 @@
     ./zoxide.nix
     ./firefox.nix
     ./mpd.nix
-    ./rmpc.nix
+    ./rmpc
+    ./py3status
   ];
 }
