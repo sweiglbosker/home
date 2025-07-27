@@ -33,7 +33,8 @@ in
           border_size = 1;
           border_offset = 0;
           overflow_mode = "nowrap";
-          anchor = "top right";
+          # anchor = "top right";
+          anchor = "top center";
           height = 25;
         };
       };
