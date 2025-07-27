@@ -24,6 +24,9 @@ local servers = {
       },
     },
   },
+  qmlls = {
+    cmd = {"qmlls", "-E"}
+  },
 -- rust_analyzer = {}
 }
 

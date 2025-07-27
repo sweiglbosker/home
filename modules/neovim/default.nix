@@ -75,6 +75,7 @@ in
       isort
       nixd
       lua-language-server
+      kdePackages.qtdeclarative
     ];
     xdg.configFile."nvim/lua" = {
       source = ./nvim/lua;
@@ -98,10 +99,13 @@ in
         # lazy loading
         lz-n
 
-        # preconfigured treesitter parsers
         nvim-treesitter
-        nvim-lspconfig
         tsparsers
+        # for some reason this is in a different package set?
+        nvim-treesitter-parsers.qmljs
+
+        nvim-lspconfig
+
         {
           plugin = lazydev-nvim;
           type = "lua";
