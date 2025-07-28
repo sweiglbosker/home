@@ -184,12 +184,12 @@ in
               };
               inactiveWorkspace = {
                 border = scheme.base10; # "#0d0d0d";
-                background = scheme.base00; # "#0d0d0d";
+                background = scheme.base10; # "#0d0d0d";
                 text = scheme.base01;
               };
               bindingMode = {
                 border = scheme.base00; # "#0d0d0d";
-                background = scheme.base00; # "#0d0d0d";
+                background = scheme.base10; # "#0d0d0d";
                 text = scheme.base0E;
               };
             };
