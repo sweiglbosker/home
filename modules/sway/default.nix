@@ -154,7 +154,7 @@ in
           #   command = "waybar";
           # }
           {
-            statusCommand = "py3status --wm sway";
+            statusCommand = "py3status";
             # mode = "hide";
             # hiddenState = "hide";
             position = "top";
