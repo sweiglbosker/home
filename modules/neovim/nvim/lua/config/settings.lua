@@ -8,7 +8,6 @@ vim.o.relativenumber = true
 vim.o.splitright = true
 vim.o.splitbelow = true
 vim.o.scrolloff = 999
-vim.o.sidescrolloff = 999
 vim.o.wrap = false
 vim.o.linebreak = true
 vim.o.shortmess = "tToOFIsWcCi"
