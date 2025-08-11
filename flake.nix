@@ -19,6 +19,10 @@
     nixos-hardware = {
       url = "github:NixOS/nixos-hardware/master";
     };
+    ida-pro-overlay = {
+      url = "github:msanft/ida-pro-overlay";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
   };
 
   outputs =
@@ -36,6 +40,7 @@
       overlays = [
         inputs.nixgl.overlays.default
         inputs.neovim-nightly.overlays.default
+        inputs.ida-pro-overlay.overlays.default
       ];
       pkgs = import nixpkgs {
         config.allowUnfree = true;

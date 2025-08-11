@@ -33,7 +33,7 @@
         pfetch
         nicotine-plus
         mpc
-        ncmpcpp
+        # ncmpcpp
       ];
     };
 

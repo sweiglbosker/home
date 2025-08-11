@@ -9,6 +9,7 @@ let
   cfg = config.modules.global;
   berkeley-mono = pkgs.callPackage ../packages/berkeley-mono.nix { inherit pkgs; };
   binaryninja = pkgs.callPackage ../packages/binaryninja.nix { inherit pkgs; };
+  ida = pkgs.callPackage ../packages/ida.nix { inherit pkgs; };
   scheme = config.modules.scheme;
 in
 {
@@ -116,10 +117,10 @@ in
 
     qt = {
       enable = true;
-      platformTheme.name = "adwaita";
+      platformTheme.name = "Adwaita";
       style = {
         package = pkgs.adwaita-qt;
-        name = "${if scheme.light then "adwaita" else "adwaita-dark"}";
+        name = "${if scheme.light then "Adwaita" else "Adwaita-Dark"}";
       };
     };
 
@@ -147,6 +148,7 @@ in
           dmenu
           berkeley-mono
           binaryninja
+          ida
           tamzen
           roboto
           roboto-serif
@@ -158,6 +160,9 @@ in
           noto-fonts-cjk-serif
           noto-fonts-emoji
           material-icons
+          # (callPackage ida-pro {
+          #   runfile = /nix/store/s9gq70w56355yrg33054g97zscr3r64i-ida-pro_91_x64linux.run;
+          # })
         ]
         ++ (builtins.filter lib.attrsets.isDerivation (builtins.attrValues pkgs.nerd-fonts))
         ++ (lib.optional cfg.notNixOS nixgl.auto.nixGLDefault)
