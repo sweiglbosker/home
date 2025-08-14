@@ -27,6 +27,6 @@ in
       '';
       musicDirectory = "~/music";
     };
-    services.mpd-discord-rpc.enable = true;
+    # services.mpd-discord-rpc.enable = true;
   };
 }
