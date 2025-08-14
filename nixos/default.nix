@@ -23,11 +23,11 @@ in
       default = "nixos";
     };
 
-    # timezone = mkOption {
-    #   type = lib.types.str;
-    #   description = "Fallback timezone if location cannot be determined";
-    #   default = "America/New_York";
-    # };
+    timezone = mkOption {
+      type = lib.types.str;
+      description = "Fallback timezone if location cannot be determined";
+      default = "America/New_York";
+    };
 
     username = mkOption {
       type = lib.types.str;
@@ -59,7 +59,7 @@ in
     };
 
     # time.timeZone = lib.mkDefault cfg.timezone;
-    services.automatic-timezoned.enable = true;
+    # services.automatic-timezoned.enable = true;
 
     nixpkgs.config.allowUnfree = true;
 
