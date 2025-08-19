@@ -17,6 +17,7 @@
     ./zsh
     ./sway
     ./neovim
+    ./obs-studio.nix
     ./qutebrowser
     ./services
     ./email

@@ -52,6 +52,7 @@
       enable = true;
     };
 
+    obs-studio.enable = true;
     mako.enable = true;
     neovide.enable = true;
     zsh.enable = true;
