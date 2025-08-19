@@ -15,6 +15,7 @@
     username = "stefan";
     hostname = "form";
     wifi = true;
+    keyd.enable = false;
   };
 
   config = {
@@ -30,10 +31,9 @@
     # boot.kernelParams = [];
     services.xserver.videoDrivers = [ "nvidia" ];
     services.desktopManager.plasma6.enable = true;
-    services.displayManager.sddm = {
-      enable = false;
-    };
-    services.xserver.enable = true;
+    # services.displayManager.sddm = {
+    #   enable = false;
+    # };
     console.earlySetup = true;
     hardware.nvidia = {
       modesetting.enable = true;
@@ -45,6 +45,13 @@
       vaapiVdpau
     ];
 
+    services.xserver = {
+      enable = true;
+      displayManager = {
+        defaultSession = "sway";
+        gdm.enable = true;
+      };
+    };
     virtualisation.docker = {
       enable = true;
       rootless = {
