@@ -43,9 +43,12 @@
       terminal = "foot";
     };
 
-    i3status = {
+    # i3status = {
+    #   enable = true;
+    #   wireless = true;
+    # };
+    py3status = {
       enable = true;
-      wireless = true;
     };
 
     qutebrowser = {
