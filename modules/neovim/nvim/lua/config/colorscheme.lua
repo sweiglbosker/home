@@ -15,6 +15,8 @@ vim.api.nvim_create_autocmd("ColorScheme", { callback = function(args)
   vim.api.nvim_set_hl(0, 'TSLabel', { fg = colors.base0C })
   vim.api.nvim_set_hl(0, 'Label', { fg = colors.base0C })
   vim.cmd[[
+     hi Normal guibg=NONE
+     hi NormalNC guibg=NONE
      hi TabLineFill guibg=bg
      hi TabLineSel guibg=bg guifg=fg
      hi TabLine guibg=bg
