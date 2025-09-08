@@ -58,7 +58,7 @@ in
       ];
     };
 
-    # time.timeZone = lib.mkDefault cfg.timezone;
+    time.timeZone = lib.mkDefault cfg.timezone;
     # services.automatic-timezoned.enable = true;
 
     nixpkgs.config.allowUnfree = true;
