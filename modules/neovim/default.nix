@@ -103,6 +103,7 @@ in
         tsparsers
         # for some reason this is in a different package set?
         nvim-treesitter-parsers.qmljs
+        nvim-treesitter-parsers.prolog
 
         nvim-lspconfig
 
