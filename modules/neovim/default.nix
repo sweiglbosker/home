@@ -33,12 +33,10 @@ let
           tree-sitter-latex
           tree-sitter-python
           tree-sitter-bibtex
-          tree-sitter-verilog
           tree-sitter-comment
           tree-sitter-dockerfile
           tree-sitter-make
           tree-sitter-cmake
-          tree-sitter-verilog
           tree-sitter-scheme
           tree-sitter-llvm
           tree-sitter-html
@@ -55,6 +53,7 @@ let
           tree-sitter-markdown
           tree-sitter-markdown-inline
           tree-sitter-tablegen
+          tree-sitter-latex
         ]
       )).dependencies;
   };
@@ -101,8 +100,9 @@ in
 
         nvim-treesitter
         tsparsers
-        # for some reason this is in a different package set?
+        # broken or missing ts parsers
         nvim-treesitter-parsers.qmljs
+        nvim-treesitter-parsers.systemverilog
         nvim-treesitter-parsers.prolog
 
         nvim-lspconfig
