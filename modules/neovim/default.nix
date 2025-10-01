@@ -74,6 +74,7 @@ in
       isort
       nixd
       lua-language-server
+      cmake-language-server
       kdePackages.qtdeclarative
     ];
     xdg.configFile."nvim/lua" = {
