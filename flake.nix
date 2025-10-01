@@ -23,6 +23,7 @@
       url = "github:msanft/ida-pro-overlay";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+    vicinae.url = "github:vicinaehq/vicinae";
   };
 
   outputs =
@@ -30,6 +31,7 @@
       self,
       nixpkgs,
       home-manager,
+      vicinae,
       nixgl,
       neovim-nightly,
       nixos-hardware,
