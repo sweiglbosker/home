@@ -23,7 +23,6 @@ end
 -- swapnv('N', 'J')
 -- swapnv('E', 'K')
 -- swapnv('I', 'L')
-
 nmap('<leader>tn', ':tabnew<CR>', { desc = "Open a new tab" })
 nmap('<leader>tc', ':tabc<CR>', { desc = "Close the current tab" })
 nmap('<leader>tm', ':tabp<CR>', { desc = "Go to previous tab" })

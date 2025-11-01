@@ -118,6 +118,9 @@ in
           '';
         }
 
+        nvim-dap
+        nvim-dap-ui
+
         # colorschemes. TODO: delete
         # base16-nvim
         tinted-nvim

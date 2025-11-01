@@ -15,6 +15,10 @@ vim.api.nvim_create_autocmd("ColorScheme", { callback = function(args)
   vim.api.nvim_set_hl(0, 'TSOperator', { fg = colors.base08 })
   vim.api.nvim_set_hl(0, 'TSLabel', { fg = colors.base0C })
   vim.api.nvim_set_hl(0, 'Label', { fg = colors.base0C })
+
+  vim.api.nvim_set_hl(0, 'DapBreakpoint', { bg = colors.base00, fg = colors.base08 })
+  vim.api.nvim_set_hl(0, 'DapStopped', { bg = colors.base00, fg = colors.base0B })
+
   vim.cmd[[
      "hi Normal guibg=NONE
      "hi NormalNC guibg=NONE
