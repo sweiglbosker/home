@@ -31,6 +31,7 @@ in
       enable = true;
       nativeMessagingHosts = [
         pkgs.tridactyl-native
+        pkgs.passff-host
       ];
       policies = {
         DisableTelemetry = true;

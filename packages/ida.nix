@@ -47,7 +47,7 @@ pkgs.buildFHSEnv rec {
   ];
   runScript = pkgs.writeScript "idapro.sh" ''
     set -e
-    # ~/ida-pro-9.1/idapyswitch --auto-apply
+    ~/ida-pro-9.1/idapyswitch --auto-apply
     exec "~/ida-pro-9.1/ida"
   '';
   meta = {

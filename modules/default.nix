@@ -4,6 +4,7 @@
     ./aerc.nix
     ./scheme
     ./foot.nix
+    ./ghidra.nix
     ./mako.nix
     ./neovide.nix
     ./fuzzel.nix

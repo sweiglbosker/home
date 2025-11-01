@@ -23,8 +23,11 @@
       ];
     };
 
-    colors.mountain.enable = true;
+    # colors.mountain.enable = true;
+    colors.adwaita-dark.enable = true;
     # colors.tomorrow.enable = true;
+
+    ghidra.enable = true;
     gpg.enable = true;
 
     pass = {
