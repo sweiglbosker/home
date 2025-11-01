@@ -71,6 +71,8 @@ vim.api.nvim_create_autocmd("LspAttach", { callback = function(args)
   end, { desc = "Goto definition (LSP)" })
 
   if client:supports_method(methods.textDocument_completion) then
+    local chars = {}; for i = 32, 126 do table.insert(chars, string.char(i)) end
+    client.server_capabilities.completionProvider.triggerCharacters = chars
     vim.lsp.completion.enable(true, client.id, args.buf, { autotrigger = true })
 
     map('i', "<CR>", function()
