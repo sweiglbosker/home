@@ -36,6 +36,14 @@ in
       base0D = "#4271ae";
       base0E = "#8959a8";
       base0F = "#a3685a";
+      base10 = "#1d1f21";
+      base11 = "#282a2e";
+      base12 = "#c82829";
+      base13 = "#eab700";
+      base14 = "#718c00";
+      base15 = "#3e999f";
+      base16 = "#4271ae";
+      base17 = "#8959a8";
     };
   };
 }
