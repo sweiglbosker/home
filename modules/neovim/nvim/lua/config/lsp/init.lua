@@ -31,7 +31,7 @@ local servers = {
 -- rust_analyzer = {}
 }
 
-local orig_util_open_floating_preview = vim.lsp.util.open_floating_preview 
+local orig_util_open_floating_preview = vim.lsp.util.open_floating_preview
 function vim.lsp.util.open_floating_preview(contents, syntax, opts, ...)
   opts = opts or {}
   opts.border = opts.border or "rounded"
@@ -66,14 +66,12 @@ vim.api.nvim_create_autocmd("LspAttach", { callback = function(args)
     vim.lsp.buf.references()
   end, { desc = "Code references (LSP)" })
 
-  vim.keymap.set('n', 'gca', '<cmd>FzfLua lsp_code_actions<CR>', { desc = "Code actions (LSP)" })
-
   vim.keymap.set('n', 'gd', function()
     vim.lsp.buf.definition()
   end, { desc = "Goto definition (LSP)" })
 
   if client:supports_method(methods.textDocument_completion) then
-    vim.lsp.completion.enable(true, client.id, args.buf, { autotrigger = false })
+    vim.lsp.completion.enable(true, client.id, args.buf, { autotrigger = true })
 
     map('i', "<CR>", function()
       return pumvisible() and '<C-y>' or '<CR>'
@@ -97,10 +95,10 @@ vim.api.nvim_create_autocmd("LspAttach", { callback = function(args)
     client.server_capabilities.hoverProvider = false
   end
 
-  vim.keymap.set('n', 'E', '<cmd>lua vim.lsp.buf.hover()<CR>', { silent = true })
-  -- if client:supports_method(methods.textDocument_inlayHint) then
-  --   vim.lsp.inlay_hint.enable()
-  -- end
+  -- vim.keymap.set('n', 'E', '<cmd>lua vim.lsp.buf.hover()<CR>', { silent = true })
+  if client:supports_method(methods.textDocument_inlayHint) then
+    vim.lsp.inlay_hint.enable()
+  end
 
   -- if client:supports_method(methods.textDocument_formatting) then
   --   vim.api.nvim_create_autocmd("BufWritePre", {
@@ -112,7 +110,7 @@ vim.api.nvim_create_autocmd("LspAttach", { callback = function(args)
   -- end
 end})
 
-lspconfig = require('lspconfig')
+-- lspconfig = require('lspconfig')
 
 for server, config in pairs(servers) do
 -- --  config.capabilities = require('blink.cmp').get_lsp_capabilities(config.capabilities)
@@ -120,7 +118,9 @@ for server, config in pairs(servers) do
 --   -- vim.lsp.config[server] = config
 --   -- vim.lsp.enable(server)
 --   -- lspconfig.rust_analyzer.setup({})
- lspconfig[server].setup(config)
+ -- lspconfig[server].setup(config)
+ vim.lsp.config[server] = config
+ vim.lsp.enable(server)
 end
 
 -- vim.lsp.enable({'lua_ls', 'zls', 'clangd'})

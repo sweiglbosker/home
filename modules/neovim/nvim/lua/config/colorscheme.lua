@@ -1,5 +1,6 @@
 vim.api.nvim_create_autocmd("ColorScheme", { callback = function(args)
-  local colors = require('base16-colorscheme').colors
+  -- local colors = require('base16-colorscheme').colors
+  local colors = require('tinted-colorscheme').colors
   vim.api.nvim_set_hl(0, 'FloatBorder', { fg = colors.base01 })
   vim.api.nvim_set_hl(0, 'WinSeparator', { fg = colors.base01 })
   vim.api.nvim_set_hl(0, 'WinBar', { fg = colors.base03 })
@@ -15,8 +16,8 @@ vim.api.nvim_create_autocmd("ColorScheme", { callback = function(args)
   vim.api.nvim_set_hl(0, 'TSLabel', { fg = colors.base0C })
   vim.api.nvim_set_hl(0, 'Label', { fg = colors.base0C })
   vim.cmd[[
-     hi Normal guibg=NONE
-     hi NormalNC guibg=NONE
+     "hi Normal guibg=NONE
+     "hi NormalNC guibg=NONE
      hi TabLineFill guibg=bg
      hi TabLineSel guibg=bg guifg=fg
      hi TabLine guibg=bg

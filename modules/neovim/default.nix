@@ -106,6 +106,7 @@ in
         nvim-treesitter-parsers.systemverilog
         nvim-treesitter-parsers.prolog
 
+
         nvim-lspconfig
 
         {
@@ -118,7 +119,8 @@ in
         }
 
         # colorschemes. TODO: delete
-        base16-nvim
+        # base16-nvim
+        tinted-nvim
 
         {
           plugin = nvim-highlight-colors;
@@ -154,22 +156,39 @@ in
 
         tmux-nvim
         nvim-lspconfig
+        {
+          plugin = indent-blankline-nvim;
+          optional = false;
+          type = "lua";
+          config = 
+            # lua
+            ''
+            require('ibl').setup({
+              indent = {
+                char = '▏',
+              },
+              scope = { enabled = false },
+            })
+            '';
+        }
 
+        telescope-ui-select-nvim
         {
           plugin = telescope-nvim;
-          optional = true;
+          optional = false;
           type = "lua";
           config =
             # lua
             ''
-              require("lz.n").load({
-                "telescope.nvim",
-                cmd = "Telescope",
-                after = function()
+              -- require("lz.n").load({
+              --   "telescope.nvim",
+              --   cmd = "Telescope",
+              --   after = function()
                   require('telescope').setup({})
                   require('telescope').load_extension('fzf')
-                end,
-              })
+                  require('telescope').load_extension('ui-select')
+              --   end,
+              -- })
             '';
         }
         telescope-fzf-native-nvim
@@ -233,9 +252,41 @@ in
             '';
         }
       ];
-      extraLuaConfig = ''
+      extraLuaConfig = 
+      # lua
+      ''
         ${builtins.readFile ./nvim/init.lua}
-        vim.cmd[[colorscheme ${scheme.name}]]
+        require('tinted-colorscheme').setup({
+          base00 = "${scheme.base00}",
+          base01 = "${scheme.base01}",
+          base02 = "${scheme.base02}",
+          base03 = "${scheme.base03}",
+          base04 = "${scheme.base04}",
+          base05 = "${scheme.base05}",
+          base06 = "${scheme.base06}",
+          base07 = "${scheme.base07}",
+          base08 = "${scheme.base08}",
+          base09 = "${scheme.base09}",
+          base0A = "${scheme.base0A}",
+          base0B = "${scheme.base0B}",
+          base0C = "${scheme.base0C}",
+          base0D = "${scheme.base0D}",
+          base0E = "${scheme.base0E}",
+          base0F = "${scheme.base0F}",
+          base10 = "${scheme.base10}",
+          base11 = "${scheme.base11}",
+          base12 = "${scheme.base12}",
+          base13 = "${scheme.base13}",
+          base14 = "${scheme.base14}",
+          base15 = "${scheme.base15}",
+          base16 = "${scheme.base16}",
+          base17 = "${scheme.base17}",
+        }, {
+          supports = { tinty = false, live_reload = false },
+          highlights = { telescope_borders = true },
+        })
+        vim.cmd[[doautocmd ColorScheme]]
+
         vim.opt.runtimepath:prepend('${tsparsers}')
       '';
     };

@@ -17,6 +17,7 @@ vim.o.smd = false
 vim.opt.laststatus=0
 vim.opt.cmdheight=0
 vim.opt.pumheight = 6
+-- vim.opt.pumborder = "rounded"
 vim.opt.expandtab = true
 vim.o.mouse=""
 vim.o.swapfile=false
