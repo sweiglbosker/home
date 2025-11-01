@@ -1,6 +1,7 @@
 { ... }:
 {
   imports = [
+    ./adwaita-dark.nix
     ./mountain.nix
     ./default-dark.nix
     ./tomorrow.nix
