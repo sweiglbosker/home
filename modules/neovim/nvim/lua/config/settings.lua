@@ -14,8 +14,8 @@ vim.o.shortmess = "tToOFIsWcCi"
 vim.o.termguicolors = true
 vim.opt.fillchars = {eob = " "}
 vim.o.smd = false
-vim.opt.laststatus=0
-vim.opt.cmdheight=0
+vim.opt.laststatus=3
+vim.opt.cmdheight=1
 vim.opt.pumheight = 6
 -- vim.opt.pumborder = "rounded"
 vim.opt.expandtab = true
