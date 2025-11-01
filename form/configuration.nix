@@ -30,7 +30,7 @@
     boot.extraModulePackages = [ config.boot.kernelPackages.nvidia_x11 ];
     # boot.kernelParams = [];
     services.xserver.videoDrivers = [ "nvidia" ];
-    services.desktopManager.plasma6.enable = true;
+    # services.desktopManager.plasma6.enable = true;
     # services.displayManager.sddm = {
     #   enable = false;
     # };
@@ -44,6 +44,7 @@
     hardware.opengl.extraPackages = with pkgs; [
       vaapiVdpau
     ];
+    # services.openssh.enable = true;
 
     services.xserver = {
       enable = true;
@@ -51,6 +52,7 @@
         defaultSession = "sway";
         gdm.enable = true;
       };
+      desktopManager.gnome.enable = true;
     };
     virtualisation.docker = {
       enable = true;

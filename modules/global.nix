@@ -98,6 +98,12 @@ in
         "org/gnome/desktop/interface" = {
           color-scheme = "${if scheme.light then "prefer-light" else "prefer-dark"}";
         };
+        "org/gnome/shell" = {
+          disable-user-extensions = false;
+          enabled-extensions = with pkgs.gnomeExtensions; [
+            blur-my-shell.extensionUuid
+          ];
+        };
       };
     };
 
@@ -109,18 +115,18 @@ in
         name = "${if scheme.light then "Adwaita" else "Adwaita-dark"}";
         package = pkgs.gnome-themes-extra;
       };
-      iconTheme = {
-        name = "Adwaita-dark";
-        package = pkgs.adwaita-icon-theme;
-      };
+      # iconTheme = {
+      #   name = "Adwaita-dark";
+      #   package = pkgs.adwaita-icon-theme;
+      # };
     };
 
     qt = {
       enable = true;
-      platformTheme.name = "Adwaita";
+      platformTheme.name = "adwaita";
       style = {
         package = pkgs.adwaita-qt;
-        name = "${if scheme.light then "Adwaita" else "Adwaita-Dark"}";
+        name = "${if scheme.light then "adwaita" else "adwaita-dark"}";
       };
     };
 

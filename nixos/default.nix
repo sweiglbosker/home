@@ -14,6 +14,7 @@ in
     ./osu.nix
     ./keyd.nix
     ./yubikey.nix
+    ./libvirt.nix
   ];
 
   options.nixos = with lib.options; {
@@ -49,8 +50,9 @@ in
   };
 
   config = {
-    # nixos = {
-    # };
+    nixos = {
+      libvirt.enable = true;
+    };
     nix = {
       settings.experimental-features = [
         "nix-command"
@@ -130,6 +132,7 @@ in
         cage
         zsh
         discord-ptb
+        gnomeExtensions.blur-my-shell
       ]
       ++ (lib.optional cfg.wifi networkmanagerapplet); # TODO
 
