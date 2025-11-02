@@ -48,6 +48,7 @@ in
       pamixer
       killall
     ];
+    home.sessionVariables.NIXOS_OZONE_WL="1";
     wayland.windowManager.sway = lib.mkIf cfg.enable {
       checkConfig = false;
       enable = true;
