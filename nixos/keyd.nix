@@ -22,7 +22,10 @@ in
       enable = true;
       keyboards = {
         defaults = {
-          ids = [ "0001:0001:70533846" ]; # AT Translated Set 2 keyboard (generic/laptop keyboard)
+          ids = [
+            "*"
+            "-04fe:0021:532594f8"
+          ]; # AT Translated Set 2 keyboard (generic/laptop keyboard)
           settings = {
             main = {
               capslock = "overload(control, esc)";
