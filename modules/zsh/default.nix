@@ -88,7 +88,7 @@ in
         #        bindkey -M vicmd . fzf
                 if [[ -n "$TMUX" ]]; then
                 # TODO: fix continuum so i dont need this hack
-                  export TERM=screen-256color
+                  export TERM=tmux-256color
                 fi
 
                 export PATH=$HOME:/.local/riscv/bin:$PATH:$HOME/.local/bin

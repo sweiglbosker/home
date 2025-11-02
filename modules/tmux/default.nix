@@ -65,7 +65,7 @@ in
 
       ];
       extraConfig = ''
-        set -g default-terminal "screen-256color"
+        set -g default-terminal "tmux-256color"
         # set -g default-command zsh # this fixes colors for some reason
         set -g renumber-windows on
 
