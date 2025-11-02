@@ -85,8 +85,8 @@ in
     fonts.fontconfig = {
       enable = true;
       defaultFonts = {
-        monospace = [ "NotoMono Nerd Font Mono" ];
-        sansSerif = [ "Noto Sans" ];
+        monospace = [ "AdwaitaMono Nerd Font Mono" "NotoMono Nerd Font Mono" ];
+        sansSerif = [ "Adwaita Sans" "Noto Sans" ];
         serif = [ "Noto Serif" ];
         emoji = [ "Noto Color Emoji" ];
       };
@@ -160,6 +160,7 @@ in
           roboto-serif
           cozette
           inter
+          adwaita-fonts
           noto-fonts
           noto-fonts-extra
           noto-fonts-cjk-sans
