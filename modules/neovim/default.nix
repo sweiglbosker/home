@@ -75,6 +75,7 @@ in
       nixd
       lua-language-server
       cmake-language-server
+      verible
       kdePackages.qtdeclarative
     ];
     xdg.configFile."nvim/lua" = {
@@ -105,7 +106,7 @@ in
         nvim-treesitter-parsers.qmljs
         nvim-treesitter-parsers.systemverilog
         nvim-treesitter-parsers.prolog
-
+        nvim-treesitter-parsers.mlir
 
         nvim-lspconfig
 

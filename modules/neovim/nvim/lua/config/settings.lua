@@ -18,6 +18,7 @@ vim.opt.laststatus=3
 vim.opt.cmdheight=1
 vim.opt.pumheight = 6
 -- vim.opt.pumborder = "rounded"
+vim.opt.foldexpr="v:lua.vim.treesitter.foldexpr()"
 vim.opt.expandtab = true
 vim.o.mouse=""
 vim.o.swapfile=false

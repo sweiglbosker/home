@@ -25,6 +25,7 @@ local servers = {
     },
   },
   cmake = {},
+  verible = {},
   qmlls = {
     cmd = {"qmlls", "-E"}
   },

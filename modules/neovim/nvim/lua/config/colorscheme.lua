@@ -26,7 +26,7 @@ vim.api.nvim_create_autocmd("ColorScheme", { callback = function(args)
      hi TabLineSel guibg=bg guifg=fg
      hi TabLine guibg=bg
      hi NormalFloat guibg=bg
-     hi StatusLine guibg=bg guifg=fg
+     hi StatusLine guibg=fg guifg=bg
      hi StatusLineNC guibg=bg
   ]]
   vim.api.nvim_set_hl(0, 'FzfLuaBorder', { fg = colors.base01 })
