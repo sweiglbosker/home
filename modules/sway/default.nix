@@ -158,7 +158,7 @@ in
             statusCommand = "py3status";
             # mode = "hide";
             # hiddenState = "hide";
-            position = "top";
+            position = "bottom";
             fonts = {
               names = [
 #                "sans-serif"

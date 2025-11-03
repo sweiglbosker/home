@@ -38,6 +38,7 @@
     };
 
     colors.mountain.enable = true;
+    # colors.adwaita-dark.enable = true;
     # colors.tomorrow.enable = true;
     gpg.enable = true;
 
