@@ -42,7 +42,7 @@
       package = config.boot.kernelPackages.nvidiaPackages.beta;
     };
     hardware.opengl.extraPackages = with pkgs; [
-      vaapiVdpau
+      libva-vdpau-driver
     ];
     # services.openssh.enable = true;
 

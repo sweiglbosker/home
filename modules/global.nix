@@ -7,7 +7,6 @@
 }:
 let
   cfg = config.modules.global;
-  berkeley-mono = pkgs.callPackage ../packages/berkeley-mono.nix { inherit pkgs; };
   binaryninja = pkgs.callPackage ../packages/binaryninja.nix { inherit pkgs; };
   ida = pkgs.callPackage ../packages/ida.nix { inherit pkgs; };
   scheme = config.modules.scheme;
@@ -152,7 +151,6 @@ in
           ripgrep
           elan
           dmenu
-          berkeley-mono
           binaryninja
           ida
           tamzen
@@ -162,10 +160,9 @@ in
           inter
           adwaita-fonts
           noto-fonts
-          noto-fonts-extra
           noto-fonts-cjk-sans
           noto-fonts-cjk-serif
-          noto-fonts-emoji
+          noto-fonts-color-emoji
           material-icons
           # (callPackage ida-pro {
           #   runfile = /nix/store/s9gq70w56355yrg33054g97zscr3r64i-ida-pro_91_x64linux.run;

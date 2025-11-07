@@ -17,7 +17,7 @@ in
     # ];
     programs.git = {
       enable = true;
-      package = pkgs.gitAndTools.gitFull;
+      package = pkgs.gitFull;
       userName = "Stefan Weigl-Bosker";
       userEmail = "stefan@s00.xyz";
       aliases = {
