@@ -32,7 +32,7 @@ in
         "l" = "feedkeys i";
       };
       options = {
-        font = "BerkeleyMonoPatched Nerd Font Propo 12";
+        font = "monospace";
         selection-clipboard = "clipboard";
         recolor = true;
         default-fg = scheme.base05;
