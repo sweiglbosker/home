@@ -99,6 +99,7 @@ in
       plugins = with pkgs.vimPlugins; [
         # lazy loading
         lz-n
+        blink-cmp
 
         nvim-treesitter
         tsparsers
@@ -188,7 +189,16 @@ in
               --   "telescope.nvim",
               --   cmd = "Telescope",
               --   after = function()
-                  require('telescope').setup({})
+                  require('telescope').setup({
+                    defaults = {
+                      layout_strategy = 'flex',
+                      layout_config = {
+                        height = {padding = 0},
+                        width = {padding = 0},
+                        prompt_position = "top",
+                      },
+                    },
+                  })
                   require('telescope').load_extension('fzf')
                   require('telescope').load_extension('ui-select')
               --   end,
