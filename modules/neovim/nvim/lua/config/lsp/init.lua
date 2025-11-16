@@ -71,24 +71,24 @@ vim.api.nvim_create_autocmd("LspAttach", { callback = function(args)
     vim.lsp.buf.definition()
   end, { desc = "Goto definition (LSP)" })
 
-  if client:supports_method(methods.textDocument_completion) then
-    local chars = {}; for i = 32, 126 do table.insert(chars, string.char(i)) end
-    client.server_capabilities.completionProvider.triggerCharacters = chars
-    vim.lsp.completion.enable(true, client.id, args.buf, { autotrigger = true })
-
-    map('i', "<CR>", function()
-      return pumvisible() and '<C-y>' or '<CR>'
-    end, { expr = true })
-
-    -- TODO: this ignores/overwrites default omnifunc rn
-    map('i', "<C-n>", function()
-      return pumvisible() and '<C-n>' or vim.lsp.completion.get()
-    end, { expr = true })
-
-    map('i', '<Esc>', function()
-      return pumvisible() and '<C-E>' or '<Esc>'
-    end, { expr = true })
-  end
+  -- if client:supports_method(methods.textDocument_completion) then
+  --   local chars = {}; for i = 32, 126 do table.insert(chars, string.char(i)) end
+  --   client.server_capabilities.completionProvider.triggerCharacters = chars
+  --   vim.lsp.completion.enable(true, client.id, args.buf, { autotrigger = true })
+  --
+  --   map('i', "<CR>", function()
+  --     return pumvisible() and '<C-y>' or '<CR>'
+  --   end, { expr = true })
+  --
+  --   -- TODO: this ignores/overwrites default omnifunc rn
+  --   map('i', "<C-n>", function()
+  --     return pumvisible() and '<C-n>' or vim.lsp.completion.get()
+  --   end, { expr = true })
+  --
+  --   map('i', '<Esc>', function()
+  --     return pumvisible() and '<C-E>' or '<Esc>'
+  --   end, { expr = true })
+  -- end
 
   -- if client:supports_method(methods.textDocument_semanticTokens) then
   -- end
