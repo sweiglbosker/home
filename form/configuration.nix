@@ -22,6 +22,7 @@
     system.stateVersion = "24.11";
 
     hardware.graphics.enable = true;
+    hardware.graphics.enable32bit = true;
     boot.initrd.kernelModules = [
       "nvidia"
       "nvidia_uvm"

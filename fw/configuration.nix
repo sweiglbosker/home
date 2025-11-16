@@ -49,6 +49,16 @@
       "video"
     ]; # TODO: remove
 
+    hardware.graphics = {
+      enable = true;
+      enable32Bit = true;
+      extraPackages = with pkgs; [
+        rocmPackages.clr.icd
+      ];
+    };
+
+    hardware.amdgpu.opencl.enable = true;
+
     environment.gnome.excludePackages = with pkgs; [
       gnome-photos
       geary
