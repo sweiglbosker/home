@@ -270,6 +270,8 @@ in
       ];
     };
 
+    environment.sessionVariables.NIXOS_OZONE_WL="1";
+
     services.printing.enable = true;
     services.printing.drivers = [
       pkgs.gutenprint
