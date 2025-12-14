@@ -7,6 +7,7 @@ require("conform").setup({
     nix = { "nixfmt" },
     c = { "clang-formt" },
     cpp = { "clang-format" },
+    scala = { "scalafmt"}
   },
 })
 

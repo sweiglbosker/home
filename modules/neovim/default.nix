@@ -15,6 +15,7 @@ let
       (pkgs.vimPlugins.nvim-treesitter.withPlugins (
         p: with p; [
           tree-sitter-nix
+          tree-sitter-scala
           tree-sitter-nu
           tree-sitter-go
           tree-sitter-rst
@@ -69,6 +70,8 @@ in
       clang-tools
       ruff
       nixfmt-rfc-style
+      scalafmt
+      metals
       stylua
       black
       isort

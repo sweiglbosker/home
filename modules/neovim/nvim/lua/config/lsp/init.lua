@@ -26,6 +26,7 @@ local servers = {
   },
   cmake = {},
   verible = {},
+  metals = {},
   qmlls = {
     cmd = {"qmlls", "-E"}
   },
