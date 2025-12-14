@@ -242,6 +242,8 @@ in
     programs.nix-ld = {
       enable = true;
       libraries = with pkgs; [
+        libdwarf
+        ncurses
         zlib
         zstd
         stdenv.cc.cc
@@ -278,6 +280,7 @@ in
       pkgs.brlaser
       pkgs.brgenml1lpr
       pkgs.brgenml1cupswrapper
+      # (pkgs.callPackage ../packages/mfcj995dw_driver.nix{})
     ];
   };
 
