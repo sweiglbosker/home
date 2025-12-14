@@ -29,7 +29,8 @@
       "nvidia_drm"
     ];
     boot.extraModulePackages = [ config.boot.kernelPackages.nvidia_x11 ];
-    # boot.kernelParams = [];
+    boot.kernelParams = ["module_blacklist=amdgpu"];
+    boot.kernelPackages = lib.mkForce pkgs.linuxPackages;
     services.xserver.videoDrivers = [ "nvidia" ];
     # services.desktopManager.plasma6.enable = true;
     # services.displayManager.sddm = {
@@ -40,9 +41,14 @@
       modesetting.enable = true;
       open = true;
       nvidiaSettings = true;
-      package = config.boot.kernelPackages.nvidiaPackages.beta;
+      package = config.boot.kernelPackages.nvidiaPackages.stable;
+      powerManagement.enable = true;
     };
     hardware.opengl.extraPackages = with pkgs; [
+      # libva-vdpau-driver
+      nvidia-vaapi-driver
+      vdpauinfo
+      libva-utils
       libva-vdpau-driver
     ];
     # services.openssh.enable = true;
@@ -51,10 +57,13 @@
       enable = true;
       displayManager = {
         defaultSession = "sway";
-        gdm.enable = true;
+        # gdm.enable = true;
+        sddm.enable = true;
       };
+      desktopManager.plasma6.enable = true;
       desktopManager.gnome.enable = true;
     };
+    programs.ssh.askPassword = pkgs.lib.mkForce "${pkgs.kdePackages.ksshaskpass.out}/bin/ksshaskpass";
     virtualisation.docker = {
       enable = true;
       rootless = {
