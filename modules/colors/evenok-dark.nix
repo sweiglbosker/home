@@ -34,6 +34,14 @@ in
       base0D = "#00aff2";
       base0E = "#9095ff";
       base0F = "#d47ada";
+      base10 = "#000000";
+      base11 = "#202020";
+      base12 = "#f5708a";
+      base13 = "#b8a300";
+      base14 = "#54bc5c";
+      base15 = "#00bab3";
+      base16 = "#9095ff";
+      base17 = "#d47ada";
     };
   };
 }

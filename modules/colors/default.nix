@@ -10,5 +10,6 @@
     ./grayscale-dark.nix
     ./evenok-dark.nix
     ./bright.nix
+    ./kanagawa-dragon.nix
   ];
 }
