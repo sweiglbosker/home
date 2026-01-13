@@ -14,6 +14,10 @@ local function swapnv(bind1, bind2)
   swap({'n', 'v'}, bind1, bind2)
 end
 
+function mapobject(bind, action, opts)
+  vim.keymap.set({"x", "o"}, bind, action, opts)
+end
+
 -- swapnv('m', 'h')
 -- swapnv('n', 'j')
 -- swapnv('e', 'k')
@@ -50,6 +54,9 @@ nmap('<leader>fo', '<cmd>Telescope find_files<CR>', { silent = true })
 nmap('<leader>?', '<cmd>Telescope live_grep<CR>', { silent = true })
 
 nmap('<leader>to', '<cmd>te<CR>', { silent = true; desc = "Open a terminal buffer in the current window." })
+
+-- mapobject("]f", require("nvim-treesitter-textobjects.move").goto_next_start("@function.outer", "textobjects"), { desc = "jump to the start of the next function"})
+-- mapobject("[f", require("nvim-treesitter-textobjects.move").goto_prev_start("@function.outer", "textobjects"), { desc = "jump to the start of the previous function"})
 
 vim.api.nvim_create_autocmd({ 'FileType' }, {
   pattern = '*',

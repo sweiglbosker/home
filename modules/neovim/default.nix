@@ -78,6 +78,7 @@ in
       nixd
       lua-language-server
       cmake-language-server
+      starpls
       verible
       kdePackages.qtdeclarative
     ];
@@ -111,6 +112,9 @@ in
         nvim-treesitter-parsers.systemverilog
         nvim-treesitter-parsers.prolog
         nvim-treesitter-parsers.mlir
+        nvim-treesitter-parsers.starlark
+
+        nvim-treesitter-textobjects
 
         nvim-lspconfig
 
@@ -129,6 +133,7 @@ in
         # colorschemes. TODO: delete
         # base16-nvim
         tinted-nvim
+        kanagawa-nvim
 
         {
           plugin = nvim-highlight-colors;
@@ -171,12 +176,12 @@ in
           config = 
             # lua
             ''
-            require('ibl').setup({
-              indent = {
-                char = '▏',
-              },
-              scope = { enabled = false },
-            })
+            -- require('ibl').setup({
+            --   indent = {
+            --     char = '▏',
+            --   },
+            --   scope = { enabled = false },
+            -- })
             '';
         }
 

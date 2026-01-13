@@ -33,6 +33,7 @@ local servers = {
   qmlls = {
     cmd = {"qmlls", "-E"}
   },
+  starpls = {}
 -- rust_analyzer = {}
 }
 

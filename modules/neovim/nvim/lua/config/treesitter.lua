@@ -20,3 +20,9 @@ require("nvim-treesitter.configs").setup {
   --   end,
   -- },
 }
+
+-- require("nvim-treesitter-textobjects").setup({
+-- 	select = {
+-- 		lookahead = true,
+-- 	},
+-- })
