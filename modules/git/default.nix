@@ -29,7 +29,7 @@ in
         pushf = "push --force-with-lease";
       };
       delta = {
-        enable = true;
+        enable = false;
         options = {
           "syntax-theme" = "base16-256";
           navigate = true;
@@ -51,6 +51,7 @@ in
         ".direnv/"
         ".ignore/"
         ".cache/"
+        ".bazel/"
         "*.o"
         "*.a"
         "*.so"
