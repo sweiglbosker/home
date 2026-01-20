@@ -62,15 +62,15 @@ bluetooth {
 bluetooth airpods {
   # bluetoothctl set-alias "airpods"
   format_device = "\?if=paired [\?if=alias=airpods [\?if=connected 󱡏|󱡐]]"
-  on_click 1 = "exec bluetoothctl connect \"$(bluetoothctl devices | grep airpods | sed -E 's/Device ([^ ]+).*$/\1/g')\" && pkill -10 py3status"
-  on_click 3 = "exec bluetoothctl disconnect \"$(bluetoothctl devices | grep airpods | sed -E 's/Device ([^ ]+).*$/\1/g')\" && pkill -10 py3status"
+  on_click 1 = "exec bluetoothctl connect \"$(bluetoothctl devices | grep ' airpods$' | sed -E 's/Device ([^ ]+).*$/\1/g')\" && pkill -10 py3status"
+  on_click 3 = "exec bluetoothctl disconnect \"$(bluetoothctl devices | grep ' airpods$' | sed -E 's/Device ([^ ]+).*$/\1/g')\" && pkill -10 py3status"
 }
 
 bluetooth headphones {
   # bluetoothctl set-alias "headphones"
   format_device = "\?if=paired [\?if=alias=headphones [\?if=connected 󰋋|󰟎]]"
-  on_click 1 = "exec bluetoothctl connect \"$(bluetoothctl devices | grep headphones | sed -E 's/Device ([^ ]+).*$/\1/g')\" && pkill -10 py3status"
-  on_click 3 = "exec bluetoothctl disconnect \"$(bluetoothctl devices | grep headphones | sed -E 's/Device ([^ ]+).*$/\1/g')\" && pkill -10 py3status"
+  on_click 1 = "exec bluetoothctl connect \"$(bluetoothctl devices | grep ' headphones$' | sed -E 's/Device ([^ ]+).*$/\1/g')\" && pkill -10 py3status"
+  on_click 3 = "exec bluetoothctl disconnect \"$(bluetoothctl devices | grep ' headphones$' | sed -E 's/Device ([^ ]+).*$/\1/g')\" && pkill -10 py3status"
 }
 
 volume master {
