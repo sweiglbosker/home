@@ -37,6 +37,7 @@ in
 
   config = mkIf cfg.enable {
     home.packages = with pkgs; [
+      passExtensions.pass-update
       (writeShellScriptBin "passmenu" ''
         shopt -s nullglob globstar
 

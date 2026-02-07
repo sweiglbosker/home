@@ -68,6 +68,7 @@ in
     home.packages = with pkgs; [
       basedpyright
       clang-tools
+      libclang.python
       ruff
       nixfmt-rfc-style
       scalafmt

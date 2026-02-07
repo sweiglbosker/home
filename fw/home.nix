@@ -33,6 +33,7 @@
         pfetch
         nicotine-plus
         mpc
+        nautilus
         # ncmpcpp
       ];
     };
@@ -72,5 +73,6 @@
     tofi.enable = true;
     mpd.enable = true;
     rmpc.enable = true;
+    obs-studio.enable = true;
   };
 }
