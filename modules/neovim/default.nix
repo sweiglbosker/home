@@ -114,6 +114,7 @@ in
         nvim-treesitter-parsers.prolog
         nvim-treesitter-parsers.mlir
         nvim-treesitter-parsers.starlark
+        nvim-treesitter-context
 
         nvim-treesitter-textobjects
 
