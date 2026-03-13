@@ -1,6 +1,6 @@
 vim.api.nvim_create_autocmd("ColorScheme", { callback = function(args)
   -- local colors = require('base16-colorscheme').colors
-  local colors = require('tinted-colorscheme').colors
+  local colors = require("tinted-nvim").get_palette()
     -- i dislike syntax highlighting
   -- vim.api.nvim_set_hl(0, 'Comment', {})
   vim.api.nvim_set_hl(0, 'Constant', {})
