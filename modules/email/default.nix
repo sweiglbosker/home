@@ -17,7 +17,7 @@ in
       address = "stefan@s00.xyz";
       primary = true;
       realName = "Stefan Weigl-Bosker";
-      userName = "stefan";
+      userName = "stefan@s00.xyz";
       passwordCommand = "${pkgs.pass}/bin/pass show email/stefan@s00.xyz";
       aerc = {
         enable = true;
