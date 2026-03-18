@@ -115,6 +115,7 @@ in
         nvim-treesitter-parsers.mlir
         nvim-treesitter-parsers.starlark
         nvim-treesitter-context
+        nvim-treesitter-parsers.asm
 
         nvim-treesitter-textobjects
 
@@ -277,49 +278,52 @@ in
         }
       ];
       extraLuaConfig =
-      # lua
-      ''
-        ${builtins.readFile ./nvim/init.lua}
-        require('tinted-nvim').setup({
-          compile = true,
-          default_scheme = "base24-system-theme",
-          capabilities = {
-            undercurl = true,
-          },
-          styles = {
-            comments = { italic = false },
-          },
-          schemes = {
-            ["base24-system-theme"] = {
-              variant = "${if scheme.light then "light" else "dark"}",
-              base00 = "${scheme.base00}",
-              base01 = "${scheme.base01}",
-              base02 = "${scheme.base02}",
-              base03 = "${scheme.base03}",
-              base04 = "${scheme.base04}",
-              base05 = "${scheme.base05}",
-              base06 = "${scheme.base06}",
-              base07 = "${scheme.base07}",
-              base08 = "${scheme.base08}",
-              base09 = "${scheme.base09}",
-              base0A = "${scheme.base0A}",
-              base0B = "${scheme.base0B}",
-              base0C = "${scheme.base0C}",
-              base0D = "${scheme.base0D}",
-              base0E = "${scheme.base0E}",
-              base0F = "${scheme.base0F}",
-              base10 = "${scheme.base10}",
-              base11 = "${scheme.base11}",
-              base12 = "${scheme.base12}",
-              base13 = "${scheme.base13}",
-              base14 = "${scheme.base14}",
-              base15 = "${scheme.base15}",
-              base16 = "${scheme.base16}",
-              base17 = "${scheme.base17}",
-            },
-          },
-        })
-        vim.cmd[[doautocmd ColorScheme]]
+        # lua
+        ''
+          package.preload["tinted-colorscheme"] = function()
+            error(debug.traceback("Something required tinted-colorscheme"))
+          end
+            ${builtins.readFile ./nvim/init.lua}
+            require('tinted-nvim').setup({
+              compile = false,
+              default_scheme = "base24-system-theme",
+              capabilities = {
+                undercurl = true,
+              },
+              styles = {
+                comments = { italic = false },
+              },
+              schemes = {
+                ["base24-system-theme"] = {
+                  variant = "${if scheme.light then "light" else "dark"}",
+                  base00 = "${scheme.base00}",
+                  base01 = "${scheme.base01}",
+                  base02 = "${scheme.base02}",
+                  base03 = "${scheme.base03}",
+                  base04 = "${scheme.base04}",
+                  base05 = "${scheme.base05}",
+                  base06 = "${scheme.base06}",
+                  base07 = "${scheme.base07}",
+                  base08 = "${scheme.base08}",
+                  base09 = "${scheme.base09}",
+                  base0A = "${scheme.base0A}",
+                  base0B = "${scheme.base0B}",
+                  base0C = "${scheme.base0C}",
+                  base0D = "${scheme.base0D}",
+                  base0E = "${scheme.base0E}",
+                  base0F = "${scheme.base0F}",
+                  base10 = "${scheme.base10}",
+                  base11 = "${scheme.base11}",
+                  base12 = "${scheme.base12}",
+                  base13 = "${scheme.base13}",
+                  base14 = "${scheme.base14}",
+                  base15 = "${scheme.base15}",
+                  base16 = "${scheme.base16}",
+                  base17 = "${scheme.base17}",
+                },
+              },
+            })
+            -- vim.cmd[[doautocmd ColorScheme]]
 
         vim.opt.runtimepath:prepend('${tsparsers}')
       '';

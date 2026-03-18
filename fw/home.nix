@@ -29,7 +29,6 @@
       extraPackages = with pkgs; [
         wmenu
         cmatrix
-        wayneko
         pfetch
         nicotine-plus
         mpc

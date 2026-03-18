@@ -47,6 +47,7 @@ in
       autotiling
       pamixer
       killall
+      brightnessctl
     ];
     home.sessionVariables.NIXOS_OZONE_WL="1";
     wayland.windowManager.sway = lib.mkIf cfg.enable {
@@ -300,8 +301,10 @@ in
           "--locked XF86AudioLowerVolume" = "exec pamixer -ud 2 && pamixer --get-volume > $WOBSOCK && killall -s USR1 -r py3status";
           "--locked XF86AudioMute" =
             ''exec pamixer --toggle-mute && ( [ "$(pamixer --get-mute)" = "true" ] && echo 0 > $WOBSOCK ) || pamixer --get-volume > $WOBSOCK && killall -s USR1 -r py3status'';
-          "--locked XF86MonBrightnessUp" = "exec light -A 5 && light -G | cut -d'.' -f1 > $WOBSOCK";
-          "--locked XF86MonBrightnessDown" = "exec light -U 5 && light -G | cut -d'.' -f1 > $WOBSOCK";
+          "--locked XF86MonBrightnessUp" = "exec brightnessctl set 5%+ && brightnessctl -m | cut -d',' -f4 | tr -d '%' > $WOBSOCK";
+          "--locked XF86MonBrightnessDown" = "exec brightnessctl set 5%- && brightnessctl -m | cut -d',' -f4 | tr -d '%' > $WOBSOCK";
+          # "--locked XF86MonBrightnessUp" = "exec light -A 5 && light -G | cut -d'.' -f1 > $WOBSOCK";
+          # "--locked XF86MonBrightnessDown" = "exec light -U 5 && light -G | cut -d'.' -f1 > $WOBSOCK";
         };
 
         startup = cfg.startup;

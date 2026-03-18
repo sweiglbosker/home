@@ -23,7 +23,6 @@
     ];
     services.openssh.enable = true;
 
-    programs.light.enable = true;
     services.xserver = {
       enable = true;
       displayManager = {

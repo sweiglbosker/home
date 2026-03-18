@@ -36,7 +36,7 @@ in
           blink = "no";
         };
 
-        colors = {
+        colors-dark = {
           # alpha=0.7;
           cursor = (fmt scheme.base00) + " " + (fmt scheme.base05);
           foreground = fmt scheme.base05;

@@ -27,6 +27,8 @@ in
       };
       imap = {
         host = "imap.s00.xyz";
+        port = 993;
+        tls.enable = true;
       };
       smtp = {
         host = "smtp.s00.xyz";
