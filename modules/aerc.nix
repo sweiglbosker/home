@@ -19,12 +19,29 @@ in
           unsafe-accounts-conf = true;
           default-menu-cmd = "fzf --tmux";
         };
-        ui.sidebar-width = 0;
+        ui = {
+          this-day-time-format="03:04 PM";
+          this-year-time-format="2006-01-02";
+          dirlist-tree=true;
+          dirlipse-collapse=1;
+          sidebar-width = 20;
+        };
+        "ui:folder=Sent" = {
+          index-columns = "date<20,name<17,flags>4,subject<*";
+          column-name = "{{index (.To | names) 0}}";
+        };
         filters = {
-          "text/plain" = "colorize";
+          "subject,~^\\[PATCH"="hldiff";
+          "subject,~^\\[RFC"="hldiff";
+          "text/*" = "plaintext";
+          "text/calendar" = "calendar";
+          "text/html" = "html | colorize";
+          "message/delivery-status" = "colorize";
+          "message/rfc822" = "colorize";
         };
         viewer = {
-          pager = "nvim +Man!";
+          # pager = "nvim +Man!";
+          pager = "less -Rc";
         };
       };
       extraBinds = {
@@ -143,6 +160,10 @@ in
           "e" = ":edit<Enter>";
           "a" = ":attach<space>";
           "d" = ":detach<space>";
+        };
+        "compose::editor" = {
+          "$noinherit" = "true";
+          "$ex" = "<C-x>";
         };
         terminal = {
           "$noinherit" = "true";

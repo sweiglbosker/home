@@ -65,6 +65,10 @@ in
         # key = "7783298ECC2A778EAC7EF1C8C430A3B6C37610D1";
       };
       extraConfig = {
+        sendemail.identity = "personal";
+        "sendemail" = {
+          sendmailCmd = "${pkgs.msmtp}";
+        };
         init.defaultBranch = "main";
         merge.conflictStyle = "zdiff3";
         pull.rebase = true;

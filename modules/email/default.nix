@@ -19,10 +19,15 @@ in
       realName = "Stefan Weigl-Bosker";
       userName = "stefan@s00.xyz";
       passwordCommand = "${pkgs.pass}/bin/pass show email/stefan@s00.xyz";
+      mbsync = {
+        enable = true;
+        create = "maildir";
+      };
       aerc = {
         enable = true;
         extraAccounts = {
-          default = "INBOX";
+          default = "Inbox";
+          check-mail-cmd = "mbsync -a && notmuch new";
         };
       };
       imap = {
@@ -35,7 +40,18 @@ in
         port = 465;
         tls.enable = true;
       };
+      msmtp.enable = true;
       thunderbird.enable = true;
+      notmuch.enable = true;
+    };
+
+    programs.mbsync.enable = true;
+    programs.msmtp.enable = true;
+    programs.notmuch = {
+      enable = true;
+      hooks = {
+        preNew = "mbsync --all";
+      };
     };
   };
 }
