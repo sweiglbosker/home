@@ -32,5 +32,6 @@
     ./mpd.nix
     ./rmpc
     ./py3status
+    ./weechat.nix
   ];
 }

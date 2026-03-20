@@ -64,6 +64,7 @@ in
       lazygit.enable = true;
       fuzzel.enable = true;
       zathura.enable = true;
+      weechat.enable = true;
     };
 
     nixGL = lib.mkIf cfg.notNixOS {
