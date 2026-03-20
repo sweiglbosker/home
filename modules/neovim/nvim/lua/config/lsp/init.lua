@@ -29,7 +29,7 @@ local servers = {
   tblgen_lsp_server = require("config.lsp.tblgen_lsp_server"),
   cmake = {},
   verible = {},
-  metals = {},
+  -- metals = {},
   qmlls = {
     cmd = {"qmlls", "-E"}
   },
@@ -66,7 +66,7 @@ vim.api.nvim_create_autocmd("LspAttach", { callback = function(args)
     return
   end
 
-  client.server_capabilities.semanticTokensProvider = nil
+  -- client.server_capabilities.semanticTokensProvider = nil
 
   vim.keymap.set('n', 'grr', function()
     vim.lsp.buf.references()

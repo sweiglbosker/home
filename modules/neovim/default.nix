@@ -72,7 +72,6 @@ in
       ruff
       nixfmt-rfc-style
       scalafmt
-      metals
       stylua
       black
       isort
@@ -82,6 +81,8 @@ in
       starpls
       verible
       kdePackages.qtdeclarative
+      coursier
+      metals
     ];
     xdg.configFile."nvim/lua" = {
       source = ./nvim/lua;
@@ -165,6 +166,34 @@ in
                 ft = "lean",
                 after = function()
                   require('lean').setup({ mappings = true })
+                end,
+              })
+            '';
+        }
+
+        {
+          plugin = nvim-metals;
+          type = "lua";
+          config =
+            # lua
+            ''
+              require("lz.n").load({
+                "nvim-metals",
+                ft = { "scala", "sbt", "java" },
+                after = function()
+                  local config = require("config.lsp.metals")
+                  -- config.settings.metalsBinaryPath = "metals"
+
+                  local nvim_metals_group = vim.api.nvim_create_augroup("nvim-metals", { clear = true })
+                  vim.api.nvim_create_autocmd("FileType", {
+                    pattern = { "scala", "sbt", "java" },
+                    callback = function()
+                      require("metals").initialize_or_attach(config)
+                    end,
+                    group = nvim_metals_group,
+                  })
+
+                  require("metals").initialize_or_attach(config)
                 end,
               })
             '';

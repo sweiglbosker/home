@@ -5,9 +5,9 @@ require("conform").setup({
 		python = { "black", "isort" },
 		zig = { "zigfmt" },
 		nix = { "nixfmt" },
-		c = { "clang-formt" },
+		c = { "clang-format" },
+		scala = { lsp_format = "fallback" },
 		cpp = { "clang-format" },
-		scala = { "scalafmt" },
 		bzl = { "buildifier" },
 	},
 })
