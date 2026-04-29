@@ -29,6 +29,7 @@
         defaultSession = "sway";
         gdm.enable = true;
       };
+      desktopManager.gnome.enable = true;
     };
 
     services.kmonad = {
@@ -75,6 +76,8 @@
       gnome-initial-setup
     ];
     programs.dconf.enable = true;
+
+    programs.niri.enable = true;
 
     # Configure network proxy if necessary
     # networking.proxy.default = "http://user:password@proxy:port/";

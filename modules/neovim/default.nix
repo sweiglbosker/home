@@ -2,6 +2,7 @@
   config,
   lib,
   pkgs,
+  inputs,
   ...
 }:
 let
@@ -9,7 +10,8 @@ let
   scheme = config.modules.scheme;
   tsparsers = pkgs.symlinkJoin {
     # if we don't symlink, startuptime grows by an order of magnitude because of long runtimepath
-    name = "tsparsers";
+    pname = "tsparsers";
+    version = "unstable";
     # paths = (pkgs.vimPlugins.nvim-treesitter.withAllGrammars).dependencies;
     paths =
       (pkgs.vimPlugins.nvim-treesitter.withPlugins (
@@ -50,7 +52,6 @@ let
           tree-sitter-zig
           tree-sitter-rust
           tree-sitter-haskell
-          tree-sitter-toml
           tree-sitter-markdown
           tree-sitter-markdown-inline
           tree-sitter-tablegen
@@ -68,6 +69,7 @@ in
     home.packages = with pkgs; [
       basedpyright
       clang-tools
+      rust-analyzer
       libclang.python
       ruff
       nixfmt-rfc-style
@@ -102,6 +104,7 @@ in
       viAlias = false;
       vimAlias = false;
       vimdiffAlias = true;
+      package = inputs.neovim-nightly.packages.${pkgs.system}.default;
       plugins = with pkgs.vimPlugins; [
         # lazy loading
         lz-n
@@ -119,7 +122,6 @@ in
         nvim-treesitter-parsers.asm
 
         nvim-treesitter-textobjects
-
         nvim-lspconfig
 
         {
@@ -153,6 +155,7 @@ in
               }
             '';
         }
+
 
         {
           plugin = lean-nvim;
@@ -233,8 +236,8 @@ in
                     defaults = {
                       layout_strategy = 'flex',
                       layout_config = {
-                        height = {padding = 0},
-                        width = {padding = 0},
+                        -- height = {padding = 0},
+                        -- width = {padding = 0},
                         prompt_position = "top",
                       },
                     },
@@ -257,7 +260,11 @@ in
           config =
             # lua
             ''
-              require("mini.pairs").setup()
+              require("mini.pairs").setup({
+                mappings = {
+                  ["'"] = { action = "closeopen", pair="'''", neigh_pattern='^[^\\&]'},
+                },
+              })
             '';
         }
         {

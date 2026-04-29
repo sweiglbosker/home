@@ -17,6 +17,7 @@ let
         weechat-grep
         weechat-go
         weechat-notify-send
+        wee-slack
       ];
     };
   };

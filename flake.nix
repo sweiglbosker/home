@@ -41,7 +41,7 @@
       system = "x86_64-linux";
       overlays = [
         inputs.nixgl.overlays.default
-        inputs.neovim-nightly.overlays.default
+        # inputs.neovim-nightly.overlays.default
         inputs.ida-pro-overlay.overlays.default
       ];
       pkgs = import nixpkgs {

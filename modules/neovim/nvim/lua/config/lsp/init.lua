@@ -16,6 +16,7 @@ local servers = {
   zls = {},
   basedpyright = {},
   ruff = {},
+  rust_analyzer = {},
   -- lua_ls = {},
   nixd = {
     nixd = {
@@ -52,7 +53,10 @@ vim.diagnostic.config({
   underline = true,
   update_in_insert = false,
   float = true,
-  jump = { float = true },
+  -- jump = { float = true },
+  jump = {
+    on_jump = vim.diagnostic.open_float,
+  },
 })
 
 -- is completion visible
@@ -67,6 +71,9 @@ vim.api.nvim_create_autocmd("LspAttach", { callback = function(args)
   end
 
   -- client.server_capabilities.semanticTokensProvider = nil
+  -- vim.lsp.codelens.enable()
+
+  vim.keymap.set('n', 'gcl', vim.lsp.codelens.run)
 
   vim.keymap.set('n', 'grr', function()
     vim.lsp.buf.references()

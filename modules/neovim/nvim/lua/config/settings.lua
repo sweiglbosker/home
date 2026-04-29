@@ -1,3 +1,5 @@
+vim.o.exrc = true
+vim.o.secure = true
 vim.g.mapleader = ' '
 vim.loader.enable({enable = true})
 -- vim.o.relativenumber = true

@@ -37,6 +37,11 @@ in
       recursive = true;
     };
 
+    home.file.".oh-my-zsh/completions" = {
+      source = ./completions;
+      recursive = true;
+    };
+
     programs.zsh = {
       enable = true;
       autocd = true;
@@ -59,9 +64,10 @@ in
       autosuggestion.enable = true;
       initContent = ''
                 source ~/.oh-my-zsh/themes/${cfg.theme}.zsh-theme 
+                source ~/.oh-my-zsh/completions/x.zsh
                 setopt nobeep
                 export KEYTIMEOUT=1
-                export NO_COLOR=1
+                # export NO_COLOR=1
                 export UV_PYTHON_DOWNLOADS=never
         #       export KEYTIMEOUT=20 # note, set higher if you want to use surround mode or any chording
 
