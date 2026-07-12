@@ -28,6 +28,7 @@ local servers = {
   mlir_lsp_server = require("config.lsp.mlir_lsp_server"),
   mlir_pdll_lsp_server = require("config.lsp.mlir_pdll_lsp_server"),
   tblgen_lsp_server = require("config.lsp.tblgen_lsp_server"),
+  calyx = require("config.lsp.calyx"),
   cmake = {},
   verible = {},
   -- metals = {},

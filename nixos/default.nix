@@ -67,6 +67,7 @@ in
 
     time.timeZone = lib.mkDefault cfg.timezone;
     # services.automatic-timezoned.enable = true;
+    services.envfs.enable = true;
 
     nixpkgs.config.allowUnfree = true;
 

@@ -47,6 +47,7 @@
       "input"
       "uinput"
       "video"
+      "docker"
     ]; # TODO: remove
 
     hardware.graphics = {
@@ -78,6 +79,14 @@
     programs.dconf.enable = true;
 
     programs.niri.enable = true;
+
+    virtualisation.docker = {
+      enable = true;
+      rootless = {
+        enable = true;
+        setSocketVariable = true;
+      };
+    };
 
     # Configure network proxy if necessary
     # networking.proxy.default = "http://user:password@proxy:port/";

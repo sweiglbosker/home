@@ -10,6 +10,7 @@ require("conform").setup({
     cpp = { "clang-format" },
     bzl = { "buildifier" },
     rust = { "rustfmt" },
+    cmake = { "gersemi" },
   },
 })
 

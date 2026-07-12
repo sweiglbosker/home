@@ -8,6 +8,7 @@
 let
   cfg = config.modules.neovim;
   scheme = config.modules.scheme;
+  mlirQueries = pkgs.vimPlugins.nvim-treesitter.builtGrammars.mlir + "/queries";
   tsparsers = pkgs.symlinkJoin {
     # if we don't symlink, startuptime grows by an order of magnitude because of long runtimepath
     pname = "tsparsers";
@@ -85,6 +86,7 @@ in
       kdePackages.qtdeclarative
       coursier
       metals
+      gersemi
     ];
     xdg.configFile."nvim/lua" = {
       source = ./nvim/lua;
@@ -93,6 +95,11 @@ in
 
     xdg.configFile."nvim/after" = {
       source = ./nvim/after;
+      recursive = true;
+    };
+
+    xdg.configFile."nvim/queries/mlir" = {
+      source = mlirQueries;
       recursive = true;
     };
 
@@ -133,6 +140,7 @@ in
           '';
         }
 
+        nvim-nio
         nvim-dap
         nvim-dap-ui
 
@@ -159,18 +167,11 @@ in
 
         {
           plugin = lean-nvim;
-          optional = true;
           type = "lua";
           config =
             # lua
             ''
-              require("lz.n").load({
-                "lean",
-                ft = "lean",
-                after = function()
-                  require('lean').setup({ mappings = true })
-                end,
-              })
+                require('lean').setup({ mappings = true })
             '';
         }
 
@@ -260,12 +261,17 @@ in
           config =
             # lua
             ''
-              require("mini.pairs").setup({
+            require('mini.pairs').setup({
                 mappings = {
-                  ["'"] = { action = "closeopen", pair="'''", neigh_pattern='^[^\\&]'},
-                },
-              })
+                  ["'"] = false,
+                }
+            })
             '';
+            #      mappings = {
+            #        ["'"] = { action = "closeopen", pair="'''", neigh_pattern='^[^\\&]'},
+            #      },
+            #   })
+            # '';
         }
         {
           plugin = mini-surround;
@@ -296,6 +302,9 @@ in
               })
             '';
         }
+
+        Coqtail
+
         {
           plugin = treesj;
           type = "lua";
