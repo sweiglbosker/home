@@ -1,4 +1,6 @@
 -- unused for now
+local util = require("conform.util")
+
 require("conform").setup({
   formatters_by_ft = {
     lua = { "stylua" },
@@ -11,6 +13,15 @@ require("conform").setup({
     bzl = { "buildifier" },
     rust = { "rustfmt" },
     cmake = { "gersemi" },
+    ocaml = { "ocamlformat" },
+    systemverilog = { "verible" },
+  },
+  formatters = {
+    verible = {
+      prepend_args = { "--flagfile=rules.verible.format" },
+      cwd = util.root_file({ "rules.verible.format" }),
+      require_cwd = true,
+    },
   },
 })
 

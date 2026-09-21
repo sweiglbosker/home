@@ -83,10 +83,13 @@ in
       cmake-language-server
       starpls
       verible
+      slang-server
       kdePackages.qtdeclarative
       coursier
       metals
       gersemi
+      ocamlPackages.ocaml-lsp
+      ocamlformat
     ];
     xdg.configFile."nvim/lua" = {
       source = ./nvim/lua;
@@ -122,7 +125,7 @@ in
         # broken or missing ts parsers
         nvim-treesitter-parsers.qmljs
         nvim-treesitter-parsers.systemverilog
-        nvim-treesitter-parsers.prolog
+        # nvim-treesitter-parsers.prolog
         nvim-treesitter-parsers.mlir
         nvim-treesitter-parsers.starlark
         nvim-treesitter-context
@@ -148,6 +151,9 @@ in
         # base16-nvim
         tinted-nvim
         kanagawa-nvim
+        tokyonight-nvim
+        gruvbox-nvim
+        catppuccin-nvim
 
         {
           plugin = nvim-highlight-colors;
@@ -321,6 +327,8 @@ in
               -- })
             '';
         }
+
+        slang-server-nvim
       ];
       extraLuaConfig =
         # lua

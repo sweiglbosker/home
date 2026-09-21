@@ -60,7 +60,6 @@
     hardware.amdgpu.opencl.enable = true;
 
     environment.gnome.excludePackages = with pkgs; [
-      gnome-photos
       geary
       gnome-tour
       cheese
